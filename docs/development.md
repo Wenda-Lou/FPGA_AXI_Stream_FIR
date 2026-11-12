@@ -6,7 +6,8 @@
 - Model tests and deterministic vector-file generation: implemented.
 - Parameterized Verilog FIFO and SystemVerilog self-checking testbench: implemented.
 - FIFO regression: 32 runs passed in Vivado 2026.1; default out-of-context synthesis passed.
-- FIR RTL, AXI4-Lite integration, full implementation and timing closure: pending.
+- Fixed 8-tap, 16-bit FIR RTL and self-checking testbench: three seeds passed, with independent Python comparison of 33,501 outputs.
+- FIR parameterization/control extensions, AXI4-Lite integration, full implementation and timing closure: pending.
 
 The proposal's full-project success criteria remain future milestones.
 
@@ -131,6 +132,19 @@ and top-level I/O constraints remain integration work.
 
 See [FIFO design and results](axis_fifo.md) for the interface contract, test
 coverage, timing-report limitations and retained evidence.
+
+## Run the FIR Simulation
+
+The self-checking FIR testbench and its Python comparison can be run with:
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ./scripts/run_fir.ps1 -VivadoBin 'E:/2026.1/Vivado/bin' -Python 'H:/2025.1/tps/win64/python-3.13.0/python.exe'
+```
+
+The default suite runs seeds 1, 7 and 42 with 10,000 accepted random inputs each,
+plus directed arithmetic, throughput, backpressure and mid-traffic reset tests.
+See [FIR verification](fir_verification.md) for the fixed-core interface, event
+format, measured results and Vivado GUI configuration.
 
 ## Generated Files
 

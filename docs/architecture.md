@@ -3,8 +3,11 @@
 Status: architecture contract for the initial RTL implementation. The Python
 arithmetic model and vector generator exist. The parameterized Verilog `axis_fifo`
 has passed directed/randomized simulation across five configurations and
-out-of-context synthesis for the default configuration. Other RTL modules remain
-planned. See [FIFO design and results](axis_fifo.md).
+out-of-context synthesis for the default configuration. The fixed 8-tap, 16-bit
+FIR datapath now passes directed/randomized simulation and independent Python
+comparison. FIR control/parameter extensions and the remaining modules are
+planned. See [FIFO design and results](axis_fifo.md) and
+[FIR verification](fir_verification.md).
 The proposal and register map are in [readme.md](../readme.md).
 
 ```mermaid
@@ -39,7 +42,7 @@ sample order and arithmetic.
 | Module | Main signals | Contract |
 | --- | --- | --- |
 | `axis_fifo` | `s_data`, `s_valid`, `s_ready`, `m_data`, `m_valid`, `m_ready`, `occupancy` | Implemented: parameterized width and power-of-two depth (at least 2), default 16 bits / 16 entries; combinational head read, no empty bypass; full FIFO rejects a write even during a same-cycle read |
-| `fir_core` | Input/output ready/valid data, coefficient array, `history_clear`, `idle`, result saturation flag | History advances only on accepted core inputs; no FIR-tail flush; one output per accepted sample |
+| `fir_core` | Current: ready/valid data and packed 128-bit coefficient input; planned: `history_clear`, `idle`, result saturation flag | Fixed 8-tap/16-bit datapath verified; history advances only on accepted core inputs; no FIR-tail flush; one output per accepted sample |
 | `axi_lite_regs` | Five AXI4-Lite channels, control/coefficients, status/counters | Independent write-address/data capture, one write and one read outstanding, decoded register map and error responses |
 | `dsp_accelerator` | External stream and AXI4-Lite ports, `clk`, `resetn` | Instantiates buffers, core and registers; owns input gating, global idle and transfer counters |
 
@@ -83,7 +86,7 @@ expected result has drained before resetting for the next scenario.
 
 ## Next Implementation Milestone
 
-1. Implement `fir_core` and compare directed vectors against the Python files.
+1. Extend the verified fixed FIR with parameters, idle/history-clear/clipping status, and standalone synthesis checks.
 2. Connect both verified FIFOs and stress the streaming datapath with stalls.
 3. Add AXI4-Lite control after the streaming datapath is verified.
 

@@ -1,0 +1,41 @@
+{
+    "status":  "passed",
+    "rtl_sha256":  "7FEA4A28DB067A692A7A3EC0CF21A7BE45043C9CB37E6BAF0EB0F15EA203EBE6",
+    "testbench_sha256":  "7005B8F6052E7A011B0E20DBF3FFF3AA929C92546D52D30AE2D52BC813153DD0",
+    "model_sha256":  "CE9E5153F68F7DD0E3FAF3C4DEC121142F00FA9CB5EA456D160C884A7E98CFE7",
+    "runs":  [
+                 {
+                     "seed":  1,
+                     "random_samples":  10000,
+                     "writes":  11169,
+                     "reads":  11167,
+                     "reset_discarded":  2,
+                     "max_streak":  1050,
+                     "python_status":  "passed",
+                     "log":  "seed_1.log",
+                     "events":  "seed_1.events.txt"
+                 },
+                 {
+                     "seed":  7,
+                     "random_samples":  10000,
+                     "writes":  11169,
+                     "reads":  11167,
+                     "reset_discarded":  2,
+                     "max_streak":  1050,
+                     "python_status":  "passed",
+                     "log":  "seed_7.log",
+                     "events":  "seed_7.events.txt"
+                 },
+                 {
+                     "seed":  42,
+                     "random_samples":  10000,
+                     "writes":  11169,
+                     "reads":  11167,
+                     "reset_discarded":  2,
+                     "max_streak":  1050,
+                     "python_status":  "passed",
+                     "log":  "seed_42.log",
+                     "events":  "seed_42.events.txt"
+                 }
+             ]
+}
