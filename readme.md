@@ -6,7 +6,7 @@
 **Development Environment:** Xilinx Vivado, SystemVerilog, Verilog, Python  
 **Target Roles:** FPGA Engineer, RTL Design Intern, Digital IC Design/Verification Intern, Hardware Validation Intern
 
-**Project Status:** Phase 1 started. The integer Python reference model, directed tests, and seeded vector generator are implemented. RTL, HDL verification, synthesis, and performance results are pending. The specifications below remain planned requirements.
+**Project Status:** Phase 1 in progress. The integer Python reference flow and parameterized Verilog FIFO are implemented. FIFO verification passes 32 runs in Vivado 2026.1, including 20 seeds of 10,000 accepted random inputs for the required configuration and width/depth smoke tests. The default FIFO also passes out-of-context synthesis for `xc7a35tcpg236-1`. See [FIFO design and results](docs/axis_fifo.md). FIR RTL, integrated verification, implementation, and performance optimization remain pending. The specifications below define the target requirements.
 
 ### Getting Started
 
@@ -17,7 +17,7 @@ python -m unittest discover -s tests -v
 python scripts/generate_vectors.py --seed 1 --count 10000
 ```
 
-See [development instructions](docs/development.md) for the PowerShell wrapper, local tool status, and generated file formats, and [architecture and module contracts](docs/architecture.md) for the initial RTL boundaries. Generated files are written to `build/` and excluded from Git. These commands validate the Python reference flow; HDL regression remains pending.
+See [development instructions](docs/development.md) for the Python wrapper, FIFO simulation command and results, local tool status, and generated file formats, and [architecture and module contracts](docs/architecture.md) for the RTL boundaries. Generated files are written to `build/` and excluded from Git. The commands above validate the Python reference flow; the FIFO has a separate HDL regression.
 
 ---
 

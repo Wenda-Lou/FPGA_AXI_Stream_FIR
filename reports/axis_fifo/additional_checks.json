@@ -1,0 +1,5 @@
+{
+    "invalid_depth_3":  "rejected by the RTL parameter guard",
+    "narrow_memory_mutation":  "rejected by the data scoreboard",
+    "project_source_configuration":  "passed in an in-memory Vivado project"
+}

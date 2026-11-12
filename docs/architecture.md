@@ -1,7 +1,10 @@
 # First-Version Architecture and Module Contracts
 
 Status: architecture contract for the initial RTL implementation. The Python
-arithmetic model and vector generator exist; the RTL modules below are planned.
+arithmetic model and vector generator exist. The parameterized Verilog `axis_fifo`
+has passed directed/randomized simulation across five configurations and
+out-of-context synthesis for the default configuration. Other RTL modules remain
+planned. See [FIFO design and results](axis_fifo.md).
 The proposal and register map are in [readme.md](../readme.md).
 
 ```mermaid
@@ -31,11 +34,11 @@ output. The core may initially stall its complete pipeline together to simplify
 correctness. A later optimization may change pipeline placement while preserving
 sample order and arithmetic.
 
-## Planned Modules
+## Modules and Target Contracts
 
 | Module | Main signals | Contract |
 | --- | --- | --- |
-| `axis_fifo` | `s_data`, `s_valid`, `s_ready`, `m_data`, `m_valid`, `m_ready`, `occupancy` | Parameterized width and power-of-two depth; no empty bypass; full FIFO may conservatively reject writes until the following cycle |
+| `axis_fifo` | `s_data`, `s_valid`, `s_ready`, `m_data`, `m_valid`, `m_ready`, `occupancy` | Implemented: parameterized width and power-of-two depth (at least 2), default 16 bits / 16 entries; combinational head read, no empty bypass; full FIFO rejects a write even during a same-cycle read |
 | `fir_core` | Input/output ready/valid data, coefficient array, `history_clear`, `idle`, result saturation flag | History advances only on accepted core inputs; no FIR-tail flush; one output per accepted sample |
 | `axi_lite_regs` | Five AXI4-Lite channels, control/coefficients, status/counters | Independent write-address/data capture, one write and one read outstanding, decoded register map and error responses |
 | `dsp_accelerator` | External stream and AXI4-Lite ports, `clk`, `resetn` | Instantiates buffers, core and registers; owns input gating, global idle and transfer counters |
@@ -80,11 +83,12 @@ expected result has drained before resetting for the next scenario.
 
 ## Next Implementation Milestone
 
-1. Implement and simulate `axis_fifo` at depths 2, 4 and 16, including wraparound,
-   boundary reads/writes, simultaneous transfers and reset.
-2. Implement `fir_core` and compare directed vectors against the Python files.
-3. Connect both FIFOs and stress the streaming datapath with stalls.
-4. Add AXI4-Lite control after the streaming datapath is verified.
+1. Implement `fir_core` and compare directed vectors against the Python files.
+2. Connect both verified FIFOs and stress the streaming datapath with stalls.
+3. Add AXI4-Lite control after the streaming datapath is verified.
 
-RTL simulation and early synthesis require a working HDL simulator and Vivado
-installation. No RTL or timing acceptance is claimed by the Python tests.
+FIFO simulation uses the installed Vivado 2026.1 simulator; see
+[development instructions](development.md) for results and reproduction commands.
+Standalone FIFO synthesis is complete; integrated synthesis and post-route timing
+analysis remain pending. Python tests validate the reference flow and do not
+establish RTL or timing acceptance.

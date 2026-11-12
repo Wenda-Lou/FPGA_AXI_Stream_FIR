@@ -9,3 +9,12 @@ build/
 *.pb
 *.str
 *.zip
+
+# Vivado-generated project data; retain .xpr, .srcs and source files.
+*.cache/
+*.gen/
+*.hw/
+*.ip_user_files/
+*.runs/
+*.sim/
+xsim.dir/
