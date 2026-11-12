@@ -6,7 +6,18 @@
 **Development Environment:** Xilinx Vivado, SystemVerilog, Verilog, Python  
 **Target Roles:** FPGA Engineer, RTL Design Intern, Digital IC Design/Verification Intern, Hardware Validation Intern
 
-**Project Status:** Proposal. The specifications below are planned design requirements; implementation and performance results are pending.
+**Project Status:** Phase 1 started. The integer Python reference model, directed tests, and seeded vector generator are implemented. RTL, HDL verification, synthesis, and performance results are pending. The specifications below remain planned requirements.
+
+### Getting Started
+
+Run the reference-model tests and generate simulation vectors with Python 3.10 or newer; no third-party Python packages are required:
+
+```powershell
+python -m unittest discover -s tests -v
+python scripts/generate_vectors.py --seed 1 --count 10000
+```
+
+See [development instructions](docs/development.md) for the PowerShell wrapper, local tool status, and generated file formats, and [architecture and module contracts](docs/architecture.md) for the initial RTL boundaries. Generated files are written to `build/` and excluded from Git. These commands validate the Python reference flow; HDL regression remains pending.
 
 ---
 
