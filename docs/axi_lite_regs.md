@@ -1,9 +1,9 @@
 # AXI4-Lite Configuration and Status Registers
 
 The standalone register bank is implemented and verified. It owns coefficients,
-enable, transfer counters and sticky clipping status. The next milestone connects
-it to `dsp_datapath` in `dsp_accelerator`; the results here are unit verification,
-with testbench-driven datapath events, rather than full-accelerator acceptance.
+enable, transfer counters and sticky clipping status. It is also connected to
+`dsp_datapath` in the verified [complete accelerator](accelerator.md). Results
+on this page remain unit verification with testbench-driven datapath events.
 
 ## Sources and Integration Boundary
 
@@ -18,7 +18,7 @@ ARPROT are accepted but do not change access policy. `TAPS` is a power of two
 from 1 through 32, and `COEFF_WIDTH` is 2 through 32 bits; defaults are 8 and 16.
 All state shares a rising-edge clock and active-low synchronous reset.
 
-| Non-AXI port | Connection in the future top |
+| Non-AXI port | Connection in the complete top |
 | --- | --- |
 | `datapath_idle` | Global `dsp_datapath.idle`, including both FIFOs |
 | `input_transfer` | External stream input `valid && ready`, once per accepted sample |
@@ -166,5 +166,5 @@ target. See [timing](../reports/axi_regs/timing_synth.rpt) and
 There are zero unconstrained internal endpoints, but 44 input and 170 output
 ports have no external delays. The OOC clock-source warning `Timing 38-242`
 also remains because no top-level clock buffer location is defined. These are
-clock-only post-synthesis estimates; full-system I/O constraints, integration
-tests and placement/routing acceptance remain pending.
+clock-only post-synthesis estimates. Complete-top integration tests are documented
+separately; full-system I/O constraints and placement/routing acceptance remain pending.

@@ -5,7 +5,8 @@ below. Parameterized Verilog RTL, control/status ports, self-checking simulation
 independent Python comparison and default-configuration synthesis are complete.
 Buffered FIFO/FIR integration is verified separately in the
 [datapath report](datapath.md). The [register bank](axi_lite_regs.md) is verified
-separately; full AXI-controlled streaming integration and the final top remain pending.
+separately; full AXI-controlled streaming integration is verified in the
+[complete accelerator](accelerator.md). Physical implementation remains pending.
 
 ## Files and Reproduction
 

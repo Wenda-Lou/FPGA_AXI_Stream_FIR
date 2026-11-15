@@ -10,7 +10,8 @@
 - FIR: 38 simulation runs passed; 263,938 outputs and flags matched Python; default standalone synthesis passes its internal 10 ns clock checks.
 - Buffered FIFO/FIR datapath: 41 runs passed, with 270,633 outputs/flags matched against Python; four-clock latency and internal synthesis timing checks pass. See [integration results](datapath.md).
 - AXI4-Lite register bank: 32 unit runs passed, with 46,000 random concurrent write/read pairs; default internal synthesis timing checks pass. See [register results](axi_lite_regs.md).
-- Final accelerator top, full-system integration tests, implementation and post-route timing closure: pending.
+- Complete accelerator top: 47 AXI-controlled streaming runs passed; 281,842 outputs/flags matched Python, with complete stream/AXI accounting. Default OOC internal timing checks pass. See [complete-top results](accelerator.md).
+- Physical implementation, full-system external I/O constraints and post-route timing closure: pending.
 
 The proposal's full-project success criteria remain future milestones.
 
@@ -174,6 +175,18 @@ ordering, response stalls, byte strobes, invalid accesses, enable/idle rules,
 soft clear, counter wrap and reset of partial transactions. See
 [register-bank verification](axi_lite_regs.md) for the map, control/event boundary,
 matrix, retained evidence and Vivado GUI/synthesis commands.
+
+## Run the Complete Accelerator Simulation
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ./scripts/run_accelerator.ps1 -VivadoBin 'E:/2026.1/Vivado/bin' -Python 'H:/2025.1/tps/win64/python-3.13.0/python.exe'
+```
+
+This runs 47 complete-top simulations using AXI4-Lite coefficient/enable writes
+and concurrent streaming traffic. It checks control/data integration, counters,
+sticky clipping, clear/reconfiguration, full-buffer reset and independent Python
+data/flag comparison. See [complete accelerator](accelerator.md) for the matrix,
+retained evidence, GUI setup and the limits of the internal synthesis estimate.
 
 ## Generated Files
 

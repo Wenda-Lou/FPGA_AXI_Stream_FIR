@@ -2,8 +2,8 @@
 
 `dsp_datapath` connects the verified FIFO and FIR modules into one synchronous
 streaming block. Direct configuration ports are ready for the separately verified
-[AXI4-Lite register bank](axi_lite_regs.md). Connecting both in the final
-accelerator top and verifying full-system traffic remain implementation work.
+[AXI4-Lite register bank](axi_lite_regs.md). Both are now connected and verified
+in the [complete accelerator](accelerator.md); physical implementation remains pending.
 
 ```text
 s_data/valid/ready -> input FIFO -> FIR -> output FIFO -> m_data/valid/ready
@@ -46,7 +46,7 @@ and accepted, unless hardware reset cancels it.
 
 Change coefficients only while disabled and globally idle, together with an
 accepted history clear. This direct-port block does not reject or buffer illegal
-coefficient writes; the future register bank must enforce those access rules.
+coefficient writes; the register bank enforces those rules in the complete top.
 Disable/re-enable without an accepted clear preserves filter history.
 
 An enabled or busy clear pulse is ignored. A request held while disabled allows
@@ -63,7 +63,7 @@ not be zero. Interpret data and `m_saturated` only when `m_valid` is asserted.
 `result_saturated` is asserted for each clipped FIR-to-output-FIFO handshake,
 which can precede external consumption by many cycles. A blocked FIR result
 does not repeatedly generate this event. The register bank's sticky `SATURATED`
-state will connect to this event in the final top and clear on hardware reset
+state connects to this event in `dsp_accelerator` and clears on hardware reset
 or a legal soft clear.
 
 Without stalls, external handshake latency is four clocks: one input FIFO clock,
@@ -142,8 +142,8 @@ this attribute, was used in all 41 recorded simulation runs.
 The timing report has zero unconstrained internal endpoints, but 149 input ports
 and 32 output ports have no external delays. Vivado also reports `Timing 38-242`
 because an OOC clock-buffer source location is unspecified. These are explicit
-scope limitations of the internal estimate. Final AXI4-Lite integration, external
-timing assumptions and post-route setup/hold acceptance remain pending.
+scope limitations of the internal estimate. AXI4-Lite integration is verified
+in the complete top; external timing assumptions and post-route acceptance remain pending.
 
 ## Vivado GUI and Synthesis
 

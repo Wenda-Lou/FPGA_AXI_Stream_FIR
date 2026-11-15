@@ -9,9 +9,10 @@ runs with independent Python comparison. Default standalone synthesis and a
 measured adder-tree timing optimization are complete. Buffered FIFO/FIR integration
 also passes end-to-end simulation and internal synthesis timing checks. The
 AXI4-Lite register bank passes standalone protocol/register tests and synthesis.
-The final accelerator top remains planned. See [FIFO results](axis_fifo.md),
+The complete accelerator top passes AXI-controlled streaming regression and
+internal synthesis timing checks. See [FIFO results](axis_fifo.md),
 [FIR verification](fir_verification.md), [buffered datapath](datapath.md) and
-[register-bank verification](axi_lite_regs.md).
+[register-bank verification](axi_lite_regs.md) and [complete accelerator](accelerator.md).
 The proposal and register map are in [readme.md](../readme.md).
 
 ```mermaid
@@ -49,18 +50,18 @@ sample order and arithmetic.
 | `fir_core` | Ready/valid data, packed parameter-width coefficients, `history_clear`, `idle`, `m_saturated` | Implemented and verified: parameterized signed arithmetic, idle-only history clear, no FIR-tail flush, one output per accepted sample; saturation travels with its output |
 | `dsp_datapath` | External ready/valid data, direct coefficients/enable/clear, global idle, FIFO occupancy, clipping metadata/event | Implemented: input FIFO + FIR + output FIFO; disable gates external acceptance only; history clear requires disabled global idle |
 | `axi_lite_regs` | Five AXI4-Lite channels, control/coefficients, status/counters | Implemented: independent AW/W capture, one write/read outstanding, byte strobes, decoded map/errors, counter and sticky state, commit-edge clear outputs |
-| `dsp_accelerator` | External stream and AXI4-Lite ports, `clk`, `resetn` | Planned: instantiates datapath and registers; connects global idle, control and qualified transfer/clipping events |
+| `dsp_accelerator` | External stream and AXI4-Lite ports, `clk`, `resetn` | Implemented: instantiates datapath and registers; connects global idle, control and qualified external-transfer/production-clipping events |
 
 The implemented `dsp_datapath` owns the two FIFO instances, FIR instance, external
-input enable gate and global history-clear qualification. The future
-`dsp_accelerator` will instantiate this block and `axi_lite_regs`. The register
-bank owns coefficient, enable, counter and sticky-status state; the top will
-qualify its event inputs and connect control/status signals. Direct coefficients
-currently remain external inputs to the separately verified datapath.
+input enable gate and global history-clear qualification. The implemented
+`dsp_accelerator` instantiates this block and `axi_lite_regs`. The register
+bank owns coefficient, enable, counter and sticky-status state; the top
+qualifies its event inputs and connects control/status signals. Direct coefficients
+remain external inputs when testing the datapath separately.
 
 The core registers products, adds them with a full-width balanced fabric adder
-tree, then shifts/saturates into the output register. Its coefficient array will
-be supplied by `axi_lite_regs`. Top-level logic guarantees coefficients remain constant while
+tree, then shifts/saturates into the output register. Its coefficient array is
+supplied by `axi_lite_regs` in the complete top. Register access rules keep coefficients constant while
 data is in flight. A successful coefficient update emits `history_clear` when
 the complete accelerator is disabled and empty. `history_clear` is also emitted
 by a legal soft-clear command.
@@ -79,7 +80,7 @@ the core; sticky `SATURATED` is set when the result transfers into the output
 FIFO. This event occurs exactly once per generated result, including under stalls.
 
 Clearing `ENABLE` gates external input acceptance from the following cycle and
-leaves all internal drain paths active. The top will send external input and
+leaves all internal drain paths active. The top sends external input and
 output handshakes to the register counters, not cycles with valid asserted. A scoreboard tracks queued
 expectations across all internal buffering.
 
@@ -105,12 +106,12 @@ expected result has drained before resetting for the next scenario.
 
 ## Next Implementation Milestone
 
-1. Connect the verified registers and `dsp_datapath` in `dsp_accelerator`, including handshake counters, sticky saturation events and commit-edge clear/control signals.
-2. Verify full streaming traffic through AXI4-Lite programming, disable/drain/reconfigure, illegal writes, response stalls and resets.
-3. Run full-accelerator synthesis/implementation, close post-route timing and retain reproducible performance results.
+1. Define full-system external I/O timing assumptions and the physical implementation constraints.
+2. Run placement/routing, inspect setup/hold paths and close post-route timing.
+3. Retain baseline/optimized physical timing, resource, throughput and latency results, then finalize reproducible project documentation.
 
 FIFO simulation uses the installed Vivado 2026.1 simulator; see
 [development instructions](development.md) for results and reproduction commands.
-Standalone FIFO, FIR, buffered-datapath and register-bank synthesis are complete; full-accelerator
-implementation and post-route timing remain pending. Python tests validate the reference flow and do not
+FIFO, FIR, buffered-datapath, register-bank and complete-top OOC synthesis are complete;
+physical implementation and post-route timing remain pending. Python tests validate the reference flow and do not
 establish RTL or timing acceptance.
