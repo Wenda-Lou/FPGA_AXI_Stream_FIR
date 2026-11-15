@@ -6,9 +6,12 @@ has passed directed/randomized simulation across five configurations and
 out-of-context synthesis for the default configuration. The parameterized FIR,
 idle/history-clear control and per-output clipping status pass 38 simulation
 runs with independent Python comparison. Default standalone synthesis and a
-measured adder-tree timing optimization are complete. System integration and
-AXI4-Lite control remain planned. See [FIFO design and results](axis_fifo.md) and
-[FIR verification](fir_verification.md).
+measured adder-tree timing optimization are complete. Buffered FIFO/FIR integration
+also passes end-to-end simulation and internal synthesis timing checks. The
+AXI4-Lite register bank passes standalone protocol/register tests and synthesis.
+The final accelerator top remains planned. See [FIFO results](axis_fifo.md),
+[FIR verification](fir_verification.md), [buffered datapath](datapath.md) and
+[register-bank verification](axi_lite_regs.md).
 The proposal and register map are in [readme.md](../readme.md).
 
 ```mermaid
@@ -44,8 +47,16 @@ sample order and arithmetic.
 | --- | --- | --- |
 | `axis_fifo` | `s_data`, `s_valid`, `s_ready`, `m_data`, `m_valid`, `m_ready`, `occupancy` | Implemented: parameterized width and power-of-two depth (at least 2), default 16 bits / 16 entries; combinational head read, no empty bypass; full FIFO rejects a write even during a same-cycle read |
 | `fir_core` | Ready/valid data, packed parameter-width coefficients, `history_clear`, `idle`, `m_saturated` | Implemented and verified: parameterized signed arithmetic, idle-only history clear, no FIR-tail flush, one output per accepted sample; saturation travels with its output |
-| `axi_lite_regs` | Five AXI4-Lite channels, control/coefficients, status/counters | Independent write-address/data capture, one write and one read outstanding, decoded register map and error responses |
-| `dsp_accelerator` | External stream and AXI4-Lite ports, `clk`, `resetn` | Instantiates buffers, core and registers; owns input gating, global idle and transfer counters |
+| `dsp_datapath` | External ready/valid data, direct coefficients/enable/clear, global idle, FIFO occupancy, clipping metadata/event | Implemented: input FIFO + FIR + output FIFO; disable gates external acceptance only; history clear requires disabled global idle |
+| `axi_lite_regs` | Five AXI4-Lite channels, control/coefficients, status/counters | Implemented: independent AW/W capture, one write/read outstanding, byte strobes, decoded map/errors, counter and sticky state, commit-edge clear outputs |
+| `dsp_accelerator` | External stream and AXI4-Lite ports, `clk`, `resetn` | Planned: instantiates datapath and registers; connects global idle, control and qualified transfer/clipping events |
+
+The implemented `dsp_datapath` owns the two FIFO instances, FIR instance, external
+input enable gate and global history-clear qualification. The future
+`dsp_accelerator` will instantiate this block and `axi_lite_regs`. The register
+bank owns coefficient, enable, counter and sticky-status state; the top will
+qualify its event inputs and connect control/status signals. Direct coefficients
+currently remain external inputs to the separately verified datapath.
 
 The core registers products, adds them with a full-width balanced fabric adder
 tree, then shifts/saturates into the output register. Its coefficient array will
@@ -54,10 +65,12 @@ data is in flight. A successful coefficient update emits `history_clear` when
 the complete accelerator is disabled and empty. `history_clear` is also emitted
 by a legal soft-clear command.
 
-`history_clear` suppresses input readiness. Busy pulses preserve pending results;
-a request held through draining clears history once idle is reached. The output
-FIFO must store the clipping flag together with data, requiring
-`OUTPUT_WIDTH + 1` payload bits for `{m_saturated, m_data}`.
+At the `fir_core` interface, `history_clear` suppresses core input readiness.
+The wrapper qualifies this request with disabled global idle, so busy/enabled
+datapath clear pulses are ignored and internal drain remains active. A request
+held while disabled clears history after both FIFOs and the core have drained.
+The output FIFO stores `OUTPUT_WIDTH + 1` payload bits for
+`{m_saturated, m_data}`.
 
 `idle` for each FIFO means zero occupancy. Core `idle` means all valid stages are
 empty. Global `IDLE` is the conjunction of these conditions. History contents do
@@ -66,8 +79,8 @@ the core; sticky `SATURATED` is set when the result transfers into the output
 FIFO. This event occurs exactly once per generated result, including under stalls.
 
 Clearing `ENABLE` gates external input acceptance from the following cycle and
-leaves all internal drain paths active. The top level counts external input and
-output handshakes, not cycles with valid asserted. A scoreboard tracks queued
+leaves all internal drain paths active. The top will send external input and
+output handshakes to the register counters, not cycles with valid asserted. A scoreboard tracks queued
 expectations across all internal buffering.
 
 ## Reference Model Boundary
@@ -92,12 +105,12 @@ expected result has drained before resetting for the next scenario.
 
 ## Next Implementation Milestone
 
-1. Connect both verified FIFOs and FIR, carrying data and clipping status together, and stress the complete streaming datapath with stalls.
-2. Add AXI4-Lite control after the streaming datapath is verified.
-3. Run integrated synthesis/implementation, close post-route timing and retain reproducible performance results.
+1. Connect the verified registers and `dsp_datapath` in `dsp_accelerator`, including handshake counters, sticky saturation events and commit-edge clear/control signals.
+2. Verify full streaming traffic through AXI4-Lite programming, disable/drain/reconfigure, illegal writes, response stalls and resets.
+3. Run full-accelerator synthesis/implementation, close post-route timing and retain reproducible performance results.
 
 FIFO simulation uses the installed Vivado 2026.1 simulator; see
 [development instructions](development.md) for results and reproduction commands.
-Standalone FIFO and FIR synthesis are complete; integrated synthesis and post-route timing
-analysis remain pending. Python tests validate the reference flow and do not
+Standalone FIFO, FIR, buffered-datapath and register-bank synthesis are complete; full-accelerator
+implementation and post-route timing remain pending. Python tests validate the reference flow and do not
 establish RTL or timing acceptance.

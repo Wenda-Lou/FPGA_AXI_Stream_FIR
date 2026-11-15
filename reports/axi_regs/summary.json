@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-15",
+  "tool": "Vivado 2026.1 build 6511674",
+  "device": "xc7a35tcpg236-1",
+  "scope": "standalone AXI4-Lite register bank; datapath event inputs are testbench-driven, not full accelerator traffic",
+  "status": "passed",
+  "runs": 32,
+  "random_write_read_pairs": 46000,
+  "write_commits": 47636,
+  "write_responses": 47604,
+  "read_responses": 48382,
+  "reset_discarded_write_responses": 32,
+  "reset_discarded_read_responses": 32,
+  "reset_discarded_address_only_writes": 32,
+  "reset_discarded_data_only_writes": 32,
+  "all_channels_accounted": true,
+  "counter_wrap_test": "test-only backdoor seeds both counters to 0xfffffffe, then real event pulses check modulo wrap",
+  "gui_configuration_check": "passed in-memory project",
+  "synthesis": {
+    "scope": "out-of-context post-synthesis internal timing; no external I/O delays or placement/routing",
+    "clock_period_ns": 10,
+    "setup_wns_ns": 5.332,
+    "hold_slack_ns": 0.269,
+    "luts": 130,
+    "flip_flops": 258,
+    "dsps": 0,
+    "bram_tiles": 0,
+    "unconstrained_internal_endpoints": 0,
+    "input_ports_without_delay": 44,
+    "output_ports_without_delay": 170,
+    "clock_warning": "Timing 38-242: OOC HD.CLK_SRC location unspecified"
+  },
+  "source_hashes": {
+    "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/axi_lite_regs.v": "27232C3886D8DCB76B06A41A81B14074B06D5672634EB9A487A8C157A97F0D26",
+    "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sim_1/tb_axi_lite_regs.sv": "65A5715FB78141D135FBEAB51A2950E878C0800ACA73D7294947AD9FAF7EBF34"
+  }
+}

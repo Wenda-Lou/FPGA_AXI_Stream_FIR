@@ -3,7 +3,9 @@
 Status: the standalone FIR module is complete for the acceptance configurations
 below. Parameterized Verilog RTL, control/status ports, self-checking simulation,
 independent Python comparison and default-configuration synthesis are complete.
-FIFO integration and AXI4-Lite control remain system-level milestones.
+Buffered FIFO/FIR integration is verified separately in the
+[datapath report](datapath.md). The [register bank](axi_lite_regs.md) is verified
+separately; full AXI-controlled streaming integration and the final top remain pending.
 
 ## Files and Reproduction
 

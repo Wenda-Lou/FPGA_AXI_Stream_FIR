@@ -1,0 +1,40 @@
+{
+  "date": "2026-11-15",
+  "tool": "Vivado 2026.1 build 6511674",
+  "device": "xc7a35tcpg236-1",
+  "regression_status": "passed",
+  "runs": 41,
+  "random_accepted_inputs": 221000,
+  "accepted_inputs": 271559,
+  "completed_outputs_and_saturation_checks": 270633,
+  "reset_discarded": 926,
+  "minimum_continuous_output_streak": 1050,
+  "external_handshake_latency_without_stalls_cycles": 4,
+  "maximum_default_pending_samples": 34,
+  "gui_configuration_check": "passed in-memory project",
+  "synthesis": {
+    "status": "passed constrained internal setup/hold check",
+    "scope": "out-of-context post-synthesis internal timing only; no placement/routing or external input/output delays",
+    "clock_period_ns": 10.0,
+    "setup_wns_ns": 0.937,
+    "setup_tns_ns": 0.0,
+    "hold_slack_ns": 0.166,
+    "luts": 319,
+    "flip_flops": 45,
+    "dsps": 8,
+    "bram_tiles": 0,
+    "unconstrained_internal_endpoints": 0,
+    "input_ports_without_delay": 149,
+    "output_ports_without_delay": 32,
+    "clock_warning": "Timing 38-242: OOC HD.CLK_SRC location not specified",
+    "mapping": "keep_hierarchy=yes on the FIR instance preserves its independently optimized arithmetic structure"
+  },
+  "source_hashes": {
+    "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/axis_fifo.v": "EB3DF2AEF88C04F8D0B37398DB90F2A0D2C598DA68EF6A29BB1D4350564F8FCF",
+    "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/fir_core.v": "93AA9942BD842BB4CB4FDFEB7F8200CA6257FC5018EADC0074084846826EC484",
+    "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/dsp_datapath.v": "CC67F0ACDDFEE462D886848739A7D6B524F5F0773DBD9228177C260D41B1D60B",
+    "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sim_1/tb_dsp_datapath.sv": "65551E14DFA6FF63B7EA790C37F783CB3BDDD46B84C5DB0068EA42E8EA5C8AB0",
+    "model/fir.py": "CE9E5153F68F7DD0E3FAF3C4DEC121142F00FA9CB5EA456D160C884A7E98CFE7",
+    "scripts/compare_fir_events.py": "1D47CB164E1698DE4DE67FA598C6163D83DB93019A64EC7648F9BE45C31316AA"
+  }
+}
