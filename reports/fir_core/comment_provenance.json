@@ -1,0 +1,63 @@
+{
+  "scope": "English comment additions only; existing simulation and synthesis reports retain the pre-comment hashes, not a new test run.",
+  "comparison_method": "Exact nonblank line comparison after removing full-line // comments for HDL or # comments for scripts. Original synthesis translate directives separately preserved. Python AST also identical.",
+  "baseline_snapshot_unchanged": true,
+  "files": [
+    {
+      "path": "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/fir_core.v",
+      "before_sha256": "6423946FD1D1695D4FECC1D4C741A9884AF417C09AF183D1C37F268D8B9AD156",
+      "annotated_sha256": "93AA9942BD842BB4CB4FDFEB7F8200CA6257FC5018EADC0074084846826EC484",
+      "non_comment_lines_identical": true,
+      "non_comment_lines_sha256": "B7AFE064E558FF3BEAC93C47F7D4BB9E65145F7FD024F0AA09CC6125BAD8F30C"
+    },
+    {
+      "path": "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sim_1/tb_fir_core.sv",
+      "before_sha256": "848F740CC08A6C0BEFC2630428B0BAF5D1B77E85EE2E3640415D1197F51EF024",
+      "annotated_sha256": "F49BFE8280651A0B96688BC42A555A539455282C845E8EB36C35E96998BF8A9A",
+      "non_comment_lines_identical": true,
+      "non_comment_lines_sha256": "2970E04E54CA64DB848A34697741AA0BCD207CBDCC6A1F7FF6AFB3D2D489062F"
+    },
+    {
+      "path": "scripts/run_fir.ps1",
+      "before_sha256": "186B07C10C088250DA9D525322AD2322A62A78230792C0E013BBA0693C981F92",
+      "annotated_sha256": "4FC9D72F6CD214882A8C2433240CACAD0F484B95CDA3A9DBB8CD15DBDF57C1A0",
+      "non_comment_lines_identical": true,
+      "non_comment_lines_sha256": "C567714458916BC52066039F777B24B7B9FBD054F88496A5AEE3865D2A70A600"
+    },
+    {
+      "path": "scripts/compare_fir_events.py",
+      "before_sha256": "FADE7FAF2A69424425EAE1573D6714E33394626B1AB95F1C5B3A4F5F1E256DA1",
+      "annotated_sha256": "1D47CB164E1698DE4DE67FA598C6163D83DB93019A64EC7648F9BE45C31316AA",
+      "non_comment_lines_identical": true,
+      "non_comment_lines_sha256": "208F6D723A90426D60682D417648AA9D196D7464645F26CA037F7D1F3557BB00"
+    },
+    {
+      "path": "scripts/synth_fir.tcl",
+      "before_sha256": "AEFDAAA9103B7F8167B8CEA25A2AFF1C3B5DD9D8ABB2B706A60BBE1780EED33A",
+      "annotated_sha256": "AC9CA4B9360E2ACE4379297809C38002CF4E95D99DC4DAAC1ECBD4B10AE6C6F8",
+      "non_comment_lines_identical": true,
+      "non_comment_lines_sha256": "BB8A05784C9693D36A7399AB2B0BE8233614F034F48F8FE323F0C009EF6D3DF7"
+    },
+    {
+      "path": "scripts/configure_fir_project.tcl",
+      "before_sha256": "617F715DDF9875E4366E11B5C45C014E77C11C79A1B9FAEE0D883D5C75CB5AF0",
+      "annotated_sha256": "9D6CEFBF181ED97603FAE625C230CE54010157635AB0C0B00A70C225F70EEAE5",
+      "non_comment_lines_identical": true,
+      "non_comment_lines_sha256": "B30F0C271741A0E1A35DC0E9183042013641EEAD07DDEF60E8AF48028C777816"
+    },
+    {
+      "path": "constraints/fir_core_ooc.xdc",
+      "before_sha256": "8977D25841F66EE061DDB089A019713E7422ACE802FED3B57259A0274327F204",
+      "annotated_sha256": "94BFCA8D4A73105392F88644F2994AF97DE4B352DFC64960EEEE304A4AC3D589",
+      "non_comment_lines_identical": true,
+      "non_comment_lines_sha256": "6745A1B832A677DAD2FAE557567AF1F5F8AEFDC9F40AA658120BF77E1C8051E9"
+    },
+    {
+      "path": "reports/fir_core/baseline_rtl_annotated.txt",
+      "before_sha256": "94608E2B5C7875B17593D87F96A0B313527FD5CA22AA42B02070059F510E5631",
+      "annotated_sha256": "E4010B4A2058BD012E25C9ED89291D10F8B4ED2673B3BD8553F0E58A7EE9253A",
+      "non_comment_lines_identical": true,
+      "non_comment_lines_sha256": "7478B2AE806C33DC30EF0B6F5E08D3229409192C4749A9712546B2E84BE76A83"
+    }
+  ]
+}

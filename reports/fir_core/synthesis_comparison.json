@@ -1,0 +1,33 @@
+{
+  "tool": "Vivado 2026.1 build 6511674",
+  "device": "xc7a35tcpg236-1",
+  "scope": "out-of-context post-synthesis internal timing; no placement/routing or external I/O delays",
+  "clock_period_ns": 10.0,
+  "taps": 8,
+  "input_width": 16,
+  "coeff_width": 16,
+  "output_width": 16,
+  "handshake_latency_cycles": 2,
+  "throughput_samples_per_clock": 1,
+  "baseline": {
+    "setup_wns_ns": -5.319,
+    "setup_tns_ns": -90.418,
+    "hold_slack_ns": 0.282,
+    "luts": 48,
+    "flip_flops": 99,
+    "dsps": 8,
+    "bram_tiles": 0
+  },
+  "optimized": {
+    "setup_wns_ns": 0.937,
+    "setup_tns_ns": 0.0,
+    "hold_slack_ns": 0.339,
+    "luts": 265,
+    "flip_flops": 19,
+    "dsps": 8,
+    "bram_tiles": 0
+  },
+  "setup_slack_improvement_ns": 6.256,
+  "baseline_rtl_sha256": "94608E2B5C7875B17593D87F96A0B313527FD5CA22AA42B02070059F510E5631",
+  "optimized_rtl_sha256": "6423946FD1D1695D4FECC1D4C741A9884AF417C09AF183D1C37F268D8B9AD156"
+}

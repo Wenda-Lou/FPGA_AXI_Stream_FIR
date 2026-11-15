@@ -1,0 +1,203 @@
+// ANNOTATED READING COPY of baseline_rtl.txt. This file is not a project source.
+// Executable lines reproduce the historical baseline; only comments are added.
+// The original snapshot and its recorded SHA-256 remain unchanged.
+//
+// This baseline uses a running combinational sum. The current fir_core.v uses
+// a balanced adder tree and stores only the history words actually needed.
+// Read this copy to understand the original architecture and timing bottleneck;
+// edit the current .v source when changing the implemented FIR.
+//
+// Two-stage signed fixed-point FIR. Tap 0 multiplies the newest accepted input.
+// Coefficients may change only while idle, with history_clear asserted.
+// A clear request blocks new inputs; pending results continue to drain. History
+// clears on an edge with history_clear && idle. Busy one-cycle pulses are ignored.
+// On each accepted input x[n], compute sum(coeff[k] * x[n-k]). Sample index n
+// advances only on s_valid && s_ready, so idle clocks do not insert zero samples.
+// Default Q1.15 inputs and coefficients produce 30 product fractional bits;
+// shifting by 15 returns Q1.15 before output clipping.
+module fir_core #(
+    parameter integer DATA_WIDTH = 16,
+    parameter integer COEFF_WIDTH = 16,
+    parameter integer OUTPUT_WIDTH = DATA_WIDTH,
+    parameter integer TAPS = 8,
+    parameter integer INPUT_FRAC_BITS = DATA_WIDTH - 1,
+    parameter integer COEFF_FRAC_BITS = COEFF_WIDTH - 1,
+    parameter integer OUTPUT_FRAC_BITS = OUTPUT_WIDTH - 1
+) (
+    input  wire clk,
+    // Active-low synchronous reset clears state on a rising edge. Ready/valid
+    // are additionally masked combinationally while reset is asserted.
+    input  wire resetn,
+    // Blocks new acceptance immediately; sample history clears only when idle.
+    // Holding this request lets previous results drain before clearing history.
+    input  wire history_clear,
+    // Tap k occupies bits k*COEFF_WIDTH +: COEFF_WIDTH; tap 0 is the low word.
+    // These are external values, changed only at idle with history_clear high.
+    input  wire [TAPS*COEFF_WIDTH-1:0] coefficients,
+
+    input  wire signed [DATA_WIDTH-1:0] s_data,
+    input  wire s_valid,
+    output wire s_ready,
+
+    output wire signed [OUTPUT_WIDTH-1:0] m_data,
+    output wire m_valid,
+    input  wire m_ready,
+    // Per-result flag travels with m_data; meaningful only when m_valid is high.
+    output wire m_saturated,
+    output wire idle
+);
+    // Signed multiplication retains DATA_WIDTH+COEFF_WIDTH bits. Extra guard
+    // bits hold the sum of all taps without intermediate truncation or clipping.
+    localparam integer PRODUCT_WIDTH = DATA_WIDTH + COEFF_WIDTH;
+    localparam integer GROWTH_BITS = $clog2(TAPS);
+    localparam integer ACC_WIDTH = PRODUCT_WIDTH + GROWTH_BITS;
+    localparam integer SCALE_WIDTH = (ACC_WIDTH > OUTPUT_WIDTH) ? ACC_WIDTH : OUTPUT_WIDTH;
+    // Shift converts the accumulator binary point to the requested output format.
+    // SCALE_WIDTH also permits output formats wider than the raw accumulator.
+    localparam integer SHIFT = INPUT_FRAC_BITS + COEFF_FRAC_BITS - OUTPUT_FRAC_BITS;
+    // Signed output rails extended to the width used for comparison.
+    localparam signed [SCALE_WIDTH-1:0] OUTPUT_MAX =
+        {{(SCALE_WIDTH-OUTPUT_WIDTH){1'b0}}, 1'b0, {(OUTPUT_WIDTH-1){1'b1}}};
+    localparam signed [SCALE_WIDTH-1:0] OUTPUT_MIN =
+        {{(SCALE_WIDTH-OUTPUT_WIDTH){1'b1}}, 1'b1, {(OUTPUT_WIDTH-1){1'b0}}};
+
+    // This baseline declares TAPS history words, although multiplication reads
+    // only indices 0..TAPS-2. The current implementation removes the spare word.
+    reg signed [DATA_WIDTH-1:0] history [0:TAPS-1];
+    wire signed [COEFF_WIDTH-1:0] coeff [0:TAPS-1];
+    reg signed [PRODUCT_WIDTH-1:0] products [0:TAPS-1];
+    reg signed [ACC_WIDTH-1:0] acc_sum;
+    wire signed [SCALE_WIDTH-1:0] extended_sum;
+    wire signed [SCALE_WIDTH-1:0] scaled;
+    reg signed [OUTPUT_WIDTH-1:0] out_data;
+    reg out_saturated;
+    // Independent valid bits distinguish live transactions from stale payload.
+    // products[] are stage 1; out_data and out_saturated are stage 2.
+    reg mul_valid;
+    reg out_valid;
+    wire advance;
+    wire accept;
+    wire clear_accepted;
+    integer i, j, t;
+
+    // Simulation-only contract checks. translate_off/on are synthesis directives,
+    // even though they use comment syntax; preserve them when reading the logic.
+    // synthesis translate_off
+    initial begin
+        if (DATA_WIDTH < 2 || DATA_WIDTH > 32 || COEFF_WIDTH < 2 || COEFF_WIDTH > 32 ||
+            OUTPUT_WIDTH < 2 || OUTPUT_WIDTH > 32)
+            $fatal(1, "FIR data/coefficient/output widths must be in [2,32]");
+        if (TAPS < 1 || TAPS > 32 || (TAPS & (TAPS-1)) != 0)
+            $fatal(1, "FIR TAPS must be a power of two in [1,32]");
+        if (INPUT_FRAC_BITS < 0 || INPUT_FRAC_BITS >= DATA_WIDTH ||
+            COEFF_FRAC_BITS < 0 || COEFF_FRAC_BITS >= COEFF_WIDTH ||
+            OUTPUT_FRAC_BITS < 0 || OUTPUT_FRAC_BITS >= OUTPUT_WIDTH || SHIFT < 0)
+            $fatal(1, "Invalid FIR fractional-bit counts or negative output shift");
+    end
+    // synthesis translate_on
+
+    // History is persistent filter state, not in-flight work: idle depends only
+    // on valid pipeline stages. Global advance freezes both stages when a valid
+    // output is blocked. An empty output can fill even when m_ready is low.
+    assign idle = !mul_valid && !out_valid;
+    assign advance = !out_valid || m_ready;
+    assign s_ready = resetn && advance && !history_clear;
+    assign accept = s_valid && s_ready;
+    // A busy clear pulse is not remembered; hold it until idle to ensure service.
+    assign clear_accepted = history_clear && idle;
+    assign m_valid = resetn && out_valid;
+    assign m_data = out_data;
+    assign m_saturated = out_saturated;
+
+    // Elaborate one signed coefficient connection per tap. This loop describes
+    // parallel wiring rather than a processor executing one tap each clock.
+    genvar k;
+    generate
+        for (k = 0; k < TAPS; k = k + 1) begin : unpack_coeff
+            assign coeff[k] = coefficients[k*COEFF_WIDTH +: COEFF_WIDTH];
+        end
+    endgenerate
+
+    // Reset or accepted idle clear zeroes the history epoch. An accepted input
+    // shifts old samples once. Nonblocking assignments read the pre-edge values,
+    // so history[i] receives the previous history[i-1] despite the upward loop.
+    always @(posedge clk) begin
+        if (!resetn || clear_accepted) begin
+            for (i = 0; i < TAPS; i = i + 1)
+                history[i] <= {DATA_WIDTH{1'b0}};
+        end else if (accept) begin
+            history[0] <= s_data;
+            for (i = 1; i < TAPS; i = i + 1)
+                history[i] <= history[i-1];
+        end
+    end
+
+    always @(posedge clk) begin
+        if (!resetn) begin
+            mul_valid <= 1'b0;
+            out_valid <= 1'b0;
+        end else if (advance) begin
+            // No accepted input inserts an invalid bubble, not a zero sample.
+            // Both assignments read old values, aligning each valid flag with
+            // its corresponding registered payload for the next clock cycle.
+            mul_valid <= accept;
+            out_valid <= mul_valid;
+        end
+    end
+
+    always @(posedge clk) begin
+        if (!resetn) begin
+            for (j = 0; j < TAPS; j = j + 1)
+                products[j] <= {PRODUCT_WIDTH{1'b0}};
+        end else if (accept) begin
+            // Stage 1: parallel products. The newest sample comes directly from
+            // s_data; history[0] still holds x[n-1] during this clock edge.
+            products[0] <= s_data * coeff[0];
+            for (j = 1; j < TAPS; j = j + 1)
+                products[j] <= history[j-1] * coeff[j];
+        end
+    end
+
+    // Combinational sum: blocking assignment feeds each iteration's result into
+    // the next. Synthesis unrolls this loop into hardware; it does not take TAPS
+    // clock cycles. The running dependency can become a long serial adder/DSP
+    // cascade, explaining the baseline's poor setup timing. The current tree
+    // reduces addition depth to log2(TAPS), without adding a pipeline stage.
+    // Sign-extension must happen before addition to preserve negative products.
+    always @(*) begin
+        acc_sum = {ACC_WIDTH{1'b0}};
+        for (t = 0; t < TAPS; t = t + 1)
+            acc_sum = acc_sum + $signed({{GROWTH_BITS{products[t][PRODUCT_WIDTH-1]}}, products[t]});
+    end
+
+    // Extend before shifting so a wider output format also preserves sign.
+    assign extended_sum = {{(SCALE_WIDTH-ACC_WIDTH){acc_sum[ACC_WIDTH-1]}}, acc_sum};
+    // Arithmetic right shift replicates the sign bit and rounds negative values
+    // toward minus infinity when low bits are discarded (for example -3 >> 1=-2).
+    assign scaled = extended_sum >>> SHIFT;
+
+    always @(posedge clk) begin
+        if (!resetn) begin
+            out_data <= {OUTPUT_WIDTH{1'b0}};
+            out_saturated <= 1'b0;
+        end else if (advance && mul_valid) begin
+            // Stage 2 consumes OLD products while stage 1 may capture new ones.
+            // Compare full-width scaled data before narrowing; otherwise overflow
+            // would wrap and the saturation test would miss the original value.
+            if (scaled > OUTPUT_MAX) begin
+                out_data <= OUTPUT_MAX[OUTPUT_WIDTH-1:0];
+                out_saturated <= 1'b1;
+            end else if (scaled < OUTPUT_MIN) begin
+                out_data <= OUTPUT_MIN[OUTPUT_WIDTH-1:0];
+                out_saturated <= 1'b1;
+            end else begin
+                // Exact equality with a rail is representable, so its flag is 0.
+                out_data <= scaled[OUTPUT_WIDTH-1:0];
+                out_saturated <= 1'b0;
+            end
+        end
+        // No update on backpressure keeps payload and saturation flag together.
+        // With no stalls: input at edge N, result registered at N+1, output
+        // handshake at N+2. Both stages can accept/retire a word each clock.
+    end
+endmodule

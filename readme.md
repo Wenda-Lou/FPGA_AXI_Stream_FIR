@@ -6,7 +6,7 @@
 **Development Environment:** Xilinx Vivado, SystemVerilog, Verilog, Python  
 **Target Roles:** FPGA Engineer, RTL Design Intern, Digital IC Design/Verification Intern, Hardware Validation Intern
 
-**Project Status:** Phase 1 in progress. The integer Python reference flow and parameterized Verilog FIFO are implemented. FIFO verification passes 32 runs in Vivado 2026.1, and the default FIFO passes out-of-context synthesis for `xc7a35tcpg236-1`. The fixed 8-tap, 16-bit FIR datapath also passes three seeded verification runs, with all 33,501 outputs independently matched against Python. See [FIFO results](docs/axis_fifo.md) and [FIR verification](docs/fir_verification.md). FIR parameter/control extensions, integrated verification, implementation, and performance optimization remain pending. The specifications below define the target requirements.
+**Project Status:** Phase 1 in progress. The Python reference flow, parameterized Verilog FIFO and standalone FIR are implemented. FIFO verification passes 32 runs. FIR verification passes 38 runs with all 263,938 completed outputs and saturation flags independently matched against Python. Default FIFO/FIR synthesis passes for `xc7a35tcpg236-1`; the FIR's balanced adder tree improves synthesized setup WNS from -5.319 ns to +0.937 ns at a 10 ns clock, with unchanged two-cycle handshake latency. See [FIFO results](docs/axis_fifo.md) and [FIR design, verification and synthesis](docs/fir_verification.md). FIFO/FIR integration, AXI4-Lite control, full implementation and post-route timing remain pending. The specifications below define the target requirements.
 
 ### Getting Started
 

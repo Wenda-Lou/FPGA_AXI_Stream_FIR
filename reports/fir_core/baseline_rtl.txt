@@ -1,0 +1,143 @@
+// Two-stage signed fixed-point FIR. Tap 0 multiplies the newest accepted input.
+// Coefficients may change only while idle, with history_clear asserted.
+// A clear request blocks new inputs; pending results continue to drain. History
+// clears on an edge with history_clear && idle. Busy one-cycle pulses are ignored.
+module fir_core #(
+    parameter integer DATA_WIDTH = 16,
+    parameter integer COEFF_WIDTH = 16,
+    parameter integer OUTPUT_WIDTH = DATA_WIDTH,
+    parameter integer TAPS = 8,
+    parameter integer INPUT_FRAC_BITS = DATA_WIDTH - 1,
+    parameter integer COEFF_FRAC_BITS = COEFF_WIDTH - 1,
+    parameter integer OUTPUT_FRAC_BITS = OUTPUT_WIDTH - 1
+) (
+    input  wire clk,
+    input  wire resetn,
+    input  wire history_clear,
+    input  wire [TAPS*COEFF_WIDTH-1:0] coefficients,
+
+    input  wire signed [DATA_WIDTH-1:0] s_data,
+    input  wire s_valid,
+    output wire s_ready,
+
+    output wire signed [OUTPUT_WIDTH-1:0] m_data,
+    output wire m_valid,
+    input  wire m_ready,
+    output wire m_saturated,
+    output wire idle
+);
+    localparam integer PRODUCT_WIDTH = DATA_WIDTH + COEFF_WIDTH;
+    localparam integer GROWTH_BITS = $clog2(TAPS);
+    localparam integer ACC_WIDTH = PRODUCT_WIDTH + GROWTH_BITS;
+    localparam integer SCALE_WIDTH = (ACC_WIDTH > OUTPUT_WIDTH) ? ACC_WIDTH : OUTPUT_WIDTH;
+    localparam integer SHIFT = INPUT_FRAC_BITS + COEFF_FRAC_BITS - OUTPUT_FRAC_BITS;
+    localparam signed [SCALE_WIDTH-1:0] OUTPUT_MAX =
+        {{(SCALE_WIDTH-OUTPUT_WIDTH){1'b0}}, 1'b0, {(OUTPUT_WIDTH-1){1'b1}}};
+    localparam signed [SCALE_WIDTH-1:0] OUTPUT_MIN =
+        {{(SCALE_WIDTH-OUTPUT_WIDTH){1'b1}}, 1'b1, {(OUTPUT_WIDTH-1){1'b0}}};
+
+    reg signed [DATA_WIDTH-1:0] history [0:TAPS-1];
+    wire signed [COEFF_WIDTH-1:0] coeff [0:TAPS-1];
+    reg signed [PRODUCT_WIDTH-1:0] products [0:TAPS-1];
+    reg signed [ACC_WIDTH-1:0] acc_sum;
+    wire signed [SCALE_WIDTH-1:0] extended_sum;
+    wire signed [SCALE_WIDTH-1:0] scaled;
+    reg signed [OUTPUT_WIDTH-1:0] out_data;
+    reg out_saturated;
+    reg mul_valid;
+    reg out_valid;
+    wire advance;
+    wire accept;
+    wire clear_accepted;
+    integer i, j, t;
+
+    // synthesis translate_off
+    initial begin
+        if (DATA_WIDTH < 2 || DATA_WIDTH > 32 || COEFF_WIDTH < 2 || COEFF_WIDTH > 32 ||
+            OUTPUT_WIDTH < 2 || OUTPUT_WIDTH > 32)
+            $fatal(1, "FIR data/coefficient/output widths must be in [2,32]");
+        if (TAPS < 1 || TAPS > 32 || (TAPS & (TAPS-1)) != 0)
+            $fatal(1, "FIR TAPS must be a power of two in [1,32]");
+        if (INPUT_FRAC_BITS < 0 || INPUT_FRAC_BITS >= DATA_WIDTH ||
+            COEFF_FRAC_BITS < 0 || COEFF_FRAC_BITS >= COEFF_WIDTH ||
+            OUTPUT_FRAC_BITS < 0 || OUTPUT_FRAC_BITS >= OUTPUT_WIDTH || SHIFT < 0)
+            $fatal(1, "Invalid FIR fractional-bit counts or negative output shift");
+    end
+    // synthesis translate_on
+
+    assign idle = !mul_valid && !out_valid;
+    assign advance = !out_valid || m_ready;
+    assign s_ready = resetn && advance && !history_clear;
+    assign accept = s_valid && s_ready;
+    assign clear_accepted = history_clear && idle;
+    assign m_valid = resetn && out_valid;
+    assign m_data = out_data;
+    assign m_saturated = out_saturated;
+
+    genvar k;
+    generate
+        for (k = 0; k < TAPS; k = k + 1) begin : unpack_coeff
+            assign coeff[k] = coefficients[k*COEFF_WIDTH +: COEFF_WIDTH];
+        end
+    endgenerate
+
+    always @(posedge clk) begin
+        if (!resetn || clear_accepted) begin
+            for (i = 0; i < TAPS; i = i + 1)
+                history[i] <= {DATA_WIDTH{1'b0}};
+        end else if (accept) begin
+            history[0] <= s_data;
+            for (i = 1; i < TAPS; i = i + 1)
+                history[i] <= history[i-1];
+        end
+    end
+
+    always @(posedge clk) begin
+        if (!resetn) begin
+            mul_valid <= 1'b0;
+            out_valid <= 1'b0;
+        end else if (advance) begin
+            mul_valid <= accept;
+            out_valid <= mul_valid;
+        end
+    end
+
+    always @(posedge clk) begin
+        if (!resetn) begin
+            for (j = 0; j < TAPS; j = j + 1)
+                products[j] <= {PRODUCT_WIDTH{1'b0}};
+        end else if (accept) begin
+            products[0] <= s_data * coeff[0];
+            for (j = 1; j < TAPS; j = j + 1)
+                products[j] <= history[j-1] * coeff[j];
+        end
+    end
+
+    always @(*) begin
+        acc_sum = {ACC_WIDTH{1'b0}};
+        for (t = 0; t < TAPS; t = t + 1)
+            acc_sum = acc_sum + $signed({{GROWTH_BITS{products[t][PRODUCT_WIDTH-1]}}, products[t]});
+    end
+
+    // Extend before shifting so a wider output format also preserves sign.
+    assign extended_sum = {{(SCALE_WIDTH-ACC_WIDTH){acc_sum[ACC_WIDTH-1]}}, acc_sum};
+    assign scaled = extended_sum >>> SHIFT;
+
+    always @(posedge clk) begin
+        if (!resetn) begin
+            out_data <= {OUTPUT_WIDTH{1'b0}};
+            out_saturated <= 1'b0;
+        end else if (advance && mul_valid) begin
+            if (scaled > OUTPUT_MAX) begin
+                out_data <= OUTPUT_MAX[OUTPUT_WIDTH-1:0];
+                out_saturated <= 1'b1;
+            end else if (scaled < OUTPUT_MIN) begin
+                out_data <= OUTPUT_MIN[OUTPUT_WIDTH-1:0];
+                out_saturated <= 1'b1;
+            end else begin
+                out_data <= scaled[OUTPUT_WIDTH-1:0];
+                out_saturated <= 1'b0;
+            end
+        end
+    end
+endmodule

@@ -1,0 +1,8 @@
+{
+    "python_tests":  "27 passed",
+    "invalid_taps_3":  "RTL parameter guard rejected",
+    "negative_output_shift":  "RTL parameter guard rejected",
+    "incorrect_saturation_flag":  "independent Python comparator rejected",
+    "gui_configuration":  "source list, simulation top and clock constraint verified in-memory",
+    "final_regression_source_hashes":  "matched"
+}
