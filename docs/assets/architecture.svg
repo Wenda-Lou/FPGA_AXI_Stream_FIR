@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="590" viewBox="0 0 1200 590">
+  <title>AXI-controlled streaming FIR accelerator architecture</title>
+  <desc>AXI4-Lite controls a register bank. AXI4-Stream samples traverse an input FIFO, a two-stage FIR and an output FIFO. All modules share one clock and synchronous reset.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto-start-reverse"><path d="M0 0L8 4L0 8Z" fill="#2163b5"/></marker>
+    <marker id="green" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto-start-reverse"><path d="M0 0L8 4L0 8Z" fill="#137b5a"/></marker>
+    <style>text{font-family:Arial,sans-serif;fill:#172b42;font-size:16px}.title{font-size:25px;font-weight:bold}.module{font-size:19px;font-weight:bold}.small{font-size:14px;fill:#52677d}.data{fill:none;stroke:#2163b5;stroke-width:3;marker-end:url(#arrow)}.control{fill:none;stroke:#137b5a;stroke-width:2;marker-end:url(#green)}</style>
+  </defs>
+  <rect width="1200" height="590" fill="#fff"/>
+  <text x="30" y="39" class="title">FPGA streaming FIR accelerator</text>
+  <text x="30" y="65" class="small">Default: 8 taps · signed Q1.15 · one clock domain · 100 MHz module target</text>
+  <rect x="205" y="95" width="800" height="425" rx="16" fill="#f7fafe" stroke="#9cb6d1" stroke-width="2"/>
+  <text x="226" y="123" class="module">dsp_accelerator</text>
+  <rect x="410" y="145" width="355" height="105" rx="10" fill="#e8f5ef" stroke="#137b5a"/>
+  <text x="587" y="176" text-anchor="middle" class="module">axi_lite_regs</text>
+  <text x="587" y="201" text-anchor="middle">coefficients · enable · soft clear</text>
+  <text x="587" y="226" text-anchor="middle" class="small">idle / busy · sticky saturation · I/O counters</text>
+  <text x="40" y="183" class="module">AXI4-Lite</text>
+  <text x="40" y="207" class="small">32-bit data, 8-bit address</text>
+  <path d="M197 190H408" class="data" marker-start="url(#arrow)"/>
+  <text x="280" y="177" text-anchor="middle" class="small">AW / W / B / AR / R</text>
+  <rect x="229" y="302" width="752" height="161" rx="10" fill="#fff" stroke="#9cb6d1" stroke-dasharray="5 4"/>
+  <text x="245" y="327" class="small">dsp_datapath — accepted samples advance history; backpressure propagates upstream</text>
+  <rect x="252" y="350" width="155" height="85" rx="9" fill="#eaf1fc" stroke="#2163b5"/>
+  <text x="329" y="378" text-anchor="middle" class="module">Input FIFO</text>
+  <text x="329" y="404" text-anchor="middle" class="small">16 × 16 bits</text>
+  <rect x="472" y="350" width="235" height="85" rx="9" fill="#eaf1fc" stroke="#2163b5"/>
+  <text x="589" y="378" text-anchor="middle" class="module">fir_core</text>
+  <text x="589" y="402" text-anchor="middle" class="small">8 parallel DSP multipliers</text>
+  <text x="589" y="422" text-anchor="middle" class="small">balanced sum · shift · saturation</text>
+  <rect x="772" y="350" width="182" height="85" rx="9" fill="#eaf1fc" stroke="#2163b5"/>
+  <text x="863" y="378" text-anchor="middle" class="module">Output FIFO</text>
+  <text x="863" y="402" text-anchor="middle" class="small">16 × (flag + 16 bits)</text>
+  <text x="863" y="422" text-anchor="middle" class="small">flag stays internal</text>
+  <path d="M158 387H250M409 387H470M709 387H770M956 387H1050" class="data"/>
+  <text x="24" y="352" class="module">AXI4-Stream in</text>
+  <text x="24" y="376" class="small">16-bit signed sample</text>
+  <text x="1022" y="352" class="module">Stream out</text>
+  <text x="1022" y="376" class="small">16-bit signed result</text>
+  <text x="25" y="418" class="small">TDATA / TVALID / TREADY</text>
+  <text x="1018" y="418" class="small">TDATA / TVALID / TREADY</text>
+  <path d="M587 251V347" class="control"/>
+  <text x="600" y="278" class="small">coefficients / clear</text>
+  <path d="M450 251V280H330V347" class="control"/>
+  <text x="310" y="271" class="small">enable ingress</text>
+  <path d="M862 347V267H736V252" class="control"/>
+  <text x="805" y="288" class="small">status / events</text>
+  <text x="605" y="489" text-anchor="middle">FIR latency: 2 clocks · full-top latency: 4 clocks · steady state: 1 output/clock</text>
+  <text x="30" y="555" class="small">Shared clk + active-low synchronous resetn. No CDC, packet sidebands, processor subsystem or board bitstream.</text>
+  <text x="30" y="578" class="small">Post-route acceptance is limited to the documented OOC interface/parent context; see docs/implementation.md.</text>
+</svg>

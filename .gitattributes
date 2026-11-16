@@ -1,0 +1,4 @@
+# Exact source and evidence bytes are identified by recorded SHA-256 hashes.
+# Preserve their existing LF/CRLF endings during every add/checkout. New files
+# are authored with UTF-8/LF; Git must not silently rewrite historical inputs.
+* -text

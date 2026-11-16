@@ -1,5 +1,7 @@
 # First-Version Architecture and Module Contracts
 
+![Complete accelerator architecture](assets/architecture.svg)
+
 Status: architecture contract for the initial RTL implementation. The Python
 arithmetic model and vector generator exist. The parameterized Verilog `axis_fifo`
 has passed directed/randomized simulation across five configurations and
@@ -16,7 +18,8 @@ also records the linear baseline versus balanced tree under identical constraint
 See [implementation results and limitations](implementation.md), [FIFO results](axis_fifo.md),
 [FIR verification](fir_verification.md), [buffered datapath](datapath.md) and
 [register-bank verification](axi_lite_regs.md) and [complete accelerator](accelerator.md).
-The proposal and register map are in [readme.md](../readme.md).
+Current results are in [readme.md](../readme.md); detailed original requirements
+are preserved in the [archived proposal](proposal.md).
 
 ```mermaid
 flowchart LR
