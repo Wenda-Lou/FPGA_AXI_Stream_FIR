@@ -2,7 +2,10 @@
 
 `dsp_accelerator` connects the verified AXI4-Lite register bank to the buffered
 FIR datapath. The top and its integrated simulation are complete for the matrix
-below. Full-system physical implementation and post-route timing remain pending.
+below. Module-level physical implementation also passes under the declared
+[interface/parent context](implementation.md). A separate
+[controlled physical comparison](optimization_comparison.md) records the
+baseline and optimized builds. Board or different-parent timing is not established.
 
 ```text
 AXI4-Lite -> registers -> enable / coefficients / history clear
@@ -155,9 +158,12 @@ at the 10 ns target. See [timing](../reports/accelerator/timing_synth.rpt) and
 There are zero unconstrained internal endpoints, but 58 input and 57 output
 ports have no external delays. The OOC clock-source warning `Timing 38-242`
 remains because no parent clock buffer location is specified. These results are
-post-synthesis internal estimates. Final I/O timing assumptions, placement/routing,
-post-route closure and the physical-implementation performance comparison remain
-pending; a complete 100 MHz implementation has not yet been established.
+post-synthesis internal estimates retained as historical evidence. A separate
+[module-level implementation](implementation.md) now declares I/O budgets and
+passes 100 MHz post-route checks. Its OOC scope and retained tool warning are
+explicit. A [controlled full-top comparison](optimization_comparison.md) now
+shows a 5.868 ns post-route setup-slack improvement with unchanged pipeline
+latency; different-parent/board timing remains outside this acceptance.
 
 ## Vivado GUI and Synthesis
 

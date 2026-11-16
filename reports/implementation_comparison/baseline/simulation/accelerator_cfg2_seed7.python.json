@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "inputs": 2226,
+  "outputs": 2166,
+  "reset_discarded": 60,
+  "reset_edges": 9,
+  "history_clears": 118,
+  "saturation_checks": 2166,
+  "config": {
+    "taps": 8,
+    "input_width": 16,
+    "coeff_width": 16,
+    "output_width": 16,
+    "input_frac": 15,
+    "coeff_frac": 15,
+    "output_frac": 15
+  }
+}

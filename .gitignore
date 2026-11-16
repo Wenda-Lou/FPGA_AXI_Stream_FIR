@@ -18,3 +18,8 @@ build/
 *.runs/
 *.sim/
 xsim.dir/
+
+# Vivado physical-optimization diagnostics (runner keeps these under build/).
+clockInfo.txt
+tight_setup_hold_pins.txt
+hd_visual/

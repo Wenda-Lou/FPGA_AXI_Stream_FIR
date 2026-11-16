@@ -3,7 +3,8 @@
 `dsp_datapath` connects the verified FIFO and FIR modules into one synchronous
 streaming block. Direct configuration ports are ready for the separately verified
 [AXI4-Lite register bank](axi_lite_regs.md). Both are now connected and verified
-in the [complete accelerator](accelerator.md); physical implementation remains pending.
+in the [complete accelerator](accelerator.md); its routed module context and
+limitations are documented in [implementation](implementation.md).
 
 ```text
 s_data/valid/ready -> input FIFO -> FIR -> output FIFO -> m_data/valid/ready
@@ -143,7 +144,8 @@ The timing report has zero unconstrained internal endpoints, but 149 input ports
 and 32 output ports have no external delays. Vivado also reports `Timing 38-242`
 because an OOC clock-buffer source location is unspecified. These are explicit
 scope limitations of the internal estimate. AXI4-Lite integration is verified
-in the complete top; external timing assumptions and post-route acceptance remain pending.
+in the complete top. Its [separate physical result](implementation.md) supplies
+interface budgets and routed module acceptance under a stated parent context.
 
 ## Vivado GUI and Synthesis
 

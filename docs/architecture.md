@@ -10,7 +10,10 @@ measured adder-tree timing optimization are complete. Buffered FIFO/FIR integrat
 also passes end-to-end simulation and internal synthesis timing checks. The
 AXI4-Lite register bank passes standalone protocol/register tests and synthesis.
 The complete accelerator top passes AXI-controlled streaming regression and
-internal synthesis timing checks. See [FIFO results](axis_fifo.md),
+100 MHz module-level post-route checks under its documented interface/parent
+context. A [controlled full-top physical comparison](optimization_comparison.md)
+also records the linear baseline versus balanced tree under identical constraints.
+See [implementation results and limitations](implementation.md), [FIFO results](axis_fifo.md),
 [FIR verification](fir_verification.md), [buffered datapath](datapath.md) and
 [register-bank verification](axi_lite_regs.md) and [complete accelerator](accelerator.md).
 The proposal and register map are in [readme.md](../readme.md).
@@ -104,14 +107,15 @@ stalls. The monitor consumes one expected word per output handshake. At scenario
 end, the driver disables new inputs, holds output ready, and checks that every
 expected result has drained before resetting for the next scenario.
 
-## Next Implementation Milestone
+## Remaining Delivery and Optional Implementation Work
 
-1. Define full-system external I/O timing assumptions and the physical implementation constraints.
-2. Run placement/routing, inspect setup/hold paths and close post-route timing.
-3. Retain baseline/optimized physical timing, resource, throughput and latency results, then finalize reproducible project documentation.
+1. Finalize presentation materials and repository delivery; the physical optimization comparison is complete.
+2. Optionally reduce hold-closure resource cost without changing numerical behavior, latency or interface budgets.
+3. Revalidate the retained OOC tool warning and constraints if reused in a different parent context.
 
 FIFO simulation uses the installed Vivado 2026.1 simulator; see
 [development instructions](development.md) for results and reproduction commands.
-FIFO, FIR, buffered-datapath, register-bank and complete-top OOC synthesis are complete;
-physical implementation and post-route timing remain pending. Python tests validate the reference flow and do not
+FIFO, FIR, buffered-datapath, register-bank and complete-top OOC synthesis are complete.
+Complete-top module placement/routing passes under the documented context; a
+different parent or board requires new acceptance. Python tests validate the reference flow and do not
 establish RTL or timing acceptance.

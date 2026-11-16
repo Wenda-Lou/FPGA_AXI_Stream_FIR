@@ -1,0 +1,26 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
+| Date         : Mon Nov 16 00:44:28 2026
+| Host         : 550W running 64-bit major release  (build 9200)
+| Command      : report_clock_interaction -file {E:/DSP Accelerator AXI Interface/build/implementation_comparison/optimized/build/accelerator_impl/clock_interaction.rpt}
+| Design       : dsp_accelerator
+| Device       : 7a35t-cpg236
+| Speed File   : -1  PRODUCTION 1.23 2018-06-13
+| Design State : Routed
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Clock Interaction Report
+
+Clock Interaction Table
+-----------------------
+
+                              WNS                            TNS Failing  TNS Total    WNS Path         Clock-Pair           Inter-Clock  
+From Clock     To Clock       Clock Edges  WNS(ns)  TNS(ns)    Endpoints    Endpoints  Requirement(ns)  Classification       Constraints  
+-------------  -------------  -----------  -------  -------  -----------  -----------  ---------------  -------------------  -----------  
+clk            clk            rise - rise     0.27     0.00            0         1469            10.00  Clean                Timed        
+clk            interface_clk  rise - rise     3.57     0.00            0           57            10.00  Virtual Clock        Timed        
+interface_clk  clk            rise - rise     0.42     0.00            0         1075            10.00  Virtual Clock        Timed        
+interface_clk  interface_clk  rise - rise     0.90     0.00            0            7            10.00  Clean                Timed        
+
+

@@ -1,0 +1,142 @@
+port	direction	functional	partition_pin	anchor_in_route
+m_axis_tdata[0]	OUT	1	INT_R_X29Y70 SE2BEG2	1
+m_axis_tdata[10]	OUT	1	INT_R_X29Y68 WL1BEG_N3	1
+m_axis_tdata[11]	OUT	1	INT_R_X29Y68 WL1BEG2	1
+m_axis_tdata[12]	OUT	1	INT_R_X29Y70 WL1BEG1	1
+m_axis_tdata[13]	OUT	1	INT_R_X29Y70 WL1BEG0	1
+m_axis_tdata[14]	OUT	1	INT_R_X29Y70 WL1BEG_N3	1
+m_axis_tdata[15]	OUT	1	INT_R_X29Y70 WL1BEG2	1
+m_axis_tdata[1]	OUT	1	INT_R_X29Y69 SE2BEG2	1
+m_axis_tdata[2]	OUT	1	INT_R_X29Y69 WL1BEG1	1
+m_axis_tdata[3]	OUT	1	INT_R_X29Y69 WL1BEG0	1
+m_axis_tdata[4]	OUT	1	INT_R_X29Y69 WL1BEG_N3	1
+m_axis_tdata[5]	OUT	1	INT_R_X29Y69 WL1BEG2	1
+m_axis_tdata[6]	OUT	1	INT_R_X29Y68 WL1BEG0	1
+m_axis_tdata[7]	OUT	1	INT_R_X29Y68 SE2BEG2	1
+m_axis_tdata[8]	OUT	1	INT_R_X29Y67 WL1BEG_N3	1
+m_axis_tdata[9]	OUT	1	INT_R_X29Y68 WL1BEG1	1
+m_axis_tready	IN	1	INT_R_X27Y70 WL1BEG2	1
+m_axis_tvalid	OUT	1	INT_R_X27Y70 WL1BEG_N3	1
+resetn	IN	1	INT_R_X29Y66 WL1BEG_N3	1
+s_axi_araddr[0]	IN	1	INT_R_X25Y62 WL1BEG_N3	1
+s_axi_araddr[1]	IN	1	INT_L_X26Y62 WL1BEG0	1
+s_axi_araddr[2]	IN	1	INT_R_X27Y66 WL1BEG_N3	1
+s_axi_araddr[3]	IN	1	INT_L_X28Y62 WL1BEG0	1
+s_axi_araddr[4]	IN	1	INT_L_X26Y61 WL1BEG0	1
+s_axi_araddr[5]	IN	1	INT_L_X26Y62 WL1BEG2	1
+s_axi_araddr[6]	IN	1	INT_L_X26Y62 NE2BEG0	1
+s_axi_araddr[7]	IN	1	INT_L_X26Y62 SE2BEG2	1
+s_axi_arprot[0]	IN	0		0
+s_axi_arprot[1]	IN	0		0
+s_axi_arprot[2]	IN	0		0
+s_axi_arready	OUT	1	INT_R_X27Y65 WL1BEG1	1
+s_axi_arvalid	IN	1	INT_R_X27Y65 WL1BEG_N3	1
+s_axi_awaddr[0]	IN	1	INT_L_X28Y65 WL1BEG2	1
+s_axi_awaddr[1]	IN	1	INT_R_X31Y67 SE2BEG2	1
+s_axi_awaddr[2]	IN	1	INT_R_X29Y64 SL1BEG0	1
+s_axi_awaddr[3]	IN	1	INT_R_X29Y64 WL1BEG0	1
+s_axi_awaddr[4]	IN	1	INT_R_X29Y64 WL1BEG1	1
+s_axi_awaddr[5]	IN	1	INT_R_X31Y64 NE2BEG0	1
+s_axi_awaddr[6]	IN	1	INT_R_X31Y64 SE2BEG2	1
+s_axi_awaddr[7]	IN	1	INT_R_X29Y64 WL1BEG2	1
+s_axi_awprot[0]	IN	0		0
+s_axi_awprot[1]	IN	0		0
+s_axi_awprot[2]	IN	0		0
+s_axi_awready	OUT	1	INT_L_X28Y68 WL1BEG1	1
+s_axi_awvalid	IN	1	INT_L_X28Y67 WL1BEG0	1
+s_axi_bready	IN	1	INT_L_X28Y66 WL1BEG0	1
+s_axi_bresp[0]	OUT	0		0
+s_axi_bresp[1]	OUT	1	INT_R_X29Y67 SE2BEG2	1
+s_axi_bvalid	OUT	1	INT_L_X28Y67 WL1BEG1	1
+s_axi_rdata[0]	OUT	1	INT_R_X27Y61 WL1BEG_N3	1
+s_axi_rdata[10]	OUT	1	INT_L_X26Y63 WL1BEG1	1
+s_axi_rdata[11]	OUT	1	INT_L_X26Y63 WL1BEG0	1
+s_axi_rdata[12]	OUT	1	INT_L_X26Y64 SE2BEG2	1
+s_axi_rdata[13]	OUT	1	INT_L_X26Y64 WL1BEG2	1
+s_axi_rdata[14]	OUT	1	INT_L_X26Y64 WL1BEG1	1
+s_axi_rdata[15]	OUT	1	INT_L_X26Y64 WL1BEG0	1
+s_axi_rdata[16]	OUT	1	INT_L_X26Y65 SE2BEG2	1
+s_axi_rdata[17]	OUT	1	INT_L_X26Y65 WL1BEG2	1
+s_axi_rdata[18]	OUT	1	INT_L_X26Y65 WL1BEG1	1
+s_axi_rdata[19]	OUT	1	INT_L_X26Y65 WL1BEG0	1
+s_axi_rdata[1]	OUT	1	INT_R_X27Y61 WL1BEG1	1
+s_axi_rdata[20]	OUT	1	INT_L_X26Y66 SE2BEG2	1
+s_axi_rdata[21]	OUT	1	INT_L_X26Y66 WL1BEG2	1
+s_axi_rdata[22]	OUT	1	INT_L_X26Y66 WL1BEG1	1
+s_axi_rdata[23]	OUT	1	INT_L_X26Y66 WL1BEG0	1
+s_axi_rdata[24]	OUT	1	INT_L_X26Y68 NE2BEG0	1
+s_axi_rdata[25]	OUT	1	INT_L_X26Y67 NE2BEG0	1
+s_axi_rdata[26]	OUT	1	INT_L_X26Y67 WL1BEG1	1
+s_axi_rdata[27]	OUT	1	INT_L_X26Y67 WL1BEG0	1
+s_axi_rdata[28]	OUT	1	INT_L_X26Y68 WL1BEG1	1
+s_axi_rdata[29]	OUT	1	INT_L_X26Y68 WL1BEG0	1
+s_axi_rdata[2]	OUT	1	INT_R_X27Y61 WL1BEG2	1
+s_axi_rdata[30]	OUT	1	INT_L_X26Y67 SE2BEG2	1
+s_axi_rdata[31]	OUT	1	INT_L_X26Y67 WL1BEG2	1
+s_axi_rdata[3]	OUT	1	INT_R_X27Y62 WL1BEG1	1
+s_axi_rdata[4]	OUT	1	INT_R_X25Y62 WL1BEG2	1
+s_axi_rdata[5]	OUT	1	INT_L_X26Y63 NE2BEG0	1
+s_axi_rdata[6]	OUT	1	INT_R_X27Y62 WL1BEG2	1
+s_axi_rdata[7]	OUT	1	INT_R_X27Y62 WL1BEG_N3	1
+s_axi_rdata[8]	OUT	1	INT_L_X26Y63 SE2BEG2	1
+s_axi_rdata[9]	OUT	1	INT_L_X26Y63 WL1BEG2	1
+s_axi_rready	IN	1	INT_R_X27Y65 WL1BEG2	1
+s_axi_rresp[0]	OUT	0		0
+s_axi_rresp[1]	OUT	1	INT_L_X26Y62 WL1BEG1	1
+s_axi_rvalid	OUT	1	INT_R_X25Y68 WL1BEG_N3	1
+s_axi_wdata[0]	IN	1	INT_R_X31Y63 SE2BEG2	1
+s_axi_wdata[10]	IN	1	INT_L_X28Y62 WL1BEG2	1
+s_axi_wdata[11]	IN	1	INT_R_X29Y62 WL1BEG_N3	1
+s_axi_wdata[12]	IN	1	INT_L_X28Y62 WL1BEG1	1
+s_axi_wdata[13]	IN	1	INT_L_X28Y63 WL1BEG0	1
+s_axi_wdata[14]	IN	1	INT_L_X28Y64 WL1BEG0	1
+s_axi_wdata[15]	IN	1	INT_L_X28Y61 WL1BEG0	1
+s_axi_wdata[16]	IN	0		0
+s_axi_wdata[17]	IN	0		0
+s_axi_wdata[18]	IN	0		0
+s_axi_wdata[19]	IN	0		0
+s_axi_wdata[1]	IN	1	INT_L_X28Y63 WL1BEG2	1
+s_axi_wdata[20]	IN	0		0
+s_axi_wdata[21]	IN	0		0
+s_axi_wdata[22]	IN	0		0
+s_axi_wdata[23]	IN	0		0
+s_axi_wdata[24]	IN	0		0
+s_axi_wdata[25]	IN	0		0
+s_axi_wdata[26]	IN	0		0
+s_axi_wdata[27]	IN	0		0
+s_axi_wdata[28]	IN	0		0
+s_axi_wdata[29]	IN	0		0
+s_axi_wdata[2]	IN	1	INT_L_X28Y62 SE2BEG2	1
+s_axi_wdata[30]	IN	0		0
+s_axi_wdata[31]	IN	0		0
+s_axi_wdata[3]	IN	1	INT_R_X29Y61 WL1BEG_N3	1
+s_axi_wdata[4]	IN	1	INT_R_X29Y60 WL1BEG_N3	1
+s_axi_wdata[5]	IN	1	INT_R_X29Y63 WL1BEG_N3	1
+s_axi_wdata[6]	IN	1	INT_L_X28Y61 WL1BEG2	1
+s_axi_wdata[7]	IN	1	INT_L_X28Y59 WL1BEG0	1
+s_axi_wdata[8]	IN	1	INT_L_X28Y63 WL1BEG1	1
+s_axi_wdata[9]	IN	1	INT_L_X28Y61 WL1BEG1	1
+s_axi_wready	OUT	1	INT_L_X28Y67 WL1BEG2	1
+s_axi_wstrb[0]	IN	1	INT_L_X28Y64 WL1BEG2	1
+s_axi_wstrb[1]	IN	1	INT_L_X28Y64 WL1BEG1	1
+s_axi_wstrb[2]	IN	0		0
+s_axi_wstrb[3]	IN	0		0
+s_axi_wvalid	IN	1	INT_L_X28Y68 WL1BEG0	1
+s_axis_tdata[0]	IN	1	INT_L_X28Y65 WL1BEG1	1
+s_axis_tdata[10]	IN	1	INT_R_X29Y66 WL1BEG1	1
+s_axis_tdata[11]	IN	1	INT_R_X29Y66 WL1BEG0	1
+s_axis_tdata[12]	IN	1	INT_R_X29Y66 WL1BEG2	1
+s_axis_tdata[13]	IN	1	INT_R_X29Y67 WL1BEG0	1
+s_axis_tdata[14]	IN	1	INT_R_X29Y67 WL1BEG2	1
+s_axis_tdata[15]	IN	1	INT_R_X29Y67 WL1BEG1	1
+s_axis_tdata[1]	IN	1	INT_R_X29Y64 WL1BEG_N3	1
+s_axis_tdata[2]	IN	1	INT_R_X29Y65 WL1BEG0	1
+s_axis_tdata[3]	IN	1	INT_R_X29Y65 SL1BEG0	1
+s_axis_tdata[4]	IN	1	INT_R_X29Y65 WL1BEG1	1
+s_axis_tdata[5]	IN	1	INT_L_X28Y65 WL1BEG0	1
+s_axis_tdata[6]	IN	1	INT_R_X29Y65 WL1BEG_N3	1
+s_axis_tdata[7]	IN	1	INT_R_X29Y65 WL1BEG2	1
+s_axis_tdata[8]	IN	1	INT_L_X28Y66 WL1BEG1	1
+s_axis_tdata[9]	IN	1	INT_R_X29Y66 SL1BEG0	1
+s_axis_tready	OUT	1	INT_L_X26Y68 SE2BEG2	1
+s_axis_tvalid	IN	1	INT_L_X26Y68 WL1BEG2	1

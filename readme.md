@@ -6,7 +6,7 @@
 **Development Environment:** Xilinx Vivado, SystemVerilog, Verilog, Python  
 **Target Roles:** FPGA Engineer, RTL Design Intern, Digital IC Design/Verification Intern, Hardware Validation Intern
 
-**Project Status:** The parameterized RTL modules and complete accelerator top are implemented. Integrated AXI4-Lite-controlled streaming verification passes 47 runs with 281,842 outputs and saturation flags independently matched against Python. No-stall external latency is four clocks; each run demonstrates 1,050 consecutive output transfers. Default complete-top OOC synthesis passes its internal 10 ns clock checks for `xc7a35tcpg236-1`. See [complete accelerator results](docs/accelerator.md), with separate [FIFO](docs/axis_fifo.md), [FIR](docs/fir_verification.md), [datapath](docs/datapath.md) and [AXI register](docs/axi_lite_regs.md) evidence. Physical implementation, full-system external I/O constraints, post-route timing closure and final physical performance comparisons remain pending. The specifications below define the target requirements.
+**Project Status:** The parameterized RTL and complete top are implemented. Integrated AXI-controlled streaming passes 47 runs with 281,842 outputs/flags matched against Python; external no-stall latency is four clocks and each run demonstrates 1,050 consecutive outputs. Module-level placement/routing passes 100 MHz under documented interface/parent assumptions: setup WNS +0.273 ns, hold slack +0.031 ns, with complete timing coverage. A [controlled full-top physical comparison](docs/optimization_comparison.md) now demonstrates a 5.868 ns setup-slack improvement over linear accumulation, trading 319 additional LUTs for timing closure without extra pipeline cycles; both variants pass the same 47-run regression. See [implementation scope and retained tool warning](docs/implementation.md), [complete-top verification](docs/accelerator.md), and separate [FIFO](docs/axis_fifo.md), [FIR](docs/fir_verification.md), [datapath](docs/datapath.md) and [register](docs/axi_lite_regs.md) evidence. This is not board or different-parent acceptance. Final presentation and repository delivery remain pending. The specifications below define the target requirements.
 
 ### Getting Started
 
@@ -325,7 +325,7 @@ Timing acceptance requires nonnegative setup and hold slack with no unwaived tim
 
 ## 9. Performance Optimization
 
-The initial design will be analyzed for timing bottlenecks.
+The full-top physical comparison is complete; detailed conditions, source snapshots, results and limitations are recorded in [optimization comparison](docs/optimization_comparison.md).
 
 Potential optimization techniques include:
 
@@ -337,23 +337,23 @@ Potential optimization techniques include:
 - Improving handshake logic
 - Separating control and datapath logic
 
-At least one measurable optimization should be completed. The initial implementation will use registered multipliers followed by a baseline accumulation stage. A pipelined balanced adder tree is the planned comparison, subject to the critical paths observed in implementation.
+The controlled baseline restores the historical full-precision linear accumulation inside the current FIR shell. The optimized build uses the current balanced fabric adder tree. Both retain registered products and the same output stage; no additional pipeline cycle is introduced. The baseline's critical path contains a long DSP cascade.
 
-Both builds must preserve arithmetic behavior and steady-state throughput and pass the same regression suite. Additional pipeline cycles are allowed and must be reported.
+Both builds passed the same 47-run integrated regression, including 20 default seeds of 10,000 accepted random inputs each. All 47 accepted-event traces match byte for byte. Arithmetic behavior, steady-state functional throughput and latency are unchanged.
 
-Baseline and optimized runs will use the same FPGA part, numerical parameters, clock and I/O constraints, Vivado version, implementation strategy, and placement seed settings where available. Any unavoidable differences will be disclosed. Source revisions and build scripts will be retained.
+The runs use the same FPGA part, numerical parameters, clock/I/O/physical constraints, Vivado version, two-thread setting and byte-identical implementation Tcl. No placement-seed override is set. The same adaptive hold-repair policy adds 709 versus 722 identity LUTs; these costs are included in the totals. This is one physical run per variant, with source snapshots and hashes retained.
 
 | Metric | Baseline | Optimized |
 | --- | --- | --- |
 | Target clock period | 10 ns | 10 ns |
-| Post-route setup WNS / TNS | Pending | Pending |
-| Post-route hold slack | Pending | Pending |
-| LUT / FF / DSP / BRAM use | Pending | Pending |
-| Throughput without stalls | Pending | Pending |
-| Core / top-level latency without stalls | Pending | Pending |
+| Post-route setup WNS / TNS | -5.595 / -435.890 ns | +0.273 / 0 ns |
+| Post-route hold slack | +0.034 ns | +0.031 ns |
+| LUT / FF / DSP / BRAM use | 724 / 383 / 8 / 0 | 1,043 / 463 / 8 / 0 |
+| Throughput without stalls | 1 output/clock in simulation; fails 100 MHz setup | 1 output/clock; passes 100 MHz module timing |
+| Core / top-level latency without stalls | 2 / 4 clocks | 2 / 4 clocks |
 | Highest timing-passing frequency, if swept | Not measured | Not measured |
 
-The final comparison must show a measured timing or resource improvement and explain its latency/resource tradeoffs. If a frequency sweep is performed, each reported passing frequency must have its own implementation timing evidence. No illustrative performance numbers will be presented as measured results.
+Post-route setup slack improves by 5.868 ns, at a cost of 319 LUTs (+44.1%) and 80 slice flip-flops, with eight DSPs and unchanged latency. The baseline explicitly fails 100 MHz setup; the optimized module passes setup and hold under the documented OOC context. No maximum frequency, board behavior or gate-level timing simulation is claimed. Both builds retain the unresolved OOC tool warning documented with the results.
 
 ---
 

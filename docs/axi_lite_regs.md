@@ -167,4 +167,5 @@ There are zero unconstrained internal endpoints, but 44 input and 170 output
 ports have no external delays. The OOC clock-source warning `Timing 38-242`
 also remains because no top-level clock buffer location is defined. These are
 clock-only post-synthesis estimates. Complete-top integration tests are documented
-separately; full-system I/O constraints and placement/routing acceptance remain pending.
+separately; [module implementation](implementation.md) supplies the complete top's
+I/O budgets and routed result. A different parent or board requires revalidation.

@@ -1,0 +1,2079 @@
+{
+  "status": "verified_comparison",
+  "recorded_at_utc": "2026-11-16T07:19:49.558922+00:00",
+  "scope": "Full dsp_accelerator OOC module, identical declared interface and parent context; not board or assembled-parent acceptance",
+  "baseline_definition": "Controlled baseline reconstruction: only FIR sum structure/mapping hint differs; canonical RTL is untouched",
+  "device": "xc7a35tcpg236-1",
+  "clock_period_ns": 10.0,
+  "input_delay_ns": {
+    "min": 0.5,
+    "max": 2.0
+  },
+  "output_delay_ns": {
+    "min": -0.5,
+    "max": 2.0
+  },
+  "uncertainty_ns": {
+    "setup": 0.1,
+    "hold": 0.05
+  },
+  "strategy": "Byte-identical synth/opt/place/physopt/route Tcl, general.maxThreads=2, same <=5-iteration measured input-hold-repair rule",
+  "seed_policy": "No placement-seed override is set; same Vivado defaults and directives. One physical run per variant, not a statistical study.",
+  "same_47_handshake_event_traces": true,
+  "setup_slack_improvement_ns": 5.868,
+  "resource_delta_optimized_minus_baseline": {
+    "luts": 319,
+    "flip_flops": 80,
+    "dsps": 0,
+    "bram_tiles": 0,
+    "identity_buffers": 13
+  },
+  "baseline": {
+    "implementation_status": "fails_100mhz_setup",
+    "tool": "Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026",
+    "setup_wns_ns": -5.595,
+    "setup_tns_ns": -435.89,
+    "setup_failing_endpoints": 389,
+    "hold_slack_ns": 0.034,
+    "hold_total_negative_slack_ns": 0.0,
+    "hold_failing_endpoints": 0,
+    "pulse_width_slack_ns": 3.75,
+    "luts": 724,
+    "flip_flops": 383,
+    "dsps": 8,
+    "bram_tiles": 0,
+    "identity_buffers": 709,
+    "acceptance": {
+      "status": "failed",
+      "setup_wns_ns": "-5.595",
+      "hold_slack_ns": "0.034",
+      "pulse_width_slack_ns": "3.750",
+      "routed_fully": "0",
+      "route_errors": "1",
+      "identity_buffers": "709",
+      "severe_drc": "0",
+      "severe_methodology": "0",
+      "clock_source_site": "BUFGCTRL_X0Y0",
+      "boundary_range": "SLICE_X0Y0:SLICE_X65Y99",
+      "functional_ports": "115",
+      "missing_boundary_ports": "0",
+      "missing_boundary_anchors": "0",
+      "expected_ooc_boundary_stubs": "111",
+      "unexpected_route_nets": "0",
+      "no_clock": "0",
+      "constant_clock": "0",
+      "pulse_width_clock": "0",
+      "unconstrained_internal_endpoints": "0",
+      "no_input_delay": "0",
+      "no_output_delay": "0",
+      "multiple_clock": "0",
+      "generated_clocks": "0",
+      "loops": "0",
+      "latch_loops": "0",
+      "partial_input_delay": "0",
+      "partial_output_delay": "0",
+      "failures": "negative setup/hold slack: -5.595 / 0.034; timing summary violations at column 0; timing summary violations at column 1; timing summary violations at column 2"
+    },
+    "path_classes": [
+      {
+        "class": "register_to_register",
+        "check": "max",
+        "slack_ns": "-5.595",
+        "startpoint": "datapath/core/scaled0/CLK",
+        "endpoint": "datapath/core/out_data_reg[10]/D"
+      },
+      {
+        "class": "register_to_register",
+        "check": "min",
+        "slack_ns": "0.034",
+        "startpoint": "datapath/output_fifo/wr_ptr_reg[1]/C",
+        "endpoint": "datapath/output_fifo/mem_reg_0_15_0_5/RAMA/WADR1"
+      },
+      {
+        "class": "input_to_register",
+        "check": "max",
+        "slack_ns": "-3.206",
+        "startpoint": "s_axis_tdata[10]",
+        "endpoint": "datapath/input_fifo/mem_reg_0_15_6_11/RAMC/I"
+      },
+      {
+        "class": "input_to_register",
+        "check": "min",
+        "slack_ns": "1.260",
+        "startpoint": "s_axi_araddr[5]",
+        "endpoint": "registers/r_response_reg[1]/D"
+      },
+      {
+        "class": "register_to_output",
+        "check": "max",
+        "slack_ns": "3.893",
+        "startpoint": "registers/b_valid_reg/C",
+        "endpoint": "s_axi_bvalid"
+      },
+      {
+        "class": "register_to_output",
+        "check": "min",
+        "slack_ns": "0.433",
+        "startpoint": "registers/r_data_reg[29]/C",
+        "endpoint": "s_axi_rdata[29]"
+      },
+      {
+        "class": "input_to_output",
+        "check": "max",
+        "slack_ns": "-0.748",
+        "startpoint": "resetn",
+        "endpoint": "s_axi_awready"
+      },
+      {
+        "class": "input_to_output",
+        "check": "min",
+        "slack_ns": "2.541",
+        "startpoint": "resetn",
+        "endpoint": "s_axi_arready"
+      }
+    ],
+    "iterations": [
+      {
+        "iteration": "0",
+        "setup_wns_ns": "-5.709",
+        "hold_slack_ns": "-1.156",
+        "added_identity_luts": "0"
+      },
+      {
+        "iteration": "1",
+        "setup_wns_ns": "-5.629",
+        "hold_slack_ns": "-0.513",
+        "added_identity_luts": "700"
+      },
+      {
+        "iteration": "2",
+        "setup_wns_ns": "-5.595",
+        "hold_slack_ns": "0.034",
+        "added_identity_luts": "9"
+      }
+    ],
+    "timing_commands": [
+      "create_clock -period 10.000 -name clk -waveform {0.000 5.000} [get_ports clk]",
+      "create_clock -period 10.000 -name interface_clk -waveform {0.000 5.000}",
+      "set_clock_uncertainty -setup -from [get_clocks {clk interface_clk}] -to [get_clocks {clk interface_clk}] 0.100",
+      "set_clock_uncertainty -hold -from [get_clocks {clk interface_clk}] -to [get_clocks {clk interface_clk}] 0.050",
+      "set_input_delay -clock [get_clocks interface_clk] -min 0.500 [get_ports -filter {DIRECTION == IN && NAME != clk}]",
+      "set_input_delay -clock [get_clocks interface_clk] -max 2.000 [get_ports -filter {DIRECTION == IN && NAME != clk}]",
+      "set_output_delay -clock [get_clocks interface_clk] -min -0.500 [get_ports -filter {DIRECTION == OUT}]",
+      "set_output_delay -clock [get_clocks interface_clk] -max 2.000 [get_ports -filter {DIRECTION == OUT}]"
+    ],
+    "worst_setup_path": {
+      "source": "datapath/core/scaled0/CLK",
+      "destination": "datapath/core/out_data_reg[10]/D",
+      "data_path_delay_ns": 15.349,
+      "logic_levels": 11,
+      "logic_composition": "CARRY4=3 DSP48E1=6 LUT2=1 LUT3=1"
+    },
+    "warning_counts": {
+      "Synth 8-7129": 12,
+      "Vivado 12-2274": 24,
+      "DRC 23-814": 8,
+      "Constraints 18-8777": 1,
+      "Route 35-328": 1,
+      "Timing 38-164": 10,
+      "Route 35-39": 3,
+      "Vivado_Tcl 2-1291": 1,
+      "Vivado_Tcl 2-1511": 1
+    },
+    "warning_examples": {
+      "Timing 38-164": "This design has multiple clocks. Inter clock paths are considered valid unless explicitly excluded by timing constraints such as set_clock_groups or set_false_path.",
+      "DRC 23-814": "Not all possible (connectivity based) DRCs may have been run because this design is seen as Out of Context.",
+      "Vivado_Tcl 2-1511": "-name option used when not in GUI mode. A Methodology tab will not be created.",
+      "Vivado_Tcl 2-1291": "-name option used when not in GUI mode. A DRC tab will not be created, but the results will be stored for use with 'get_drc_violations -name accelerator_drc'",
+      "Route 35-39": "The design did not meet timing requirements. Please run report_timing_summary for detailed reports.",
+      "Route 35-328": "Router estimated timing not met.",
+      "Constraints 18-8777": "Unable to split tiles. All required files are not available.",
+      "Vivado 12-2274": "Port s_axi_arprot[0] does not connect to any net. [E:/DSP Accelerator AXI Interface/build/implementation_comparison/baseline/constraints/dsp_accelerator_ooc.xdc:13]",
+      "Synth 8-7129": "Port s_axi_awprot[2] in module axi_lite_regs is either unconnected or has no load"
+    },
+    "process_exit_code": 1,
+    "report_sha256": {
+      "acceptance.tsv": "7C83C54B8BAA95B8111F88AF34DBEB07284776FD8771CEBD2F6018D258A15F1E",
+      "inputs.tsv": "ED47426497B80EF1265C12E692AA73A773B68FF7B84FD9A3795A01BD025208A5",
+      "path_classes.tsv": "30DDA4A1B6E1510528CFE10462692FEF23ACE8CF1ABC49B574A5417C374F4433",
+      "boundary_ports.tsv": "80E71843E0135C40041AA8F91103D07FD6F385D5491077E754D1341E738CCB94",
+      "identity_buffers.tsv": "C71E726B2FEDAE7AB45066D90764B7E3BD5B7C586992EA8262F50248A7834EBA",
+      "hold_repairs.tsv": "0D4B8A947B7243027AF80A418DE4E714073D7470C54D32EE9EE29BCDCD7EBCEE",
+      "iterations.tsv": "68052142E605801EB760F4D9226A8D25B90D2573DE6AA5F722E5BB52F19A565B",
+      "timing_post_route.rpt": "1684E31077DEAE5C496F26FE3033D53F4C401BA4AD22CDF0243E00AFDC90BC98",
+      "check_timing.rpt": "C83C04061F41F1DC0F2A5B34EEF3CBE52BBDD7A3E67F1ADD94C02E9FB5219CCA",
+      "utilization_post_route.rpt": "420FAF73BE2B66CC039767757FFACE3C0296568248771CFC75301CD65C025AF3",
+      "route_status.rpt": "A8B2E8F00A1096F87DC7A96434CBC8B84250357746B85E22C09568186068438F",
+      "drc_post_route.rpt": "C8E8D433FBE700BC316598D6534E9D21783872D81E91E9822724019327CFB28A",
+      "methodology.rpt": "1A4E427ECF9E14CB16CA85FC26D648006F85B25260452606D4FBEE54A5A7DA18",
+      "clocks.rpt": "66F389B0E71901BE52B58E3540A22A4CD93D9CA4DF29818EB6990E2089C1DE2F",
+      "clock_interaction.rpt": "A673B4F7C75CDDA23DC8E4CD4AB983B094F4E13D2B0C9C8D367CEDD8764FED84",
+      "exceptions.rpt": "19A0FCFE36686AB9444F0AFC57578B7E102A09BF92942F7FA9DB72BB8B2A321B",
+      "implemented_constraints.xdc": "813F4B7E294A20AA5AF40B6B7DB6C00D6A99D8E6F0C33BED6EA7AC0FB2F8109C"
+    },
+    "implementation_log_sha256": "23D4CF6FDCFE2A09E02FD010AEE67FEB82AFA25641AD0468DA971DC9FB1FF1DE",
+    "routed_checkpoint_sha256": "057EAE96D58676281708F324B196B058BA21E9784F1C7292751C8B082384850B",
+    "source_sha256": {
+      "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/axis_fifo.v": "EB3DF2AEF88C04F8D0B37398DB90F2A0D2C598DA68EF6A29BB1D4350564F8FCF",
+      "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/fir_core.v": "FEF04402EA05B91CB68866A5770A0AD9720DA32779359D83317855783089A594",
+      "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/dsp_datapath.v": "CC67F0ACDDFEE462D886848739A7D6B524F5F0773DBD9228177C260D41B1D60B",
+      "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/axi_lite_regs.v": "27232C3886D8DCB76B06A41A81B14074B06D5672634EB9A487A8C157A97F0D26",
+      "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/dsp_accelerator.v": "EE38096EF870E4BDA25797BB0BC751E6D38B55834CC895B0D975D201A9667721",
+      "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sim_1/tb_dsp_accelerator.sv": "70E8FB0649BE7EB0C9473D71C61E2195421A14532073B3518073FC296E794202",
+      "model/__init__.py": "B511630D5CDA65CAA99216FBF0C41954D910B6224C3D3C6AA4071A70B57E41DE",
+      "model/fir.py": "CE9E5153F68F7DD0E3FAF3C4DEC121142F00FA9CB5EA456D160C884A7E98CFE7",
+      "scripts/compare_fir_events.py": "1D47CB164E1698DE4DE67FA598C6163D83DB93019A64EC7648F9BE45C31316AA",
+      "scripts/run_accelerator.ps1": "820FD100D3EA87FEFF762629D2BBA07F5DA11C87450CBE83DDC094F2B068F498",
+      "scripts/implement_accelerator.tcl": "FA1D0054376AC66D15773AE1F959AB347B2CC757066CE5003CDA94F002083E80",
+      "scripts/implementation_utils.tcl": "F6B4785E4426109845D3721967DDECAD1C96EA51C29FC07A9B05BE4DC34251A7",
+      "constraints/dsp_accelerator_timing.xdc": "876C607BF52BB6569568773C40A70F0D0EF264955E0A8361DFCE13A1EDFB54C0",
+      "constraints/dsp_accelerator_ooc.xdc": "FBFF036606E1FF5465DB0FCD90564B61F16236448E619F6AAC917F60D69E947F"
+    },
+    "functional": {
+      "status": "passed",
+      "runs": 47,
+      "random_accepted_inputs": 227000,
+      "accepted_inputs": 284800,
+      "matched_outputs_and_flags": 281842,
+      "reset_discarded": 2958,
+      "minimum_continuous_outputs": 1050,
+      "top_latency_cycles": 4,
+      "core_latency_cycles": 2,
+      "throughput_samples_per_clock": 1,
+      "latency_evidence": "Unchanged bench asserts every no-stall continuous output is exactly four edges after its input; the two FIR valid stages are unchanged",
+      "regression_sha256": "CD2FF027A1724A49B497D409048F7E0F540CE0FB8B107542B9E35107C8CEF654",
+      "runs_evidence": [
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            1
+          ],
+          "events_sha256": "3548DC15ED56346E6DF46FEA652F08B93E2617318C184BF727CFB5634FF790D2",
+          "log_sha256": "A9EC30A8BE97624F919ADC4593A7C1A86C6436729EC2533953FDE6C721298456",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            2
+          ],
+          "events_sha256": "CBCD8DAC72EF95060B303BF1ACF494BEBE0FFF2111333788FD3409ECD51CBA7F",
+          "log_sha256": "DC77DAD1AD59FB88233E147E4606643A81E92F88C06FE9704F64E3A3E324E063",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            3
+          ],
+          "events_sha256": "C062BF68B65C5E16EC37D00FA25DF8A5DAE0A1E6547C7A855C26C59EFE0EFBEF",
+          "log_sha256": "7D738F4E0C970141C03496F322FB4F3F6E27F97B04DF1120B63CE78346E5015B",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            4
+          ],
+          "events_sha256": "2C99AD5B5E55D125D1D2A9ADAAECE2F68CAD9C7A942CBA2AE7C4A4E1F1416204",
+          "log_sha256": "3CAA0E2677A7FE8819D6CFC833B6B64E32D3C1BC8CC1C3157ACC830A9760DA95",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            5
+          ],
+          "events_sha256": "FD69F7B4ED7EBDDDF80A8A06545A4EDFBF20D5F9A36DA5E99EC94ECC2F410349",
+          "log_sha256": "2D98F8E1770FEAD32BA3D268F50F13AA90828E7D5E0F8905F4856BED9709F648",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            6
+          ],
+          "events_sha256": "C567D05303E244AFC463447248A74ED3F189FA4446054902A925122D71620F67",
+          "log_sha256": "5127CC440ED412779152862E216D6C965C5EDFE00DF9D0208846589E23CAFCB2",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            7
+          ],
+          "events_sha256": "BA34100F8F03B564792DC5324285416991980E423CEC6C123551E36FC6A14039",
+          "log_sha256": "923ADE454878D20BD5BE97B6D6C4649B1D30274B2BF07D7852A045190F6664CA",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            8
+          ],
+          "events_sha256": "A336E083BFE0CF258E98CC5EDF0781AC4C2F1CC56B33123D3878D62F41886790",
+          "log_sha256": "8C4C8076CD38E2B9D7241AF0EB97D9C6CD482188F0AE97BBCB97C48FFFFC1268",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            9
+          ],
+          "events_sha256": "592A75D1B7243248CB28F87A23904C507B72B337C9CDA684DEE7E4B95AE11463",
+          "log_sha256": "060D8C274A4696F8570E425D6E05F41BED2544820457CC264E7A1C1C58424E50",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            10
+          ],
+          "events_sha256": "0BE7568023A9B8C956398187C18A17741F9594F081BD9BEC76CE0B254E81C1BF",
+          "log_sha256": "49C2E52B618AA4F164DB8C430B7770BED0590D3A25E3D06B6C76F694E5A0F6B3",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            11
+          ],
+          "events_sha256": "E70F87DC9598CB718BFD007A89F5311A0170E18708A43AB4A49E0BED3F1E3ADD",
+          "log_sha256": "BC634C83F0830D6332EEB144EB1C5BECC0115E85331C842D78D282B04ABCB6D5",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            12
+          ],
+          "events_sha256": "1D6DC7A6E2F6AACC76768F3F92D2860172108D00F5D8E99C8158F2FAA1F7B0B8",
+          "log_sha256": "2B991DBEFE5BED93D0732858CEDC62DB7674BFFFAF1F3F21CDCE0666E41D9809",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            13
+          ],
+          "events_sha256": "20A531C03B8C9E00FD9B4911740572FBA10011AA919966E8D2E136FC50E99C77",
+          "log_sha256": "C210EC48674EC6715DA723EB37F134C8857670F8E2A183272AAFBCA80528DDA9",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            14
+          ],
+          "events_sha256": "699FD3C4D18B261A417A0A1404D65AD204B0BC4772FDD6D47E4D03240D1E96C3",
+          "log_sha256": "AA409596797DE059BAAA350E082A7F18961DC55B9B60CD9A138DE1F30F260DA2",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            15
+          ],
+          "events_sha256": "8AA291CEDC53E449C5F2CA520868AF7A60DC4AFA6A7B2184D4D943B0AE99B7ED",
+          "log_sha256": "F2A4F5A97E05D1CB8E1D82D3B86BA56E2CE6D8EDCF0D211BEC45239E4F8B22B8",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            16
+          ],
+          "events_sha256": "D978DC6DCA297CF990063E8E13F83418AF07880E80D697AD7889DDF62419BB8E",
+          "log_sha256": "38449DB374089C0DB179FC4EE8B7F6C8DE4B581CFE5E0777BEC8BDDECAF51EC3",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            17
+          ],
+          "events_sha256": "ABE544030EF004B3EB8028B0B800781836046D010DE8FC1EAEB5D71255E84A21",
+          "log_sha256": "24548017D028C67DA7E2DD60E8064973BE25E8B97F6CC90BEA3953B8F471BA5F",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            18
+          ],
+          "events_sha256": "D1C17806CBBFE4FCF310790E24AB3E633112C8F05F2174BAE1B9F52F51D41C29",
+          "log_sha256": "92AF5F3288ED6F7311F381234555B629CD771BF2FDFCAB81C6F39FA8C10F3B1D",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            19
+          ],
+          "events_sha256": "BB82F70EA92691F9CFFA541E97F2E6A4A39B6550E3A6CF31DBA77F615224F416",
+          "log_sha256": "85C6F125F07BAEB66563D0010ED377F2A715DF54DA1E4D1447F8FCD425EE266F",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            20
+          ],
+          "events_sha256": "009B7ECAD34D1870286FB6AE52719A8F2A441B114ED863CCE91D096FBAC3ADC0",
+          "log_sha256": "5FA5444248265A604707421133B02C53780811591A8D756502086EAEADFA3A7D",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            2,
+            2,
+            1
+          ],
+          "events_sha256": "D52F6769A7A437141E4C61635BBCFCDB5BBCF8AB527C9E072D98436AE9F2EA64",
+          "log_sha256": "F587C40DDA804CECD917D831FE2E0C0A7E25CDEAC2FC07533075AF09D4572E44",
+          "python_summary_sha256": "0BD7252E58BE251CDA07B1AD5059AB25879FD645EAC4D46ADD6470945A4C2F2E"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            2,
+            2,
+            7
+          ],
+          "events_sha256": "E526E2E7763805764F67E54F2D372ABB6BC91B28F83E3F24A303306D4C76F0DB",
+          "log_sha256": "7802E0359FA88473D1BDFAE0D4D9BCFAA6D1240853B3C16A79B3FCC88C448B87",
+          "python_summary_sha256": "0BD7252E58BE251CDA07B1AD5059AB25879FD645EAC4D46ADD6470945A4C2F2E"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            2,
+            2,
+            42
+          ],
+          "events_sha256": "E1D4A0C65E889A8F964FFFCD1215DDD9C156CFC1E57B946B94C2B25906491625",
+          "log_sha256": "BE600877198981E9B5A834F3E1AF0D59B70090AFE037EB3A63C7C9E6E5F645AB",
+          "python_summary_sha256": "0BD7252E58BE251CDA07B1AD5059AB25879FD645EAC4D46ADD6470945A4C2F2E"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            2,
+            16,
+            1
+          ],
+          "events_sha256": "96BD2B2993093039FD6AB3C06EE1878A8D6AEC7A343AE44D2D3D3DBDBB5D6E5F",
+          "log_sha256": "ECF4107F77B19B78CEBDFC8A4AD864E6928FA5907EB7A2919CA7F7E8D12E388E",
+          "python_summary_sha256": "E7C320E775BE2BFC3FA9AB1A6802F17CAFDE654D5DB23C45B38C778A862D049C"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            2,
+            16,
+            7
+          ],
+          "events_sha256": "92975EB1124CBB1550496C4201D2D443224A31716E7174C78B00E67690775EAD",
+          "log_sha256": "7C3199B69BF3C70D55B1224E7F74DB4D25F3D8AFA9CDB2E05C7C09C4D824AF63",
+          "python_summary_sha256": "E7C320E775BE2BFC3FA9AB1A6802F17CAFDE654D5DB23C45B38C778A862D049C"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            2,
+            16,
+            42
+          ],
+          "events_sha256": "A407583585719EACC9F1E1345513AEA00CFC63EE2BAF28E8190DECE2D0C98AD7",
+          "log_sha256": "B2A92F57F4095189F66EE32F056DE2CA22934978736AD94F605760249C8C6B03",
+          "python_summary_sha256": "E7C320E775BE2BFC3FA9AB1A6802F17CAFDE654D5DB23C45B38C778A862D049C"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            2,
+            1
+          ],
+          "events_sha256": "7DEC56D35C6C431196A6352E283D26EE724DB95AF8E329FF8A38FDDAE2224588",
+          "log_sha256": "CB82C33CB50ABB9C9534AF7D4B373F8CD0CC98CC5F47A84BD5A193033FDB647A",
+          "python_summary_sha256": "E7C320E775BE2BFC3FA9AB1A6802F17CAFDE654D5DB23C45B38C778A862D049C"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            2,
+            7
+          ],
+          "events_sha256": "26061629C21619F6A4FAD5F61054D2AAF4D806B8824B43417896A0B6161040D3",
+          "log_sha256": "7AA52525508FD2C19BEC9DD5A01CB195D26374A3385080BAB6612774979C740D",
+          "python_summary_sha256": "E7C320E775BE2BFC3FA9AB1A6802F17CAFDE654D5DB23C45B38C778A862D049C"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            2,
+            42
+          ],
+          "events_sha256": "F8E52E2B4FAC83F06512EEFBC53EB04349415159DD2E975D971A69F479F6E317",
+          "log_sha256": "AF0C515242206AC63C0BEC580A42929100703A8F8FDCE8174C21BD4F1DB61DB4",
+          "python_summary_sha256": "E7C320E775BE2BFC3FA9AB1A6802F17CAFDE654D5DB23C45B38C778A862D049C"
+        },
+        {
+          "configuration_and_seed": [
+            1,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            2,
+            4,
+            1
+          ],
+          "events_sha256": "9D8BC77196C597A658B030FF16F892609DF0E4A8D8AC2F6FAFAC5E9D13BF343F",
+          "log_sha256": "C7EC676C7075C655B45DC5C86B825A13865480ED918508E7255617B73CF3F6DB",
+          "python_summary_sha256": "47096C12DE55308C046AD81E7A2B9869CEC6332D74AA92D8F88AF3FEEDCDBC83"
+        },
+        {
+          "configuration_and_seed": [
+            1,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            2,
+            4,
+            7
+          ],
+          "events_sha256": "CDC7FBC63326E4B71A14459E2CFD961BE6E49D87F46B7260FE339C682930F969",
+          "log_sha256": "19F5C65743F7070C39ACDF8E8F4D32607772CE6626F97844FA5C1AA5A6B8176F",
+          "python_summary_sha256": "47096C12DE55308C046AD81E7A2B9869CEC6332D74AA92D8F88AF3FEEDCDBC83"
+        },
+        {
+          "configuration_and_seed": [
+            1,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            2,
+            4,
+            42
+          ],
+          "events_sha256": "9A523C80445AC0809FC32AB71B5FDE12C4816E025C95421F43C38B3E3075679D",
+          "log_sha256": "CCF8745B8DF12F40571085523E7FB0B24989538460A5E67418E936BAED23EB4F",
+          "python_summary_sha256": "47096C12DE55308C046AD81E7A2B9869CEC6332D74AA92D8F88AF3FEEDCDBC83"
+        },
+        {
+          "configuration_and_seed": [
+            4,
+            8,
+            8,
+            8,
+            7,
+            7,
+            7,
+            4,
+            2,
+            1
+          ],
+          "events_sha256": "A96D6DB4CC6E952BBCBACCB3D30A604C4939CE80F16E61EB815AE84036441193",
+          "log_sha256": "6D0BB5C23E2D8D873B32654EA5DFFEBA6E775C30994935BDE9AB4BD9998FB8A7",
+          "python_summary_sha256": "1CF84BBFC90BFEDA6AFBC90A48D3A5C96DB15C14F4321C0A0E83145F067FB461"
+        },
+        {
+          "configuration_and_seed": [
+            4,
+            8,
+            8,
+            8,
+            7,
+            7,
+            7,
+            4,
+            2,
+            7
+          ],
+          "events_sha256": "DEC1E4028C4CA240A0B646E14745BE932384F9132FF99558A9E662A7D9D08CD6",
+          "log_sha256": "6ED6A43F74E42A67D52D2B1827694984DEFCC308892E0E10D5E9CA9E28E49816",
+          "python_summary_sha256": "1CF84BBFC90BFEDA6AFBC90A48D3A5C96DB15C14F4321C0A0E83145F067FB461"
+        },
+        {
+          "configuration_and_seed": [
+            4,
+            8,
+            8,
+            8,
+            7,
+            7,
+            7,
+            4,
+            2,
+            42
+          ],
+          "events_sha256": "873CC7799F6403EF8CF0FA754081A9A12EE11662A08B4793846328051A9A23A7",
+          "log_sha256": "5366341F940A8FE16E79EFE86B1FB4B9E7FEB1E71A500EC7E18550A4FE022787",
+          "python_summary_sha256": "1CF84BBFC90BFEDA6AFBC90A48D3A5C96DB15C14F4321C0A0E83145F067FB461"
+        },
+        {
+          "configuration_and_seed": [
+            4,
+            12,
+            10,
+            14,
+            9,
+            8,
+            10,
+            4,
+            8,
+            1
+          ],
+          "events_sha256": "EEA5C571837811C4788AFA7FB219ABFB17240640A2034493EB96D45E0567A072",
+          "log_sha256": "6C035C63FE1F48C848281BDF19712C323852556A22D6230BDD57866DCB882203",
+          "python_summary_sha256": "965E868BAA0D86A865936A7C6F8939562B6E5E66691C56AF3C5ECC0412D9BA57"
+        },
+        {
+          "configuration_and_seed": [
+            4,
+            12,
+            10,
+            14,
+            9,
+            8,
+            10,
+            4,
+            8,
+            7
+          ],
+          "events_sha256": "2AA013ED6607AE7F0D37C14CC5E7E9FE8138D70DA6901B4C7943FD4F0DBD8D78",
+          "log_sha256": "17596584E9AE58051DEAFA0929AB0679193687EAFFFEF0C58DB4D91D991D27F1",
+          "python_summary_sha256": "965E868BAA0D86A865936A7C6F8939562B6E5E66691C56AF3C5ECC0412D9BA57"
+        },
+        {
+          "configuration_and_seed": [
+            4,
+            12,
+            10,
+            14,
+            9,
+            8,
+            10,
+            4,
+            8,
+            42
+          ],
+          "events_sha256": "F743EE7A1DF81DF6D04A86D944387B51CEBF4F805BD488A7EC8DC78DCA9FD714",
+          "log_sha256": "ADD352464650CC8B6FC274CB0BA69867C3B9433B77D32964F0BA84647CC78E1C",
+          "python_summary_sha256": "965E868BAA0D86A865936A7C6F8939562B6E5E66691C56AF3C5ECC0412D9BA57"
+        },
+        {
+          "configuration_and_seed": [
+            1,
+            4,
+            4,
+            12,
+            0,
+            0,
+            0,
+            2,
+            2,
+            1
+          ],
+          "events_sha256": "E731575901BA6BDB7E9DABC3F4FF7C98AD6D97D4BCC63E341075BDE45DE95065",
+          "log_sha256": "D384C564E32BDAE0434C8B83708D883B58AF13766495E944E8560BE19BB28E78",
+          "python_summary_sha256": "35C04E88B8DD257A0E5C51EDFC5A9E4EE4631C1436A935460F1581B4BFAC901F"
+        },
+        {
+          "configuration_and_seed": [
+            1,
+            4,
+            4,
+            12,
+            0,
+            0,
+            0,
+            2,
+            2,
+            7
+          ],
+          "events_sha256": "E1B5C4CA54E3603D8A1E11735BE1B99C6093E5692C7F2D582F02A51117833FB4",
+          "log_sha256": "8FAA45D8472E1DF96F6AA282C07615CCBF56B7C840610C8640985A121BE7A9C0",
+          "python_summary_sha256": "35C04E88B8DD257A0E5C51EDFC5A9E4EE4631C1436A935460F1581B4BFAC901F"
+        },
+        {
+          "configuration_and_seed": [
+            1,
+            4,
+            4,
+            12,
+            0,
+            0,
+            0,
+            2,
+            2,
+            42
+          ],
+          "events_sha256": "49A424F35C84936078143360DE98BF6F7A9D18C14F37CAF396A42A81A2F3531F",
+          "log_sha256": "2604756C738D039B0D8AFECB854C422203BD5D5120BC845C475B977ECE89BD79",
+          "python_summary_sha256": "35C04E88B8DD257A0E5C51EDFC5A9E4EE4631C1436A935460F1581B4BFAC901F"
+        },
+        {
+          "configuration_and_seed": [
+            32,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            4,
+            4,
+            1
+          ],
+          "events_sha256": "8378887C57239C3DD1010E1724B664C9E4DC02A9D5C2278C2396A6CDD053AE19",
+          "log_sha256": "04991A22AC56D51BF7CDDD82531678BB19E67A359244556A33DCF11FDA0991E8",
+          "python_summary_sha256": "57BD459F16D6F1ED66413243EEAFE113C79E499D236AE2BBF8292679AE64C3F1"
+        },
+        {
+          "configuration_and_seed": [
+            32,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            4,
+            4,
+            7
+          ],
+          "events_sha256": "3A796F5995AB2CD3969DC8045E1BFCF71DD2EEA1695BF296F20B1B05DC78821B",
+          "log_sha256": "70730BFB228F41008AD5C2BE8E6604FB52AED724276B82E5D4A2DDE36604EC1B",
+          "python_summary_sha256": "57BD459F16D6F1ED66413243EEAFE113C79E499D236AE2BBF8292679AE64C3F1"
+        },
+        {
+          "configuration_and_seed": [
+            32,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            4,
+            4,
+            42
+          ],
+          "events_sha256": "DDC457F1C04C9EC83454CF651380B8A84EB36C0C64A7FFF74CDEA610D5EEE2EC",
+          "log_sha256": "76B563AB37AB011AF7105F01A9678C73FFD84234B9B6FB629A81B4E782B0A7D7",
+          "python_summary_sha256": "57BD459F16D6F1ED66413243EEAFE113C79E499D236AE2BBF8292679AE64C3F1"
+        },
+        {
+          "configuration_and_seed": [
+            4,
+            8,
+            32,
+            32,
+            0,
+            0,
+            0,
+            4,
+            4,
+            1
+          ],
+          "events_sha256": "F5A8DE8DC4EE2C4178665A519832603575F67D833F660A0C419E66FAC1F43696",
+          "log_sha256": "59125D6EF2C9294246395725D8446F22BCCEB46B3E15A95A3E93F0C1466CF9EA",
+          "python_summary_sha256": "CAD1103B5AA00C96AC495E74C334F44E4946161F40E53AB5BF850A78AC5164D0"
+        },
+        {
+          "configuration_and_seed": [
+            4,
+            8,
+            32,
+            32,
+            0,
+            0,
+            0,
+            4,
+            4,
+            7
+          ],
+          "events_sha256": "70D742974EB10F85B9474DF09FD0ED3114D2121206E203C8C94346D14E3D7863",
+          "log_sha256": "322E196851CE2D993DD56621C9BC5D48806B6A3E5F0E044C3CAF37F11CFB2F4D",
+          "python_summary_sha256": "CAD1103B5AA00C96AC495E74C334F44E4946161F40E53AB5BF850A78AC5164D0"
+        },
+        {
+          "configuration_and_seed": [
+            4,
+            8,
+            32,
+            32,
+            0,
+            0,
+            0,
+            4,
+            4,
+            42
+          ],
+          "events_sha256": "5EEFB5906E6EA432415EE57385EAA5BFA2FDF7286B076C167F88002FE8E6F3A8",
+          "log_sha256": "AB13309A3196287753D6414751C2AFF93FB5310EEAED4088DF0940B4B868B32E",
+          "python_summary_sha256": "CAD1103B5AA00C96AC495E74C334F44E4946161F40E53AB5BF850A78AC5164D0"
+        }
+      ]
+    }
+  },
+  "optimized": {
+    "implementation_status": "passes_100mhz_module_context",
+    "tool": "Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026",
+    "setup_wns_ns": 0.273,
+    "setup_tns_ns": 0.0,
+    "setup_failing_endpoints": 0,
+    "hold_slack_ns": 0.031,
+    "hold_total_negative_slack_ns": 0.0,
+    "hold_failing_endpoints": 0,
+    "pulse_width_slack_ns": 3.75,
+    "luts": 1043,
+    "flip_flops": 463,
+    "dsps": 8,
+    "bram_tiles": 0,
+    "identity_buffers": 722,
+    "acceptance": {
+      "status": "passed",
+      "setup_wns_ns": "0.273",
+      "hold_slack_ns": "0.031",
+      "pulse_width_slack_ns": "3.750",
+      "routed_fully": "0",
+      "route_errors": "1",
+      "identity_buffers": "722",
+      "severe_drc": "0",
+      "severe_methodology": "0",
+      "clock_source_site": "BUFGCTRL_X0Y0",
+      "boundary_range": "SLICE_X0Y0:SLICE_X65Y99",
+      "functional_ports": "115",
+      "missing_boundary_ports": "0",
+      "missing_boundary_anchors": "0",
+      "expected_ooc_boundary_stubs": "111",
+      "unexpected_route_nets": "0",
+      "no_clock": "0",
+      "constant_clock": "0",
+      "pulse_width_clock": "0",
+      "unconstrained_internal_endpoints": "0",
+      "no_input_delay": "0",
+      "no_output_delay": "0",
+      "multiple_clock": "0",
+      "generated_clocks": "0",
+      "loops": "0",
+      "latch_loops": "0",
+      "partial_input_delay": "0",
+      "partial_output_delay": "0",
+      "failures": ""
+    },
+    "path_classes": [
+      {
+        "class": "register_to_register",
+        "check": "max",
+        "slack_ns": "0.273",
+        "startpoint": "datapath/core/out_data[0]_i_93_psdsp/C",
+        "endpoint": "datapath/core/out_data_reg[0]/D"
+      },
+      {
+        "class": "register_to_register",
+        "check": "min",
+        "slack_ns": "0.031",
+        "startpoint": "datapath/input_fifo/wr_ptr_reg[2]/C",
+        "endpoint": "datapath/input_fifo/mem_reg_0_15_6_11/RAMA/WADR2"
+      },
+      {
+        "class": "input_to_register",
+        "check": "max",
+        "slack_ns": "0.421",
+        "startpoint": "s_axi_wdata[10]",
+        "endpoint": "registers/write_data_reg[10]/D"
+      },
+      {
+        "class": "input_to_register",
+        "check": "min",
+        "slack_ns": "1.028",
+        "startpoint": "m_axis_tready",
+        "endpoint": "datapath/output_fifo/rd_ptr_reg[0]/CE"
+      },
+      {
+        "class": "register_to_output",
+        "check": "max",
+        "slack_ns": "3.568",
+        "startpoint": "datapath/output_fifo/rd_ptr_reg[1]/C",
+        "endpoint": "m_axis_tdata[11]"
+      },
+      {
+        "class": "register_to_output",
+        "check": "min",
+        "slack_ns": "0.303",
+        "startpoint": "registers/r_data_reg[14]/C",
+        "endpoint": "s_axi_rdata[14]"
+      },
+      {
+        "class": "input_to_output",
+        "check": "max",
+        "slack_ns": "0.896",
+        "startpoint": "resetn",
+        "endpoint": "s_axi_arready"
+      },
+      {
+        "class": "input_to_output",
+        "check": "min",
+        "slack_ns": "2.033",
+        "startpoint": "resetn",
+        "endpoint": "s_axi_wready"
+      }
+    ],
+    "iterations": [
+      {
+        "iteration": "0",
+        "setup_wns_ns": "0.041",
+        "hold_slack_ns": "-1.293",
+        "added_identity_luts": "0"
+      },
+      {
+        "iteration": "1",
+        "setup_wns_ns": "0.101",
+        "hold_slack_ns": "-0.516",
+        "added_identity_luts": "713"
+      },
+      {
+        "iteration": "2",
+        "setup_wns_ns": "0.273",
+        "hold_slack_ns": "0.031",
+        "added_identity_luts": "9"
+      }
+    ],
+    "timing_commands": [
+      "create_clock -period 10.000 -name clk -waveform {0.000 5.000} [get_ports clk]",
+      "create_clock -period 10.000 -name interface_clk -waveform {0.000 5.000}",
+      "set_clock_uncertainty -setup -from [get_clocks {clk interface_clk}] -to [get_clocks {clk interface_clk}] 0.100",
+      "set_clock_uncertainty -hold -from [get_clocks {clk interface_clk}] -to [get_clocks {clk interface_clk}] 0.050",
+      "set_input_delay -clock [get_clocks interface_clk] -min 0.500 [get_ports -filter {DIRECTION == IN && NAME != clk}]",
+      "set_input_delay -clock [get_clocks interface_clk] -max 2.000 [get_ports -filter {DIRECTION == IN && NAME != clk}]",
+      "set_output_delay -clock [get_clocks interface_clk] -min -0.500 [get_ports -filter {DIRECTION == OUT}]",
+      "set_output_delay -clock [get_clocks interface_clk] -max 2.000 [get_ports -filter {DIRECTION == OUT}]"
+    ],
+    "worst_setup_path": {
+      "source": "datapath/core/out_data[0]_i_93_psdsp/C",
+      "destination": "datapath/core/out_data_reg[0]/D",
+      "data_path_delay_ns": 9.489,
+      "logic_levels": 17,
+      "logic_composition": "CARRY4=12 LUT2=1 LUT3=2 LUT5=1 LUT6=1"
+    },
+    "warning_counts": {
+      "Synth 8-7129": 12,
+      "Vivado 12-2274": 24,
+      "DRC 23-814": 6,
+      "Constraints 18-8777": 1,
+      "Route 35-328": 1,
+      "Timing 38-164": 10,
+      "Route 35-39": 2,
+      "Vivado_Tcl 2-1291": 1,
+      "Vivado_Tcl 2-1511": 1
+    },
+    "warning_examples": {
+      "Timing 38-164": "This design has multiple clocks. Inter clock paths are considered valid unless explicitly excluded by timing constraints such as set_clock_groups or set_false_path.",
+      "DRC 23-814": "Not all possible (connectivity based) DRCs may have been run because this design is seen as Out of Context.",
+      "Vivado_Tcl 2-1511": "-name option used when not in GUI mode. A Methodology tab will not be created.",
+      "Vivado_Tcl 2-1291": "-name option used when not in GUI mode. A DRC tab will not be created, but the results will be stored for use with 'get_drc_violations -name accelerator_drc'",
+      "Route 35-39": "The design did not meet timing requirements. Please run report_timing_summary for detailed reports. Note: this situation might be resolved in the second pass of route design.",
+      "Route 35-328": "Router estimated timing not met.",
+      "Constraints 18-8777": "Unable to split tiles. All required files are not available.",
+      "Vivado 12-2274": "Port s_axi_arprot[0] does not connect to any net. [E:/DSP Accelerator AXI Interface/build/implementation_comparison/optimized/constraints/dsp_accelerator_ooc.xdc:13]",
+      "Synth 8-7129": "Port s_axi_awprot[2] in module axi_lite_regs is either unconnected or has no load"
+    },
+    "process_exit_code": 0,
+    "report_sha256": {
+      "acceptance.tsv": "B94CE05A59F0DFEC2F11DA1F9609796D7D6F0EA7B96A50ECEFAE97D13721E7A4",
+      "inputs.tsv": "2F800D1973336B4FA5872A21BC13679F1BD3D3834922F8BBE1A484663BCB6816",
+      "path_classes.tsv": "078966D17A807D50CF41B94A71AEBF1882C9B0DE9C2FE7673DCB0DE608BE4CAF",
+      "boundary_ports.tsv": "E96E179B2D4CE43735702C965F97595E9577955E6CD73159C80BFD807EC3291C",
+      "identity_buffers.tsv": "5472F4E04CBF2B78636FF172602C4FD7A17069DAF7FC71CA60B7853828EB86CA",
+      "hold_repairs.tsv": "F4ABCAACB3BFD13971BFF59720F0C6872889FD4E816CCFE8894F30378BA26EE7",
+      "iterations.tsv": "622ECBBD11E070BF27AFDA954782C64694F4156DF4DF36716CB999B4A0CABD0B",
+      "timing_post_route.rpt": "CCC0BACE8C7D62104BAD91D2921F76DE7C357F6E7ED65337343315D7E36B9195",
+      "check_timing.rpt": "80CECE63C2BA3D585D64709D1DFB8C464ECF2F95D4E76F32B85E9D4F9A6E96FF",
+      "utilization_post_route.rpt": "BA42D74D682D8C276AD9418CBE65879150013BD8FAC989F9871AE4CE48CEA260",
+      "route_status.rpt": "C6A3B59CA1995ED4178BCBF0E7DEE32C74185E07A048F46D9952E45609A6B901",
+      "drc_post_route.rpt": "C0E129BEECFE0B6D9CFF2EFB2E5011683C46B635143FC230890ECD6AE8319875",
+      "methodology.rpt": "C828CF4AED687BE70B0D0C4C8833786E61B016F69B860C128D0B9E445ABAF6B4",
+      "clocks.rpt": "9365BA7F8FAE26F392C9DCB9C45A3B26DE8B76F86CDA6F23CC6CC5CE503FE3A4",
+      "clock_interaction.rpt": "DC377A91B3DFE3CFD7A221BB5FB7334645BF70254304DE40D755E63A3D4BD7EF",
+      "exceptions.rpt": "B8D45223113A987680CEFD2EE36012273A5938A704A4E17CB6788FBE2DFED1FD",
+      "implemented_constraints.xdc": "71C182627D0EF3E75F3D744C307DCD8FE89BFAA4B20E6C8D39FD1DE54E2FA539"
+    },
+    "implementation_log_sha256": "5D26E8F243D5F9B81F3CDE0F0F00791810A22DD358C8EE6C47CA4A6A2CF2DE45",
+    "routed_checkpoint_sha256": "F517C9E1D1150DF7EA33587EEF05F2CE3D6CE9A0CB0439D19CD6BE961EEEB4CC",
+    "source_sha256": {
+      "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/axis_fifo.v": "EB3DF2AEF88C04F8D0B37398DB90F2A0D2C598DA68EF6A29BB1D4350564F8FCF",
+      "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/fir_core.v": "93AA9942BD842BB4CB4FDFEB7F8200CA6257FC5018EADC0074084846826EC484",
+      "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/dsp_datapath.v": "CC67F0ACDDFEE462D886848739A7D6B524F5F0773DBD9228177C260D41B1D60B",
+      "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/axi_lite_regs.v": "27232C3886D8DCB76B06A41A81B14074B06D5672634EB9A487A8C157A97F0D26",
+      "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/dsp_accelerator.v": "EE38096EF870E4BDA25797BB0BC751E6D38B55834CC895B0D975D201A9667721",
+      "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sim_1/tb_dsp_accelerator.sv": "70E8FB0649BE7EB0C9473D71C61E2195421A14532073B3518073FC296E794202",
+      "model/__init__.py": "B511630D5CDA65CAA99216FBF0C41954D910B6224C3D3C6AA4071A70B57E41DE",
+      "model/fir.py": "CE9E5153F68F7DD0E3FAF3C4DEC121142F00FA9CB5EA456D160C884A7E98CFE7",
+      "scripts/compare_fir_events.py": "1D47CB164E1698DE4DE67FA598C6163D83DB93019A64EC7648F9BE45C31316AA",
+      "scripts/run_accelerator.ps1": "820FD100D3EA87FEFF762629D2BBA07F5DA11C87450CBE83DDC094F2B068F498",
+      "scripts/implement_accelerator.tcl": "FA1D0054376AC66D15773AE1F959AB347B2CC757066CE5003CDA94F002083E80",
+      "scripts/implementation_utils.tcl": "F6B4785E4426109845D3721967DDECAD1C96EA51C29FC07A9B05BE4DC34251A7",
+      "constraints/dsp_accelerator_timing.xdc": "876C607BF52BB6569568773C40A70F0D0EF264955E0A8361DFCE13A1EDFB54C0",
+      "constraints/dsp_accelerator_ooc.xdc": "FBFF036606E1FF5465DB0FCD90564B61F16236448E619F6AAC917F60D69E947F"
+    },
+    "functional": {
+      "status": "passed",
+      "runs": 47,
+      "random_accepted_inputs": 227000,
+      "accepted_inputs": 284800,
+      "matched_outputs_and_flags": 281842,
+      "reset_discarded": 2958,
+      "minimum_continuous_outputs": 1050,
+      "top_latency_cycles": 4,
+      "core_latency_cycles": 2,
+      "throughput_samples_per_clock": 1,
+      "latency_evidence": "Unchanged bench asserts every no-stall continuous output is exactly four edges after its input; the two FIR valid stages are unchanged",
+      "regression_sha256": "E148A7AD048147582BBEE07274DA5817C5C56384D77908087330CA20A0DE2510",
+      "runs_evidence": [
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            1
+          ],
+          "events_sha256": "3548DC15ED56346E6DF46FEA652F08B93E2617318C184BF727CFB5634FF790D2",
+          "log_sha256": "F8083017B7CAA1DCD3FCCB2FC783ED130132340A9A24CF8EC362BE448069A474",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            2
+          ],
+          "events_sha256": "CBCD8DAC72EF95060B303BF1ACF494BEBE0FFF2111333788FD3409ECD51CBA7F",
+          "log_sha256": "26A35628D0C5BD8E8503C5084D60D7AE883DA784355EAB3C09E360A33A37B9E3",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            3
+          ],
+          "events_sha256": "C062BF68B65C5E16EC37D00FA25DF8A5DAE0A1E6547C7A855C26C59EFE0EFBEF",
+          "log_sha256": "DC29CC44A9D0B0B0C74CFCFE6D8D11036B2ECEE6081221D5BB3BB4A5AE7DD4EE",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            4
+          ],
+          "events_sha256": "2C99AD5B5E55D125D1D2A9ADAAECE2F68CAD9C7A942CBA2AE7C4A4E1F1416204",
+          "log_sha256": "DDED8F030B1759E2B4D86E0B6A41F307309F31ABD8BB3075B56C1EA9F1BF48EB",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            5
+          ],
+          "events_sha256": "FD69F7B4ED7EBDDDF80A8A06545A4EDFBF20D5F9A36DA5E99EC94ECC2F410349",
+          "log_sha256": "9C52F6E925E00B11FDC00C30C571960515DDECDD2AC84A5A8045A543D6E6B569",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            6
+          ],
+          "events_sha256": "C567D05303E244AFC463447248A74ED3F189FA4446054902A925122D71620F67",
+          "log_sha256": "23526C792AD1DD0B1A3C5311C4A4522D7628C470D5A3B2BB1E9E2094647667E8",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            7
+          ],
+          "events_sha256": "BA34100F8F03B564792DC5324285416991980E423CEC6C123551E36FC6A14039",
+          "log_sha256": "3C91B878F03481A9239E484B73631461593C9E97118494BDB05820F1F073866D",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            8
+          ],
+          "events_sha256": "A336E083BFE0CF258E98CC5EDF0781AC4C2F1CC56B33123D3878D62F41886790",
+          "log_sha256": "D32998743B4801962F1187CB16A01283DAA9B88D96F64622AA81E144B54C424D",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            9
+          ],
+          "events_sha256": "592A75D1B7243248CB28F87A23904C507B72B337C9CDA684DEE7E4B95AE11463",
+          "log_sha256": "360BA95947A39E4AE23D49F9D8B562E4C28CCFD1C1769E69D81E8401800E6CA1",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            10
+          ],
+          "events_sha256": "0BE7568023A9B8C956398187C18A17741F9594F081BD9BEC76CE0B254E81C1BF",
+          "log_sha256": "8A7997D0442151B40535C1594EAADBC8716D48AE9C79A5A5C27F29F49BE6F370",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            11
+          ],
+          "events_sha256": "E70F87DC9598CB718BFD007A89F5311A0170E18708A43AB4A49E0BED3F1E3ADD",
+          "log_sha256": "365FEDF07A69AF2976AE8159842FCB044C1165FB9757174BD3B99E7A57DACA47",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            12
+          ],
+          "events_sha256": "1D6DC7A6E2F6AACC76768F3F92D2860172108D00F5D8E99C8158F2FAA1F7B0B8",
+          "log_sha256": "DD93F71B8CE215C768D83B999920C95A1C45452240A1C77962EBE6773416900A",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            13
+          ],
+          "events_sha256": "20A531C03B8C9E00FD9B4911740572FBA10011AA919966E8D2E136FC50E99C77",
+          "log_sha256": "9A6C1E7F54B83574108E318C1DE09199874B7E83662158B9BCF9823F69AE2ED9",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            14
+          ],
+          "events_sha256": "699FD3C4D18B261A417A0A1404D65AD204B0BC4772FDD6D47E4D03240D1E96C3",
+          "log_sha256": "2C8B4776EFCBD3A3175E3D8EA78141C71B13EE5531368943D4117B09C0217B37",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            15
+          ],
+          "events_sha256": "8AA291CEDC53E449C5F2CA520868AF7A60DC4AFA6A7B2184D4D943B0AE99B7ED",
+          "log_sha256": "FAFBB2D3A6E842481A0DFB0C6AAC727ED3431A63FBB5077943BEDE1D056D3329",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            16
+          ],
+          "events_sha256": "D978DC6DCA297CF990063E8E13F83418AF07880E80D697AD7889DDF62419BB8E",
+          "log_sha256": "0BC370F8F7C879E2018A0A6FD3C512DA566493137570A2DDF14E68915017DC5C",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            17
+          ],
+          "events_sha256": "ABE544030EF004B3EB8028B0B800781836046D010DE8FC1EAEB5D71255E84A21",
+          "log_sha256": "CDB2F9E09E63B2803384AB7FCAEA352A73DBB0F8A66A52F23C1E5412A157D5C7",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            18
+          ],
+          "events_sha256": "D1C17806CBBFE4FCF310790E24AB3E633112C8F05F2174BAE1B9F52F51D41C29",
+          "log_sha256": "B704DE7AFEA4D77A9A82DE3FEB01E8DE20945219C4BA507DDE8625F19796F3B4",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            19
+          ],
+          "events_sha256": "BB82F70EA92691F9CFFA541E97F2E6A4A39B6550E3A6CF31DBA77F615224F416",
+          "log_sha256": "D7E3452E4920643305DF26E11BCAD51EDF90F1240D90961344E22E0557878A85",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            16,
+            20
+          ],
+          "events_sha256": "009B7ECAD34D1870286FB6AE52719A8F2A441B114ED863CCE91D096FBAC3ADC0",
+          "log_sha256": "7FF2095541B03A753C9CC83BB6E2A41CC6C5D0B512EA447C5AA34B1652AE4189",
+          "python_summary_sha256": "426B6B4D40AB7B79B3CFDD15B537071736955EFB4393F682D334C0208A625768"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            2,
+            2,
+            1
+          ],
+          "events_sha256": "D52F6769A7A437141E4C61635BBCFCDB5BBCF8AB527C9E072D98436AE9F2EA64",
+          "log_sha256": "EC76B1C13C7ACD0C18BCF59DC2DECB3F67215323638C26B18C0642BB0ADE1067",
+          "python_summary_sha256": "0BD7252E58BE251CDA07B1AD5059AB25879FD645EAC4D46ADD6470945A4C2F2E"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            2,
+            2,
+            7
+          ],
+          "events_sha256": "E526E2E7763805764F67E54F2D372ABB6BC91B28F83E3F24A303306D4C76F0DB",
+          "log_sha256": "D4A3FE793EE32AE60763C292FCBBC7B24BB0F23216CA61F89F2B47CFEFD7BB47",
+          "python_summary_sha256": "0BD7252E58BE251CDA07B1AD5059AB25879FD645EAC4D46ADD6470945A4C2F2E"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            2,
+            2,
+            42
+          ],
+          "events_sha256": "E1D4A0C65E889A8F964FFFCD1215DDD9C156CFC1E57B946B94C2B25906491625",
+          "log_sha256": "B0F7BDCC29C66A27A30EFFAD162CF5818A256A077CEAAB5C9BA49749C6C12312",
+          "python_summary_sha256": "0BD7252E58BE251CDA07B1AD5059AB25879FD645EAC4D46ADD6470945A4C2F2E"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            2,
+            16,
+            1
+          ],
+          "events_sha256": "96BD2B2993093039FD6AB3C06EE1878A8D6AEC7A343AE44D2D3D3DBDBB5D6E5F",
+          "log_sha256": "F9576A0BD15123D8D16E4B4053440CF4A8DC4B7ABF876D02745990008411089E",
+          "python_summary_sha256": "E7C320E775BE2BFC3FA9AB1A6802F17CAFDE654D5DB23C45B38C778A862D049C"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            2,
+            16,
+            7
+          ],
+          "events_sha256": "92975EB1124CBB1550496C4201D2D443224A31716E7174C78B00E67690775EAD",
+          "log_sha256": "16EA99D10226379C367BB35FA124A40337AA3948D904D8743A609102D899ECF2",
+          "python_summary_sha256": "E7C320E775BE2BFC3FA9AB1A6802F17CAFDE654D5DB23C45B38C778A862D049C"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            2,
+            16,
+            42
+          ],
+          "events_sha256": "A407583585719EACC9F1E1345513AEA00CFC63EE2BAF28E8190DECE2D0C98AD7",
+          "log_sha256": "FCFB20FA4DF1886A1B540515D6A46FBE4F23B038906F48B1081BCC892A54782C",
+          "python_summary_sha256": "E7C320E775BE2BFC3FA9AB1A6802F17CAFDE654D5DB23C45B38C778A862D049C"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            2,
+            1
+          ],
+          "events_sha256": "7DEC56D35C6C431196A6352E283D26EE724DB95AF8E329FF8A38FDDAE2224588",
+          "log_sha256": "472936EC907E9EC6B07612D681B29A8E11029409A2E16F8EF9C6479D59428BA4",
+          "python_summary_sha256": "E7C320E775BE2BFC3FA9AB1A6802F17CAFDE654D5DB23C45B38C778A862D049C"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            2,
+            7
+          ],
+          "events_sha256": "26061629C21619F6A4FAD5F61054D2AAF4D806B8824B43417896A0B6161040D3",
+          "log_sha256": "56688E0DA93B5AC7A5D7DDC17DF52FD66DE5D6360C0F9F9DAA57294A616D1220",
+          "python_summary_sha256": "E7C320E775BE2BFC3FA9AB1A6802F17CAFDE654D5DB23C45B38C778A862D049C"
+        },
+        {
+          "configuration_and_seed": [
+            8,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            16,
+            2,
+            42
+          ],
+          "events_sha256": "F8E52E2B4FAC83F06512EEFBC53EB04349415159DD2E975D971A69F479F6E317",
+          "log_sha256": "5A92701E62E2F99A6F0A8A8173988D7D0E70CD8A9D26373BB85392889E2ECE8F",
+          "python_summary_sha256": "E7C320E775BE2BFC3FA9AB1A6802F17CAFDE654D5DB23C45B38C778A862D049C"
+        },
+        {
+          "configuration_and_seed": [
+            1,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            2,
+            4,
+            1
+          ],
+          "events_sha256": "9D8BC77196C597A658B030FF16F892609DF0E4A8D8AC2F6FAFAC5E9D13BF343F",
+          "log_sha256": "F0565AD78A1CF96BCE88B5ED7ED5AA6B1EAB40619C9068A94ED021F0CC6BEA27",
+          "python_summary_sha256": "47096C12DE55308C046AD81E7A2B9869CEC6332D74AA92D8F88AF3FEEDCDBC83"
+        },
+        {
+          "configuration_and_seed": [
+            1,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            2,
+            4,
+            7
+          ],
+          "events_sha256": "CDC7FBC63326E4B71A14459E2CFD961BE6E49D87F46B7260FE339C682930F969",
+          "log_sha256": "202A60DE9D7420ED8AF066608DCDCB1C965062274B9F699CE712C30287D3B0FF",
+          "python_summary_sha256": "47096C12DE55308C046AD81E7A2B9869CEC6332D74AA92D8F88AF3FEEDCDBC83"
+        },
+        {
+          "configuration_and_seed": [
+            1,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            2,
+            4,
+            42
+          ],
+          "events_sha256": "9A523C80445AC0809FC32AB71B5FDE12C4816E025C95421F43C38B3E3075679D",
+          "log_sha256": "D428F1020AAD19D7031998A458E9FB2549A21B08EAA3C2B74C6EAF94A3CD9B40",
+          "python_summary_sha256": "47096C12DE55308C046AD81E7A2B9869CEC6332D74AA92D8F88AF3FEEDCDBC83"
+        },
+        {
+          "configuration_and_seed": [
+            4,
+            8,
+            8,
+            8,
+            7,
+            7,
+            7,
+            4,
+            2,
+            1
+          ],
+          "events_sha256": "A96D6DB4CC6E952BBCBACCB3D30A604C4939CE80F16E61EB815AE84036441193",
+          "log_sha256": "E49E70ABF8B7573A21A93A0605963C24B86360991E83384EAA9EAA8C36DFB22A",
+          "python_summary_sha256": "1CF84BBFC90BFEDA6AFBC90A48D3A5C96DB15C14F4321C0A0E83145F067FB461"
+        },
+        {
+          "configuration_and_seed": [
+            4,
+            8,
+            8,
+            8,
+            7,
+            7,
+            7,
+            4,
+            2,
+            7
+          ],
+          "events_sha256": "DEC1E4028C4CA240A0B646E14745BE932384F9132FF99558A9E662A7D9D08CD6",
+          "log_sha256": "5980CB03064A22C2E7C53792821BD9273463E0EA12F21F1AE94593EE40AE735E",
+          "python_summary_sha256": "1CF84BBFC90BFEDA6AFBC90A48D3A5C96DB15C14F4321C0A0E83145F067FB461"
+        },
+        {
+          "configuration_and_seed": [
+            4,
+            8,
+            8,
+            8,
+            7,
+            7,
+            7,
+            4,
+            2,
+            42
+          ],
+          "events_sha256": "873CC7799F6403EF8CF0FA754081A9A12EE11662A08B4793846328051A9A23A7",
+          "log_sha256": "D9CE88CB4086E6C45AB19977E3BE5FC1D15B35CA2A51F6EB0C7A1D1F5F2F52ED",
+          "python_summary_sha256": "1CF84BBFC90BFEDA6AFBC90A48D3A5C96DB15C14F4321C0A0E83145F067FB461"
+        },
+        {
+          "configuration_and_seed": [
+            4,
+            12,
+            10,
+            14,
+            9,
+            8,
+            10,
+            4,
+            8,
+            1
+          ],
+          "events_sha256": "EEA5C571837811C4788AFA7FB219ABFB17240640A2034493EB96D45E0567A072",
+          "log_sha256": "CA6872CFE0D1B3D213968AE25306560C770060A8E3B59D83E06F99DE6657D479",
+          "python_summary_sha256": "965E868BAA0D86A865936A7C6F8939562B6E5E66691C56AF3C5ECC0412D9BA57"
+        },
+        {
+          "configuration_and_seed": [
+            4,
+            12,
+            10,
+            14,
+            9,
+            8,
+            10,
+            4,
+            8,
+            7
+          ],
+          "events_sha256": "2AA013ED6607AE7F0D37C14CC5E7E9FE8138D70DA6901B4C7943FD4F0DBD8D78",
+          "log_sha256": "FD8748C10FCD20D446C2C64A9BE6DCC83450C20E39738FB70445D4361AE498F0",
+          "python_summary_sha256": "965E868BAA0D86A865936A7C6F8939562B6E5E66691C56AF3C5ECC0412D9BA57"
+        },
+        {
+          "configuration_and_seed": [
+            4,
+            12,
+            10,
+            14,
+            9,
+            8,
+            10,
+            4,
+            8,
+            42
+          ],
+          "events_sha256": "F743EE7A1DF81DF6D04A86D944387B51CEBF4F805BD488A7EC8DC78DCA9FD714",
+          "log_sha256": "8E4200C947410AF1EDE5AC1EF000F4948EB8E4808C5C2FFC572ADEA15F7BB36E",
+          "python_summary_sha256": "965E868BAA0D86A865936A7C6F8939562B6E5E66691C56AF3C5ECC0412D9BA57"
+        },
+        {
+          "configuration_and_seed": [
+            1,
+            4,
+            4,
+            12,
+            0,
+            0,
+            0,
+            2,
+            2,
+            1
+          ],
+          "events_sha256": "E731575901BA6BDB7E9DABC3F4FF7C98AD6D97D4BCC63E341075BDE45DE95065",
+          "log_sha256": "F8E86E62D4CB2ABC9F30F11575006EE64BDF279421F09B63C0C586E201722ADA",
+          "python_summary_sha256": "35C04E88B8DD257A0E5C51EDFC5A9E4EE4631C1436A935460F1581B4BFAC901F"
+        },
+        {
+          "configuration_and_seed": [
+            1,
+            4,
+            4,
+            12,
+            0,
+            0,
+            0,
+            2,
+            2,
+            7
+          ],
+          "events_sha256": "E1B5C4CA54E3603D8A1E11735BE1B99C6093E5692C7F2D582F02A51117833FB4",
+          "log_sha256": "46339C0D0CE41A0F612A1276BD9B64D5FDAE4CCE8CB590F66780FF766550D6BD",
+          "python_summary_sha256": "35C04E88B8DD257A0E5C51EDFC5A9E4EE4631C1436A935460F1581B4BFAC901F"
+        },
+        {
+          "configuration_and_seed": [
+            1,
+            4,
+            4,
+            12,
+            0,
+            0,
+            0,
+            2,
+            2,
+            42
+          ],
+          "events_sha256": "49A424F35C84936078143360DE98BF6F7A9D18C14F37CAF396A42A81A2F3531F",
+          "log_sha256": "8748F8E402708462A3225A7448F0C460CAC08159CC8C8839C0A150B8D0167636",
+          "python_summary_sha256": "35C04E88B8DD257A0E5C51EDFC5A9E4EE4631C1436A935460F1581B4BFAC901F"
+        },
+        {
+          "configuration_and_seed": [
+            32,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            4,
+            4,
+            1
+          ],
+          "events_sha256": "8378887C57239C3DD1010E1724B664C9E4DC02A9D5C2278C2396A6CDD053AE19",
+          "log_sha256": "8ECBAA82D55334E13C66D6A04E5A5BB3B8FB95647305051BF09109E2D008C598",
+          "python_summary_sha256": "57BD459F16D6F1ED66413243EEAFE113C79E499D236AE2BBF8292679AE64C3F1"
+        },
+        {
+          "configuration_and_seed": [
+            32,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            4,
+            4,
+            7
+          ],
+          "events_sha256": "3A796F5995AB2CD3969DC8045E1BFCF71DD2EEA1695BF296F20B1B05DC78821B",
+          "log_sha256": "74CABA6144CC3BB977A81F2DB0E178FA21114E3FD7C5FE27B253447A64F7B697",
+          "python_summary_sha256": "57BD459F16D6F1ED66413243EEAFE113C79E499D236AE2BBF8292679AE64C3F1"
+        },
+        {
+          "configuration_and_seed": [
+            32,
+            16,
+            16,
+            16,
+            15,
+            15,
+            15,
+            4,
+            4,
+            42
+          ],
+          "events_sha256": "DDC457F1C04C9EC83454CF651380B8A84EB36C0C64A7FFF74CDEA610D5EEE2EC",
+          "log_sha256": "50FC1117D8745F20B5CE8D1AF41D7EA9320B40806CC04EC2748E7AB8F7F9E795",
+          "python_summary_sha256": "57BD459F16D6F1ED66413243EEAFE113C79E499D236AE2BBF8292679AE64C3F1"
+        },
+        {
+          "configuration_and_seed": [
+            4,
+            8,
+            32,
+            32,
+            0,
+            0,
+            0,
+            4,
+            4,
+            1
+          ],
+          "events_sha256": "F5A8DE8DC4EE2C4178665A519832603575F67D833F660A0C419E66FAC1F43696",
+          "log_sha256": "01ED572B9731206E0100AAC4B6EFB743870DF9372E4173EFC28DFB94ADFE8801",
+          "python_summary_sha256": "CAD1103B5AA00C96AC495E74C334F44E4946161F40E53AB5BF850A78AC5164D0"
+        },
+        {
+          "configuration_and_seed": [
+            4,
+            8,
+            32,
+            32,
+            0,
+            0,
+            0,
+            4,
+            4,
+            7
+          ],
+          "events_sha256": "70D742974EB10F85B9474DF09FD0ED3114D2121206E203C8C94346D14E3D7863",
+          "log_sha256": "E966B68D3C7CD81C6447E59A14BFDDECC99A79F51CBCDC579050811071A06F18",
+          "python_summary_sha256": "CAD1103B5AA00C96AC495E74C334F44E4946161F40E53AB5BF850A78AC5164D0"
+        },
+        {
+          "configuration_and_seed": [
+            4,
+            8,
+            32,
+            32,
+            0,
+            0,
+            0,
+            4,
+            4,
+            42
+          ],
+          "events_sha256": "5EEFB5906E6EA432415EE57385EAA5BFA2FDF7286B076C167F88002FE8E6F3A8",
+          "log_sha256": "9E64B808566B545D69EBDA3D803AE6EE8FDB0C5AECEF0544458D1683AC9E4087",
+          "python_summary_sha256": "CAD1103B5AA00C96AC495E74C334F44E4946161F40E53AB5BF850A78AC5164D0"
+        }
+      ]
+    }
+  },
+  "limitations": [
+    "No frequency sweep: 100 MHz pass/fail and slack only, not Fmax.",
+    "No gate-level timing simulation; RTL regression and identity-LUT audits support functional preservation.",
+    "Adaptive hold repairs follow the same policy but can use different LUT counts and iteration counts; costs are reported.",
+    "Raw whole-design routing retains intentional parent-boundary ANTENNAS; all 115 functional physical anchors and internal routes are audited.",
+    "Constraints 18-8777, if present, remains an unresolved OOC tool/context warning; parent reuse requires revalidation."
+  ],
+  "sources_manifest_sha256": "C1CF99E58AED69679F150D72854D184CC1EF88632AD2C14D785F344D06EB9151",
+  "workflow_sha256": {
+    "scripts/prepare_comparison.py": "0B4F851D1B678362E9CE5EE6B1AEA67F3FB6B5C591BAFB970D0D58A09755C6A3",
+    "scripts/run_comparison.ps1": "FD86B829E0028CCD64C02CC0FBBE0904D8856A1ED3F3C0979006BDC88674E788",
+    "scripts/verify_comparison.py": "4DB2DC4CDD529741F4805037EA9F5BCD0351A7CBAF19CD7F21CF37B3F37F3892",
+    "scripts/verify_implementation.py": "937F86470CDD305AB66BE36027D09B38FABA9C3741E6AAE48272EC5600904346"
+  }
+}

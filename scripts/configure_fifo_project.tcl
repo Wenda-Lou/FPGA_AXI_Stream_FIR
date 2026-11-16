@@ -4,6 +4,12 @@ if {[llength [get_projects -quiet]] == 0} {
     error "Open the Vivado project before sourcing configure_fifo_project.tcl"
 }
 set fifo_root [file normalize [file join [file dirname [info script]] ..]]
+foreach integration_constraint [get_files -quiet *dsp_accelerator_*.xdc] {
+    set_property is_enabled false [get_files [list $integration_constraint]]
+}
+foreach standalone_clock [get_files -quiet *fir_core_ooc.xdc] {
+    set_property is_enabled true [get_files [list $standalone_clock]]
+}
 set fifo_rtl [file join $fifo_root fpga_streaming_dsp fpga_streaming_dsp.srcs sources_1 new axis_fifo.v]
 set fifo_tb [file join $fifo_root fpga_streaming_dsp fpga_streaming_dsp.srcs sim_1 tb_axis_fifo.sv]
 

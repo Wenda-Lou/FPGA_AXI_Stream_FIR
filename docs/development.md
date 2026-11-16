@@ -11,9 +11,11 @@
 - Buffered FIFO/FIR datapath: 41 runs passed, with 270,633 outputs/flags matched against Python; four-clock latency and internal synthesis timing checks pass. See [integration results](datapath.md).
 - AXI4-Lite register bank: 32 unit runs passed, with 46,000 random concurrent write/read pairs; default internal synthesis timing checks pass. See [register results](axi_lite_regs.md).
 - Complete accelerator top: 47 AXI-controlled streaming runs passed; 281,842 outputs/flags matched Python, with complete stream/AXI accounting. Default OOC internal timing checks pass. See [complete-top results](accelerator.md).
-- Physical implementation, full-system external I/O constraints and post-route timing closure: pending.
+- Module-level interface constraints and placement/routing: passed at 100 MHz under the published OOC context; setup +0.273 ns, hold +0.031 ns, no missing timing constraints. See [physical results and retained warnings](implementation.md).
+- Controlled full-top baseline/optimized comparison: complete. Setup WNS improves from -5.595 to +0.273 ns; both variants pass the same 47-run suite with identical accepted-event traces. See [comparison and area tradeoff](optimization_comparison.md).
+- Different-parent/board acceptance is outside the current scope.
 
-The proposal's full-project success criteria remain future milestones.
+Final presentation materials and repository delivery remain to be completed.
 
 ## Run the Reference Flow
 
@@ -55,8 +57,9 @@ with seed 1 and 10,000 random samples. This records Python-flow validation only.
 
 Vivado 2026.1 is now installed at `E:/2026.1/Vivado`; its simulator has been
 verified with the FIFO regression below. The earlier AMD installation at
-`H:/2025.1` supplies the Python interpreter. Full accelerator synthesis,
-implementation and timing validation for `xc7a35tcpg236-1` remain pending.
+`H:/2025.1` supplies the Python interpreter. Full accelerator synthesis and
+module-context implementation/timing for `xc7a35tcpg236-1` are complete, with
+the current scope and physical optimization results listed above.
 
 ## Run the FIFO Simulation
 
@@ -103,7 +106,8 @@ The completed FIFO regression passed all 32 runs:
 This totals 212,000 accepted random inputs, in addition to directed traffic.
 The run summaries' write/read totals also include directed tests and final drain.
 All tested configurations sustain at least 1,024 consecutive simultaneous
-transfers. The complete accelerator regression remains future work.
+transfers. These counts describe the FIFO unit suite; the complete accelerator
+has its own 47-run regression described below.
 
 For an already-open Vivado GUI, run the following in its Tcl Console to synchronize
 the file list, remove references to deleted sample exercises and select the
@@ -187,6 +191,32 @@ and concurrent streaming traffic. It checks control/data integration, counters,
 sticky clipping, clear/reconfiguration, full-buffer reset and independent Python
 data/flag comparison. See [complete accelerator](accelerator.md) for the matrix,
 retained evidence, GUI setup and the limits of the internal synthesis estimate.
+
+## Run the Module Implementation
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ./scripts/run_implementation.ps1 -VivadoBin 'E:/2026.1/Vivado/bin' -Python 'H:/2025.1/tps/win64/python-3.13.0/python.exe'
+```
+
+This applies clock and I/O budgets, routes the OOC module, repairs hold with
+identity delay cells and verifies the saved checkpoint. Text evidence is
+archived under `reports/accelerator/implementation/`; generated files and the
+routed checkpoint remain under `build/accelerator_impl/`. See
+[implementation](implementation.md) for the exact context, OOC boundary-stub
+classification, resource tradeoff and retained tool warning.
+
+## Run the Physical Optimization Comparison
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ./scripts/run_comparison.ps1 -VivadoBin 'E:/2026.1/Vivado/bin' -Python 'H:/2025.1/tps/win64/python-3.13.0/python.exe'
+```
+
+This freezes isolated linear-sum and balanced-tree FIR variants, runs both
+47-test integrated suites and identical module implementation flows, and
+archives verified evidence under `reports/implementation_comparison/`.
+The baseline's setup failure remains explicit. See
+[physical comparison](optimization_comparison.md) for exact conditions,
+results, resource tradeoffs and verification-only usage.
 
 ## Generated Files
 

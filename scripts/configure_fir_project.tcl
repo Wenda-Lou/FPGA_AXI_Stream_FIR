@@ -5,6 +5,10 @@ if {[llength [get_projects -quiet]] == 0} {
     error "Open the Vivado project before sourcing configure_fir_project.tcl"
 }
 set fir_root [file normalize [file join [file dirname [info script]] ..]]
+# Restore standalone timing when switching back from complete-top analysis.
+foreach integration_constraint [get_files -quiet *dsp_accelerator_*.xdc] {
+    set_property is_enabled false [get_files [list $integration_constraint]]
+}
 set fir_rtl [file join $fir_root fpga_streaming_dsp fpga_streaming_dsp.srcs sources_1 new fir_core.v]
 set fir_tb [file join $fir_root fpga_streaming_dsp fpga_streaming_dsp.srcs sim_1 tb_fir_core.sv]
 set fir_clock_constraints [file join $fir_root constraints fir_core_ooc.xdc]
@@ -31,6 +35,7 @@ set_property file_type Verilog [get_files [list $fir_rtl]]
 set_property file_type SystemVerilog [get_files [list $fir_tb]]
 set_property used_in {simulation} [get_files [list $fir_tb]]
 set_property used_in {synthesis implementation} [get_files [list $fir_clock_constraints]]
+set_property is_enabled true [get_files [list $fir_clock_constraints]]
 set_property is_enabled true [get_files [list $fir_rtl]]
 set_property is_enabled true [get_files [list $fir_tb]]
 # Design top identifies the hardware block; simulation top identifies the module

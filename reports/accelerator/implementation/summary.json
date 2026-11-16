@@ -1,0 +1,208 @@
+{
+  "status": "passed",
+  "date": "2026-11-16",
+  "device": "xc7a35tcpg236-1",
+  "tool": "Vivado 2026.1 build 6511674",
+  "scope": "routed OOC module under documented virtual-interface and physical parent context; not board/assembled-parent acceptance",
+  "clock_period_ns": 10.0,
+  "input_delay_ns": {
+    "min": 0.5,
+    "max": 2.0
+  },
+  "output_delay_ns": {
+    "min": -0.5,
+    "max": 2.0
+  },
+  "user_uncertainty_ns": {
+    "setup": 0.1,
+    "hold": 0.05
+  },
+  "acceptance": {
+    "status": "passed",
+    "setup_wns_ns": "0.273",
+    "hold_slack_ns": "0.031",
+    "pulse_width_slack_ns": "3.750",
+    "routed_fully": "0",
+    "route_errors": "1",
+    "identity_buffers": "722",
+    "severe_drc": "0",
+    "severe_methodology": "0",
+    "clock_source_site": "BUFGCTRL_X0Y0",
+    "boundary_range": "SLICE_X0Y0:SLICE_X65Y99",
+    "functional_ports": "115",
+    "missing_boundary_ports": "0",
+    "missing_boundary_anchors": "0",
+    "expected_ooc_boundary_stubs": "111",
+    "unexpected_route_nets": "0",
+    "no_clock": "0",
+    "constant_clock": "0",
+    "pulse_width_clock": "0",
+    "unconstrained_internal_endpoints": "0",
+    "no_input_delay": "0",
+    "no_output_delay": "0",
+    "multiple_clock": "0",
+    "generated_clocks": "0",
+    "loops": "0",
+    "latch_loops": "0",
+    "partial_input_delay": "0",
+    "partial_output_delay": "0",
+    "failures": ""
+  },
+  "path_classes": [
+    {
+      "class": "register_to_register",
+      "check": "max",
+      "slack_ns": "0.273",
+      "startpoint": "datapath/core/out_data[0]_i_93_psdsp/C",
+      "endpoint": "datapath/core/out_data_reg[0]/D"
+    },
+    {
+      "class": "register_to_register",
+      "check": "min",
+      "slack_ns": "0.031",
+      "startpoint": "datapath/input_fifo/wr_ptr_reg[2]/C",
+      "endpoint": "datapath/input_fifo/mem_reg_0_15_6_11/RAMA/WADR2"
+    },
+    {
+      "class": "input_to_register",
+      "check": "max",
+      "slack_ns": "0.421",
+      "startpoint": "s_axi_wdata[10]",
+      "endpoint": "registers/write_data_reg[10]/D"
+    },
+    {
+      "class": "input_to_register",
+      "check": "min",
+      "slack_ns": "1.028",
+      "startpoint": "m_axis_tready",
+      "endpoint": "datapath/output_fifo/rd_ptr_reg[0]/CE"
+    },
+    {
+      "class": "register_to_output",
+      "check": "max",
+      "slack_ns": "3.568",
+      "startpoint": "datapath/output_fifo/rd_ptr_reg[1]/C",
+      "endpoint": "m_axis_tdata[11]"
+    },
+    {
+      "class": "register_to_output",
+      "check": "min",
+      "slack_ns": "0.303",
+      "startpoint": "registers/r_data_reg[14]/C",
+      "endpoint": "s_axi_rdata[14]"
+    },
+    {
+      "class": "input_to_output",
+      "check": "max",
+      "slack_ns": "0.896",
+      "startpoint": "resetn",
+      "endpoint": "s_axi_arready"
+    },
+    {
+      "class": "input_to_output",
+      "check": "min",
+      "slack_ns": "2.033",
+      "startpoint": "resetn",
+      "endpoint": "s_axi_wready"
+    }
+  ],
+  "luts": 1043,
+  "flip_flops": 463,
+  "dsps": 8,
+  "bram_tiles": 0,
+  "hold_repair_iterations": [
+    {
+      "iteration": "0",
+      "setup_wns_ns": "0.041",
+      "hold_slack_ns": "-1.293",
+      "added_identity_luts": "0"
+    },
+    {
+      "iteration": "1",
+      "setup_wns_ns": "0.101",
+      "hold_slack_ns": "-0.516",
+      "added_identity_luts": "713"
+    },
+    {
+      "iteration": "2",
+      "setup_wns_ns": "0.273",
+      "hold_slack_ns": "0.031",
+      "added_identity_luts": "9"
+    }
+  ],
+  "setup_tns_ns": 0.0,
+  "setup_failing_endpoints": 0,
+  "hold_total_negative_slack_ns": 0.0,
+  "hold_failing_endpoints": 0,
+  "pulse_width_failing_endpoints": 0,
+  "identity_buffers": 722,
+  "routing_note": "Raw whole-design routing status includes intentional OOC boundary ANTENNAS. Each accepted stub is tied to a declared module port, has at most one logical driver, and reaches its assigned physical node; no unexpected internal route errors are accepted.",
+  "resolved_intermediate_route_timing_warnings": 2,
+  "warning_counts": {
+    "Synth 8-7129": 12,
+    "Vivado 12-2274": 24,
+    "DRC 23-814": 6,
+    "Constraints 18-8777": 1,
+    "Route 35-328": 1,
+    "Timing 38-164": 10,
+    "Route 35-39": 2,
+    "Vivado_Tcl 2-1291": 1,
+    "Vivado_Tcl 2-1511": 1
+  },
+  "warning_examples": {
+    "Timing 38-164": "This design has multiple clocks. Inter clock paths are considered valid unless explicitly excluded by timing constraints such as set_clock_groups or set_false_path.",
+    "DRC 23-814": "Not all possible (connectivity based) DRCs may have been run because this design is seen as Out of Context.",
+    "Vivado_Tcl 2-1511": "-name option used when not in GUI mode. A Methodology tab will not be created.",
+    "Vivado_Tcl 2-1291": "-name option used when not in GUI mode. A DRC tab will not be created, but the results will be stored for use with 'get_drc_violations -name accelerator_drc'",
+    "Route 35-39": "The design did not meet timing requirements. Please run report_timing_summary for detailed reports. Note: this situation might be resolved in the second pass of route design.",
+    "Route 35-328": "Router estimated timing not met.",
+    "Constraints 18-8777": "Unable to split tiles. All required files are not available.",
+    "Vivado 12-2274": "Port s_axi_arprot[0] does not connect to any net. [E:/DSP Accelerator AXI Interface/constraints/dsp_accelerator_ooc.xdc:13]",
+    "Synth 8-7129": "Port s_axi_awprot[2] in module axi_lite_regs is either unconnected or has no load"
+  },
+  "warning_review": {
+    "Synth 8-7129 / Vivado 12-2274": "Ignored AXI PROT bits and reserved lanes have no surviving functional net; they are not missing timed endpoints.",
+    "DRC 23-814": "OOC mode does not run every whole-design connectivity DRC; this is not board or assembled-parent acceptance.",
+    "Timing 38-164": "One hardware and one virtual reference clock are intentionally related and timed; no clock group or path exclusion is added.",
+    "Route 35-328 / Route 35-39": "Intermediate hold repair attempts failed timing; final setup/hold/pulse and all four path-class checks pass.",
+    "Vivado_Tcl 2-1291 / 2-1511": "Named reports in batch mode have no GUI tab; violation objects remain available to the acceptance checks.",
+    "Constraints 18-8777": "Retained unresolved warning during OOC router initialization: Unable to split tiles. All required files are not available. Cause not confirmed. Physical partition-node connectivity and internal routing are audited independently; revalidate the tool/context before parent reuse.",
+    "DRC advisory rules": "CFGBVS-1 lacks board configuration voltage (no board assumed). DPIP-1/DPOP-1/DPOP-2 recommend DSP pipelining; no latency change is made to silence these advisories."
+  },
+  "source_sha256": {
+    "scripts/implement_accelerator.tcl": "FA1D0054376AC66D15773AE1F959AB347B2CC757066CE5003CDA94F002083E80",
+    "scripts/implementation_utils.tcl": "F6B4785E4426109845D3721967DDECAD1C96EA51C29FC07A9B05BE4DC34251A7",
+    "constraints/dsp_accelerator_timing.xdc": "876C607BF52BB6569568773C40A70F0D0EF264955E0A8361DFCE13A1EDFB54C0",
+    "constraints/dsp_accelerator_ooc.xdc": "FBFF036606E1FF5465DB0FCD90564B61F16236448E619F6AAC917F60D69E947F",
+    "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/axis_fifo.v": "EB3DF2AEF88C04F8D0B37398DB90F2A0D2C598DA68EF6A29BB1D4350564F8FCF",
+    "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/fir_core.v": "93AA9942BD842BB4CB4FDFEB7F8200CA6257FC5018EADC0074084846826EC484",
+    "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/dsp_datapath.v": "CC67F0ACDDFEE462D886848739A7D6B524F5F0773DBD9228177C260D41B1D60B",
+    "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/axi_lite_regs.v": "27232C3886D8DCB76B06A41A81B14074B06D5672634EB9A487A8C157A97F0D26",
+    "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/dsp_accelerator.v": "EE38096EF870E4BDA25797BB0BC751E6D38B55834CC895B0D975D201A9667721"
+  },
+  "report_sha256": {
+    "acceptance.tsv": "B94CE05A59F0DFEC2F11DA1F9609796D7D6F0EA7B96A50ECEFAE97D13721E7A4",
+    "inputs.tsv": "383F7C9E06C65E167217DC6B9985311774BDB253CFC591188223DF8E23AB79B4",
+    "path_classes.tsv": "078966D17A807D50CF41B94A71AEBF1882C9B0DE9C2FE7673DCB0DE608BE4CAF",
+    "boundary_ports.tsv": "E96E179B2D4CE43735702C965F97595E9577955E6CD73159C80BFD807EC3291C",
+    "identity_buffers.tsv": "5472F4E04CBF2B78636FF172602C4FD7A17069DAF7FC71CA60B7853828EB86CA",
+    "hold_repairs.tsv": "F4ABCAACB3BFD13971BFF59720F0C6872889FD4E816CCFE8894F30378BA26EE7",
+    "iterations.tsv": "622ECBBD11E070BF27AFDA954782C64694F4156DF4DF36716CB999B4A0CABD0B",
+    "timing_post_route.rpt": "ED57DA32056C2D40617CE31DCED186F8F6551E18A1369962DE77C5802BD4EA5D",
+    "check_timing.rpt": "437F64C3C7BF9EBBDF1F53567A74C91C3049458895779779C6B0CEAD23133E0A",
+    "utilization_post_route.rpt": "9D6CB01A5C58FAFF9446187F2749A2BAE6D65CE1A6A67DF23C3F9471CCED6637",
+    "route_status.rpt": "C6A3B59CA1995ED4178BCBF0E7DEE32C74185E07A048F46D9952E45609A6B901",
+    "drc_post_route.rpt": "87DD014C975625EB5D58F303A4F072613644257F644D53DE4EB9B518C72D5C5E",
+    "methodology.rpt": "8D737AA0221E0E185894F2E0694CC4C046FC547A5E5E7AD7D66A373D06DE3494",
+    "clocks.rpt": "D6833751E14493208FE140F05D7C9FAE44794BB4C41DEE8DBCA19EE04130139B",
+    "clock_interaction.rpt": "FF3D71FFBE6F8EEBF948B777B8537483CC851DEED6863058AAE9A1AE82637766",
+    "exceptions.rpt": "844DF082E52F89B1C14D196AD6325F5A59170F4D35159D2C5A78C428C718AE16",
+    "implemented_constraints.xdc": "7C9F252C987ADE5A119E84AD2CEE8E72F7BCFA619F48E8FC83611B998B1FDFA5"
+  },
+  "verification_source_sha256": {
+    "scripts/verify_implementation.py": "937F86470CDD305AB66BE36027D09B38FABA9C3741E6AAE48272EC5600904346",
+    "scripts/run_implementation.ps1": "6BED65666C0BBD51909934B99664AE6AD021B69FE8F41650F8FCF0ADAB4C36EA"
+  },
+  "routed_checkpoint": "build\\accelerator_impl\\dsp_accelerator_routed.dcp",
+  "routed_checkpoint_sha256": "B50F9F5D670068F9532853B76C84436369E70AA4BE2CFC2FD3263F4AFF70986B"
+}

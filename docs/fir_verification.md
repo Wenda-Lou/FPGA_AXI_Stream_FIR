@@ -6,7 +6,8 @@ independent Python comparison and default-configuration synthesis are complete.
 Buffered FIFO/FIR integration is verified separately in the
 [datapath report](datapath.md). The [register bank](axi_lite_regs.md) is verified
 separately; full AXI-controlled streaming integration is verified in the
-[complete accelerator](accelerator.md). Physical implementation remains pending.
+[complete accelerator](accelerator.md). Module-level physical results under
+the complete top's declared context are in [implementation](implementation.md).
 
 ## Files and Reproduction
 
@@ -185,8 +186,10 @@ Baseline and optimized RTL both passed the same 38-run suite. Retained evidence:
 These are post-synthesis internal timing estimates. The timing report lists
 148 input and 20 output bits without external delay constraints, and emits
 `Timing 38-242` because the standalone clock-buffer location is unspecified.
-Placement/routing, top-level I/O timing and board behavior remain integration
-work; no measured maximum clock frequency is claimed.
+These standalone estimates do not establish physical implementation or board
+behavior, and no measured maximum clock frequency is claimed. The separate
+[full-top physical comparison](optimization_comparison.md) now measures both
+sum architectures after routing with complete interface constraints.
 
 ## Vivado GUI
 
