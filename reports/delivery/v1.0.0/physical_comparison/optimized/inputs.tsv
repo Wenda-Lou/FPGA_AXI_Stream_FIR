@@ -1,0 +1,10 @@
+path	size	mtime
+scripts/implement_accelerator.tcl	12093	1794817779
+scripts/implementation_utils.tcl	6313	1794817779
+constraints/dsp_accelerator_timing.xdc	2000	1794817779
+constraints/dsp_accelerator_ooc.xdc	1004	1794817779
+fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/axis_fifo.v	2306	1794817779
+fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/fir_core.v	13114	1794817779
+fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/dsp_datapath.v	4734	1794817779
+fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/axi_lite_regs.v	9257	1794817779
+fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/dsp_accelerator.v	4853	1794817779

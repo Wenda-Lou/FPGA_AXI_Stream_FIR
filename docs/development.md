@@ -14,8 +14,21 @@
 - Module-level interface constraints and placement/routing: passed at 100 MHz under the published OOC context; setup +0.273 ns, hold +0.031 ns, no missing timing constraints. See [physical results and retained warnings](implementation.md).
 - Controlled full-top baseline/optimized comparison: complete. Setup WNS improves from -5.595 to +0.273 ns; both variants pass the same 47-run suite with identical accepted-event traces. See [comparison and area tradeoff](optimization_comparison.md).
 - Different-parent/board acceptance is outside the current scope.
+- Delivery acceptance: a clean Git export passed 27 Python tests and 285 HDL simulations, including both physical comparison builds and waveform capture. See [frozen v1.0.0 evidence](../reports/delivery/v1.0.0/README.md).
 
-Final presentation materials and repository delivery remain to be completed.
+The results-first README, architecture SVG, real-VCD waveform examples and
+clean-export acceptance evidence complete the first-version handoff.
+
+## Run Complete Delivery Acceptance
+
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File ./scripts/run_release.ps1 -VivadoBin 'E:/2026.1/Vivado/bin' -Python 'H:/2025.1/tps/win64/python-3.13.0/python.exe'
+```
+
+This runs the default reference/unit/integrated/comparison/waveform phases and
+publishes new evidence under `reports/release/` only after verification.
+[Delivery notes](delivery.md) describe dependencies, the 285-run budget,
+byte-preserving Git attributes and the separate immutable acceptance archive.
 
 ## Run the Reference Flow
 

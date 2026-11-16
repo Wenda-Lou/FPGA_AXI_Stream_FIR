@@ -8,6 +8,11 @@ The default eight-tap build sustains one output per clock with four-clock
 external latency. Its routed OOC module meets the declared 100 MHz interface
 and parent-context constraints. No physical board is required for this project.
 
+**v1.0.0 delivery:** a clean Git export passed **27 Python tests and 285 HDL
+simulations**, including both physical builds. See the
+[frozen acceptance report](reports/delivery/v1.0.0/release/summary.json) and
+[delivery evidence index](reports/delivery/v1.0.0/README.md).
+
 ![Accelerator architecture](docs/assets/architecture.svg)
 
 ## Measured results
@@ -52,8 +57,8 @@ See the [physical comparison](docs/optimization_comparison.md),
   valid and ready are both high on a rising edge. No packet sidebands or CDC.
 - Backpressure preserves unconsumed payloads; sample history advances only for
   accepted samples. Input gaps do not insert zero samples or flush a FIR tail.
-- Coefficients are runtime registers writable only while disabled and globally
-  idle. Disable stops new ingress while accepted data drains. Soft clear
+- Coefficient writes and soft clear require disabled and globally idle state.
+  Disable stops new ingress while accepted data drains. Soft clear
   preserves coefficients and clears history, counters and sticky clipping.
 - One clock domain and an active-low **synchronous** reset. Hardware reset
   discards pending transactions and resets coefficients and processing state.

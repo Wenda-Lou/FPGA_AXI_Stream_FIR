@@ -1,0 +1,63 @@
+{
+  "status": "passed",
+  "scope": "Supplemental behavioral simulation, default configuration, SEED=1 SAMPLES=1000; not part of the 47-run total",
+  "sampling": "Values immediately before rising edges, matching bench handshake acceptance; not an analog timing plot",
+  "source_sha256": {
+    "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/axi_lite_regs.v": "27232C3886D8DCB76B06A41A81B14074B06D5672634EB9A487A8C157A97F0D26",
+    "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/axis_fifo.v": "EB3DF2AEF88C04F8D0B37398DB90F2A0D2C598DA68EF6A29BB1D4350564F8FCF",
+    "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/dsp_accelerator.v": "EE38096EF870E4BDA25797BB0BC751E6D38B55834CC895B0D975D201A9667721",
+    "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/dsp_datapath.v": "CC67F0ACDDFEE462D886848739A7D6B524F5F0773DBD9228177C260D41B1D60B",
+    "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/fir_core.v": "93AA9942BD842BB4CB4FDFEB7F8200CA6257FC5018EADC0074084846826EC484",
+    "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sim_1/tb_dsp_accelerator.sv": "70E8FB0649BE7EB0C9473D71C61E2195421A14532073B3518073FC296E794202",
+    "scripts/capture_waveforms.tcl": "C298F681035429056304B97CA33435E87A46595ADFF2DFE6DB4682B8EAA1CD70",
+    "scripts/run_waveforms.ps1": "78053C19D65220194B21140A4C49ADC63C0B1F9D313A80F30455E3EB2D58A7D2",
+    "scripts/render_waveforms.py": "E81004CF17C01390D3C860E0F47EC038D6B7F32EAEBC8F036A818A8A2F990C0E"
+  },
+  "vcd_sha256": "64BC759D2B8B223C1D8EEF25F6F48D00C9ED714F852AA6C7AE17C3F186EE1E70",
+  "events_sha256": "8C59061A925DEAD6B8FC7562FFF000AF0ADA52A8CA45351D9C7E39951F7ACDC2",
+  "python_comparison": {
+    "status": "passed",
+    "inputs": 2282,
+    "outputs": 2180,
+    "reset_discarded": 102,
+    "reset_edges": 9,
+    "history_clears": 118,
+    "saturation_checks": 2180,
+    "config": {
+      "taps": 8,
+      "input_width": 16,
+      "coeff_width": 16,
+      "output_width": 16,
+      "input_frac": 15,
+      "coeff_frac": 15,
+      "output_frac": 15
+    }
+  },
+  "captured_edges": 5585,
+  "clock_period_ns": 10,
+  "windows": {
+    "continuous": {
+      "first_edge_ns": 10745.0,
+      "last_edge_ns": 10935.0,
+      "samples": 20
+    },
+    "backpressure": {
+      "first_edge_ns": 24945.0,
+      "last_edge_ns": 25075.0,
+      "samples": 14
+    },
+    "axi_enable": {
+      "first_edge_ns": 995.0,
+      "last_edge_ns": 1125.0,
+      "samples": 14
+    }
+  },
+  "artifact_sha256": {
+    "docs/assets/waveform_continuous.svg": "2EB75F3A37A140B586357E3A9019CEEFD88647044990709B7E7DE51A67CD2064",
+    "docs/assets/waveform_backpressure.svg": "C1BE89269307AF5AA59E39AF9FEF537F70E6FA9756627A0CEDC0C2A098AF4B78",
+    "docs/assets/waveform_axi_enable.svg": "2D003A30160A34598F2F1765871F1D2DEACA66644071E4B088AE4C33FBC83C4F",
+    "reports/waveforms/sampled_windows.json": "7CA2ECAF0F6EC4C1135D013F842680DFADEB1CF0F992DD247A40260708EB8D57",
+    "reports/waveforms/simulation_log.txt": "23EFEDB6E89B71A3B2CBC016B82891DF4092EADE919112A565C9985116EE07C9",
+    "reports/waveforms/python_comparison.json": "32FB7538A93B3E3D60AC664E96631E1603EF184DB9975BB6E73EA40E58CFD9E6"
+  }
+}

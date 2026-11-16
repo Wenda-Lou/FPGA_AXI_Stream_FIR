@@ -1,0 +1,49 @@
+#-----------------------------------------------------------
+# xsim v2026.1 (64-bit)
+# SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+# IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+# SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+# Start of session at: Mon Nov 16 03:40:07 2026
+# Process ID         : 31752
+# Current directory  : E:/DSP Accelerator AXI Interface/build/release_validation/candidate_b3869e1d00/build/waveforms
+# Command line       : xsim.exe -log waveform.log -mode tcl -source {xsim.dir/waveform_snapshot/xsim_script.tcl}
+# Log file           : E:/DSP Accelerator AXI Interface/build/release_validation/candidate_b3869e1d00/build/waveforms/waveform.log
+# Journal file       : E:/DSP Accelerator AXI Interface/build/release_validation/candidate_b3869e1d00/build/waveforms\xsim.jou
+# Running On         : 550W
+# Platform           : Windows 11
+# Operating System   : 26300
+# Processor Detail   : AMD Ryzen 7 9700X 8-Core Processor             
+# CPU Frequency      : 3800 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 33454 MB
+# Swap memory        : 16642 MB
+# Total Virtual      : 50097 MB
+# Available Virtual  : 29256 MB
+#-----------------------------------------------------------
+source xsim.dir/waveform_snapshot/xsim_script.tcl
+# xsim {waveform_snapshot} -testplusarg SEED=1 -testplusarg SAMPLES=1000 -testplusarg EVENTS=waveform.events.txt -autoloadwcfg -tclbatch {capture_waveforms.tcl}
+Time resolution is 1 ps
+source capture_waveforms.tcl
+## open_vcd accelerator.vcd
+## foreach signal {
+##     clk resetn check_latency enable history_clear
+##     s_axis_tdata s_axis_tvalid s_axis_tready
+##     m_axis_tdata m_axis_tvalid m_axis_tready
+##     s_axi_awaddr s_axi_awvalid s_axi_awready
+##     s_axi_wdata s_axi_wstrb s_axi_wvalid s_axi_wready
+##     s_axi_bresp s_axi_bvalid s_axi_bready
+## } {
+##     set object [get_objects /tb_dsp_accelerator/$signal]
+##     if {[llength $object] != 1} { error "Missing waveform signal: $signal" }
+##     log_vcd $object
+## }
+## run all
+PASS directed: AXI-programmed arithmetic and continuous streaming
+PASS: dsp_accelerator taps=8 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=16 output_depth=16 seed=1 random_samples=1000 writes=2282 reads=2180 reset_discarded=102 max_streak=1050 max_pending=34 history_clears=118 disabled_reads=148 disable_edge_inputs=9 saturation_events=293
+AXI: commits=246 write_responses=245 read_responses=319 aw_first=77 w_first=50 simultaneous=119 errors=41 b_stalls=444 r_stalls=1444 aw_captures=247 w_captures=247 ar_captures=320 reset_aw=1 reset_w=1 reset_b=1 reset_r=1 soft_clears=1 coefficient_writes=117
+COVERAGE: positive_clips=151 negative_clips=142 input_full=1078 output_full=1551 input_stalls=1320 output_stalls=1723 resets_with_data=3
+$finish called at time : 55850 ns : File "E:/DSP Accelerator AXI Interface/build/release_validation/candidate_b3869e1d00/fpga_streaming_dsp/fpga_streaming_dsp.srcs/sim_1/tb_dsp_accelerator.sv" Line 755
+## close_vcd
+## quit
+INFO: [Common 17-206] Exiting xsim at Mon Nov 16 03:40:09 2026...

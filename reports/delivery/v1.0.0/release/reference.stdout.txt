@@ -1,0 +1,35 @@
+3.13.0 (main, Nov 19 2024, 22:38:08) [MSC v.1929 64 bit (AMD64)]
+{
+  "config": {
+    "taps": 8,
+    "input_width": 16,
+    "coeff_width": 16,
+    "output_width": 16,
+    "input_frac": 15,
+    "coeff_frac": 15,
+    "output_frac": 15
+  },
+  "seed": 1,
+  "scenarios": {
+    "impulse": {
+      "samples": 16,
+      "saturations": 0
+    },
+    "extremes": {
+      "samples": 56,
+      "saturations": 0
+    },
+    "positive_saturation": {
+      "samples": 32,
+      "saturations": 31
+    },
+    "negative_saturation": {
+      "samples": 32,
+      "saturations": 31
+    },
+    "random": {
+      "samples": 10000,
+      "saturations": 0
+    }
+  }
+}

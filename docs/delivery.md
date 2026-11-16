@@ -5,6 +5,13 @@ environment, routed module acceptance and controlled physical optimization
 comparison. Physical-board validation and acceptance in a different parent
 design are outside the original first-version scope.
 
+The clean export of source commit `31d1718` passed **27 Python tests and 285
+HDL simulations** on 2026-11-16. Both physical builds reproduced the recorded
+comparison: baseline setup -5.595 ns; optimized setup +0.273 ns and hold
++0.031 ns. See the [frozen v1.0.0 evidence](../reports/delivery/v1.0.0/README.md),
+[complete acceptance](../reports/delivery/v1.0.0/release/summary.json) and
+[fresh physical comparison](../reports/delivery/v1.0.0/physical_comparison/summary.json).
+
 ## Complete Acceptance Entry Point
 
 From a checkout/export with no generated `build/` directory:
@@ -56,10 +63,13 @@ a second workstation or a different tool installation.
 
 The resulting `reports/release/summary.json` records the executed source hashes,
 285 simulations, physical margins, phase exit codes and the clean-export tree.
-The main checkout retains the exported run's release evidence under
-`reports/release/`; reproduction commands generate independent evidence for a
-new run. The final documentation/report additions can follow the tested source
-tree; source hashes identify the exact code that was exercised.
+The main checkout retains the exported run under the immutable
+`reports/delivery/v1.0.0/` archive, including phase logs, unit results, both
+physical builds and their source snapshots, and a raw VCD/event trace. New
+reproduction runs publish independently under `reports/release/` and the
+documented comparison/waveform output folders. The final documentation/report
+commit follows the tested source commit; source hashes identify the exact code
+that was exercised. The archive's `manifest.json` hashes every retained file.
 
 Sources and reports contain byte-level hashes. `.gitattributes` preserves their
 exact existing bytes, including LF/CRLF endings, so Git cannot silently alter

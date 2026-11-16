@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "inputs": 2282,
+  "outputs": 2180,
+  "reset_discarded": 102,
+  "reset_edges": 9,
+  "history_clears": 118,
+  "saturation_checks": 2180,
+  "config": {
+    "taps": 8,
+    "input_width": 16,
+    "coeff_width": 16,
+    "output_width": 16,
+    "input_frac": 15,
+    "coeff_frac": 15,
+    "output_frac": 15
+  }
+}
+PASS: real-VCD continuous/backpressure/AXI-enable waveforms; four-clock latency and stable stalled payload checked

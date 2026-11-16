@@ -1,0 +1,9 @@
+class	check	slack_ns	startpoint	endpoint
+register_to_register	max	-5.595	datapath/core/scaled0/CLK	datapath/core/out_data_reg[10]/D
+register_to_register	min	0.034	datapath/output_fifo/wr_ptr_reg[1]/C	datapath/output_fifo/mem_reg_0_15_0_5/RAMA/WADR1
+input_to_register	max	-3.206	s_axis_tdata[10]	datapath/input_fifo/mem_reg_0_15_6_11/RAMC/I
+input_to_register	min	1.260	s_axi_araddr[5]	registers/r_response_reg[1]/D
+register_to_output	max	3.893	registers/b_valid_reg/C	s_axi_bvalid
+register_to_output	min	0.433	registers/r_data_reg[29]/C	s_axi_rdata[29]
+input_to_output	max	-0.748	resetn	s_axi_awready
+input_to_output	min	2.541	resetn	s_axi_arready

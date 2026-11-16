@@ -1,0 +1,201 @@
+{
+  "status": "passed",
+  "recorded_at_utc": "2026-11-16T08:40:09.820534+00:00",
+  "scope": "Complete software/RTL/module-context acceptance; not board, assembled-parent or gate-level timing acceptance",
+  "python_tests": 27,
+  "suites": {
+    "fifo": {
+      "status": "passed",
+      "runs": 32,
+      "results_sha256": "2887AFC31AAD7E176C3C2503AFA45AA30872B349E0D4C2A5A4EC433DF9A30ADD"
+    },
+    "fir": {
+      "status": "passed",
+      "runs": 38,
+      "results_sha256": "09E4A8FCC435EC9140445D42115C2A4F4C9963C4D7E7919FA365023844B35996"
+    },
+    "datapath": {
+      "status": "passed",
+      "runs": 41,
+      "results_sha256": "DBE1BDCE1D0630690C0CDA156DCA62EA249B5ADA03B67E663E73B5F3328F8561"
+    },
+    "axi_regs": {
+      "status": "passed",
+      "runs": 32,
+      "results_sha256": "5ED85F0B3691DC979355B0BC9E633A45892CEA606AAA0A8A4BAFFE5633862FFF"
+    },
+    "accelerator": {
+      "status": "passed",
+      "runs": 47,
+      "results_sha256": "E148A7AD048147582BBEE07274DA5817C5C56384D77908087330CA20A0DE2510"
+    }
+  },
+  "canonical_hdl_runs": 190,
+  "comparison_hdl_runs": 94,
+  "supplemental_waveform_runs": 1,
+  "total_hdl_runs": 285,
+  "integrated_outputs_matched": 281842,
+  "four_clock_top_latency": true,
+  "minimum_continuous_outputs": 1050,
+  "physical": {
+    "baseline": {
+      "implementation_status": "fails_100mhz_setup",
+      "setup_wns_ns": -5.595,
+      "hold_slack_ns": 0.034,
+      "luts": 724,
+      "flip_flops": 383,
+      "dsps": 8
+    },
+    "optimized": {
+      "implementation_status": "passes_100mhz_module_context",
+      "setup_wns_ns": 0.273,
+      "hold_slack_ns": 0.031,
+      "luts": 1043,
+      "flip_flops": 463,
+      "dsps": 8
+    }
+  },
+  "setup_slack_improvement_ns": 5.868,
+  "source_sha256": {
+    ".gitattributes": "E9D56D5E45BBA23A0495F45972776D3053841E4E670D8A7D709FAE9CE13FFF3F",
+    "constraints/dsp_accelerator_ooc.xdc": "FBFF036606E1FF5465DB0FCD90564B61F16236448E619F6AAC917F60D69E947F",
+    "constraints/dsp_accelerator_timing.xdc": "876C607BF52BB6569568773C40A70F0D0EF264955E0A8361DFCE13A1EDFB54C0",
+    "constraints/fir_core_ooc.xdc": "94BFCA8D4A73105392F88644F2994AF97DE4B352DFC64960EEEE304A4AC3D589",
+    "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sim_1/tb_axi_lite_regs.sv": "65A5715FB78141D135FBEAB51A2950E878C0800ACA73D7294947AD9FAF7EBF34",
+    "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sim_1/tb_axis_fifo.sv": "A2D33AE6CE80152C2A28B4EC8872B3EED7151B849032A1E0F4F29A3893FA8656",
+    "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sim_1/tb_dsp_accelerator.sv": "70E8FB0649BE7EB0C9473D71C61E2195421A14532073B3518073FC296E794202",
+    "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sim_1/tb_dsp_datapath.sv": "65551E14DFA6FF63B7EA790C37F783CB3BDDD46B84C5DB0068EA42E8EA5C8AB0",
+    "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sim_1/tb_fir_core.sv": "F49BFE8280651A0B96688BC42A555A539455282C845E8EB36C35E96998BF8A9A",
+    "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/axi_lite_regs.v": "27232C3886D8DCB76B06A41A81B14074B06D5672634EB9A487A8C157A97F0D26",
+    "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/axis_fifo.v": "EB3DF2AEF88C04F8D0B37398DB90F2A0D2C598DA68EF6A29BB1D4350564F8FCF",
+    "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/dsp_accelerator.v": "EE38096EF870E4BDA25797BB0BC751E6D38B55834CC895B0D975D201A9667721",
+    "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/dsp_datapath.v": "CC67F0ACDDFEE462D886848739A7D6B524F5F0773DBD9228177C260D41B1D60B",
+    "fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/fir_core.v": "93AA9942BD842BB4CB4FDFEB7F8200CA6257FC5018EADC0074084846826EC484",
+    "model/__init__.py": "B511630D5CDA65CAA99216FBF0C41954D910B6224C3D3C6AA4071A70B57E41DE",
+    "model/fir.py": "CE9E5153F68F7DD0E3FAF3C4DEC121142F00FA9CB5EA456D160C884A7E98CFE7",
+    "scripts/capture_waveforms.tcl": "C298F681035429056304B97CA33435E87A46595ADFF2DFE6DB4682B8EAA1CD70",
+    "scripts/compare_fir_events.py": "1D47CB164E1698DE4DE67FA598C6163D83DB93019A64EC7648F9BE45C31316AA",
+    "scripts/configure_accelerator_project.tcl": "9031AA6D787FDE2CEEDAE9ED37707E17174B2AADB247E38CB8D66FE5FE38D1D9",
+    "scripts/configure_axi_regs_project.tcl": "B8528D6C689E55F4F07C2FC340B757679BE80209029D35A43D2A2E1512B4DE2A",
+    "scripts/configure_datapath_project.tcl": "D07087AE8963BBA383FEC8AED0B0CB121559C084F7F9ED4225A2FC12D2543AE7",
+    "scripts/configure_fifo_project.tcl": "1E5FEA2BE6CE3FB9CC70EB11C79A4C57E641673E3BBBB92FCCD817D1F70521A3",
+    "scripts/configure_fir_project.tcl": "6F0FB80E1F25EAD6F3899CD56170FB26F359A170A84732100E216EE30E5C92AF",
+    "scripts/generate_vectors.py": "4718078FA662C7D13A1851A2B3CB06EF5018D07451F1CBF2047740536866F7B8",
+    "scripts/implement_accelerator.tcl": "FA1D0054376AC66D15773AE1F959AB347B2CC757066CE5003CDA94F002083E80",
+    "scripts/implementation_utils.tcl": "F6B4785E4426109845D3721967DDECAD1C96EA51C29FC07A9B05BE4DC34251A7",
+    "scripts/prepare_comparison.py": "0B4F851D1B678362E9CE5EE6B1AEA67F3FB6B5C591BAFB970D0D58A09755C6A3",
+    "scripts/render_waveforms.py": "E81004CF17C01390D3C860E0F47EC038D6B7F32EAEBC8F036A818A8A2F990C0E",
+    "scripts/run_accelerator.ps1": "820FD100D3EA87FEFF762629D2BBA07F5DA11C87450CBE83DDC094F2B068F498",
+    "scripts/run_axi_regs.ps1": "B47B3D3E5FDEE608F62EF08A6643DCA55672A0C8AF98ED9280FE87AB45B4190A",
+    "scripts/run_comparison.ps1": "FD86B829E0028CCD64C02CC0FBBE0904D8856A1ED3F3C0979006BDC88674E788",
+    "scripts/run_datapath.ps1": "411A715E28E295D33D23BB8EBF2D0E39501BECCD290F36167D845B4AEA7DC8EF",
+    "scripts/run_fifo.ps1": "7C1B7F8383878A27163086012BF40449AED34DCC55EF7536042BE8ADA49525C5",
+    "scripts/run_fir.ps1": "4FC9D72F6CD214882A8C2433240CACAD0F484B95CDA3A9DBB8CD15DBDF57C1A0",
+    "scripts/run_implementation.ps1": "6BED65666C0BBD51909934B99664AE6AD021B69FE8F41650F8FCF0ADAB4C36EA",
+    "scripts/run_reference.ps1": "CE0141D7C5E865BCD6418E582E9268A77E84FDC16952F124D4E07ABA8657F7D4",
+    "scripts/run_release.ps1": "EDACBFC86A614E2467F4F48A45F84E62764A7CAB622E9FCDAFC7CACB6F0E4844",
+    "scripts/run_waveforms.ps1": "78053C19D65220194B21140A4C49ADC63C0B1F9D313A80F30455E3EB2D58A7D2",
+    "scripts/synth_accelerator.tcl": "EDD68927AC54898C1BD5BD15DF293C4F1D263FC55FA41DE9E20FCF8D96DE4F4B",
+    "scripts/synth_axi_regs.tcl": "BC1BAE28AF75938F85F6DBD0F864A38CD18561F0BC782F708750AE348A2A9B5C",
+    "scripts/synth_datapath.tcl": "8ED99C7188E5126E3698EBEC775C84533F5654FC15E92CAE13310BD126FCB4F0",
+    "scripts/synth_fifo.tcl": "B9672B6212A74C27821749460770392442499604CCAFB92312BAA5D696239C30",
+    "scripts/synth_fir.tcl": "AC9CA4B9360E2ACE4379297809C38002CF4E95D99DC4DAAC1ECBD4B10AE6C6F8",
+    "scripts/verify_comparison.py": "4DB2DC4CDD529741F4805037EA9F5BCD0351A7CBAF19CD7F21CF37B3F37F3892",
+    "scripts/verify_implementation.py": "937F86470CDD305AB66BE36027D09B38FABA9C3741E6AAE48272EC5600904346",
+    "scripts/verify_release.py": "A631E9D4A004451E48C1F4D011703528CC81FE22EE1F42ADA21EBF92162BFC00",
+    "tests/__init__.py": "6CFB089D44D441E0E8872BDFB7AD9CC57C5B56B0030EEA10DD34F6EAACE3576E",
+    "tests/test_fir_events.py": "C148BDE38B858F9F1CAD7373E39A708ACBBC4E27B816541CFD9C275136E42EA1",
+    "tests/test_fir_model.py": "E6283CAA35D62733156EE577A1725E40DB9F1AB3AA521F27F0FFEB3E78CD7C73",
+    "tests/test_vectors.py": "3C40D60238DA1B282A18FF86C0D9A85C50AB908E9AA7F0461A4B29C4D2DA4DE4"
+  },
+  "steps": [
+    {
+      "name": "reference",
+      "exit_code": 0,
+      "started_at_utc": "2026-11-16T08:22:03.6238061+00:00",
+      "duration_seconds": 2.059
+    },
+    {
+      "name": "fifo",
+      "exit_code": 0,
+      "started_at_utc": "2026-11-16T08:22:05.6922151+00:00",
+      "duration_seconds": 71.55
+    },
+    {
+      "name": "fir",
+      "exit_code": 0,
+      "started_at_utc": "2026-11-16T08:23:17.2420579+00:00",
+      "duration_seconds": 91.565
+    },
+    {
+      "name": "datapath",
+      "exit_code": 0,
+      "started_at_utc": "2026-11-16T08:24:48.8071850+00:00",
+      "duration_seconds": 99.954
+    },
+    {
+      "name": "axi_regs",
+      "exit_code": 0,
+      "started_at_utc": "2026-11-16T08:26:28.7615793+00:00",
+      "duration_seconds": 76.715
+    },
+    {
+      "name": "accelerator",
+      "exit_code": 0,
+      "started_at_utc": "2026-11-16T08:27:45.4764259+00:00",
+      "duration_seconds": 114.053
+    },
+    {
+      "name": "comparison",
+      "exit_code": 0,
+      "started_at_utc": "2026-11-16T08:29:39.5292218+00:00",
+      "duration_seconds": 626.099
+    },
+    {
+      "name": "waveforms",
+      "exit_code": 0,
+      "started_at_utc": "2026-11-16T08:40:05.6285960+00:00",
+      "duration_seconds": 4.029
+    }
+  ],
+  "limitations": [
+    "No frequency sweep: 100 MHz pass/fail and slack only, not Fmax.",
+    "No gate-level timing simulation; RTL regression and identity-LUT audits support functional preservation.",
+    "Adaptive hold repairs follow the same policy but can use different LUT counts and iteration counts; costs are reported.",
+    "Raw whole-design routing retains intentional parent-boundary ANTENNAS; all 115 functional physical anchors and internal routes are audited.",
+    "Constraints 18-8777, if present, remains an unresolved OOC tool/context warning; parent reuse requires revalidation."
+  ],
+  "clean_export": {
+    "git_tree": "b3869e1d00e805d7d379c498c34a0b8b89cf62dc",
+    "base_commit": "1dc646db6a81f9f03675b3ff70504ee5f5da265b",
+    "build_directory_present_before_run": false,
+    "git_directory_present": false,
+    "executed_source_files": 50,
+    "source_bytes_match_main_checkout": true
+  },
+  "artifact_sha256": {
+    "accelerator.stderr.txt": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "accelerator.stdout.txt": "C8BF70F586DC226BFC50B27ED8C4FFE78DFB52D2953569C6634A3F36BE55D1E3",
+    "accelerator_results.json": "E148A7AD048147582BBEE07274DA5817C5C56384D77908087330CA20A0DE2510",
+    "axi_regs.stderr.txt": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "axi_regs.stdout.txt": "5142867DE60507CC8D9AED1E9036CFB972AAB2B121F07533A570604CF1CD891F",
+    "axi_regs_results.json": "5ED85F0B3691DC979355B0BC9E633A45892CEA606AAA0A8A4BAFFE5633862FFF",
+    "comparison.stderr.txt": "0D7F67D061D119383E7A48CAC5719F61F581E9148DAFA5C28BAEB42B8956CDF3",
+    "comparison.stdout.txt": "7B31EE8593FC29919C2EB5A59CB24FD23017234E2A669BEEA16E343E8ABC935E",
+    "datapath.stderr.txt": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "datapath.stdout.txt": "89EAFD8A1AA1BB66DCE474D189D97FEED5254DBC279E733A5E1A865E4B2DBE27",
+    "datapath_results.json": "DBE1BDCE1D0630690C0CDA156DCA62EA249B5ADA03B67E663E73B5F3328F8561",
+    "fifo.stderr.txt": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "fifo.stdout.txt": "C6F1D3C3E93BF30107EDB0DD58EF49FDFECCC5D417EB5A7B583FF0742CA611E9",
+    "fifo_results.json": "2887AFC31AAD7E176C3C2503AFA45AA30872B349E0D4C2A5A4EC433DF9A30ADD",
+    "fir.stderr.txt": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "fir.stdout.txt": "815D9E72CB8202F48F21518954B66098423496178B1A94EE039E8545D38E0D0D",
+    "fir_results.json": "09E4A8FCC435EC9140445D42115C2A4F4C9963C4D7E7919FA365023844B35996",
+    "inputs.json": "AF5C8510F141AE321B3810CE67FBF1AFD28407DC0E8C853806320FBDEF0E0D80",
+    "reference.stderr.txt": "E3234446AAA626665FC731E18E9B9629841C40BA99B5E14B36AFB37085C2ED09",
+    "reference.stdout.txt": "EA784970AED0F90D9A3DB161671A359BBB8CE4B4B633ED004DCA3C7256624BD7",
+    "steps.json": "925C0E2BC8D34AC012EB7F386EC72EF44BCB8DDCCC728FC2F6B7AFB8B917A0B6",
+    "waveforms.stderr.txt": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+    "waveforms.stdout.txt": "37990B7926FDED8AFA868716ACDFC3A2130549EB4D3E09203188E6945ACF3556"
+  }
+}

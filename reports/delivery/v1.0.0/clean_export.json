@@ -1,0 +1,8 @@
+{
+  "git_tree": "b3869e1d00e805d7d379c498c34a0b8b89cf62dc",
+  "base_commit": "1dc646db6a81f9f03675b3ff70504ee5f5da265b",
+  "build_directory_present_before_run": false,
+  "git_directory_present": false,
+  "executed_source_files": 50,
+  "source_bytes_match_main_checkout": true
+}

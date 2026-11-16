@@ -46,6 +46,10 @@ The runner compiles into `build/waveforms/`, leaving the regular regression
 snapshots and RTL untouched. The generated `accelerator.vcd`, simulator database,
 accepted-event trace and logs stay there. Open the VCD in a compatible waveform
 viewer, or use Vivado's behavioral simulation to inspect the same signals.
+The immutable delivery archive also retains the clean run's
+[raw VCD](../reports/delivery/v1.0.0/waveforms/accelerator.vcd) and
+[accepted-event trace](../reports/delivery/v1.0.0/waveforms/waveform.events.txt),
+so the recorded example can be inspected without rerunning Vivado.
 
 The capture follows AMD's documented `open_vcd`, `log_vcd` and `close_vcd`
 workflow; see [UG900 VCD guidance](https://docs.amd.com/r/2024.1-English/ug900-vivado-logic-simulation/Using-the-Value-Change-Dump-Feature)

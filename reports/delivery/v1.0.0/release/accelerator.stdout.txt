@@ -1,0 +1,297 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/DSP Accelerator AXI Interface/build/release_validation/candidate_b3869e1d00/fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/axis_fifo.v" into library work
+INFO: [VRFC 10-311] analyzing module axis_fifo
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/DSP Accelerator AXI Interface/build/release_validation/candidate_b3869e1d00/fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/fir_core.v" into library work
+INFO: [VRFC 10-311] analyzing module fir_core
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/DSP Accelerator AXI Interface/build/release_validation/candidate_b3869e1d00/fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/dsp_datapath.v" into library work
+INFO: [VRFC 10-311] analyzing module dsp_datapath
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/DSP Accelerator AXI Interface/build/release_validation/candidate_b3869e1d00/fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/axi_lite_regs.v" into library work
+INFO: [VRFC 10-311] analyzing module axi_lite_regs
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/DSP Accelerator AXI Interface/build/release_validation/candidate_b3869e1d00/fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/dsp_accelerator.v" into library work
+INFO: [VRFC 10-311] analyzing module dsp_accelerator
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/DSP Accelerator AXI Interface/build/release_validation/candidate_b3869e1d00/fpga_streaming_dsp/fpga_streaming_dsp.srcs/sim_1/tb_dsp_accelerator.sv" into library work
+INFO: [VRFC 10-311] analyzing module tb_dsp_accelerator
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe work.tb_dsp_accelerator -f accelerator_cfg0.elaborate.txt 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.axi_lite_regs_default
+Compiling module work.axis_fifo_default
+Compiling module work.fir_core(OUTPUT_WIDTH=16,INPUT_F...
+Compiling module work.axis_fifo(DATA_WIDTH=17)
+Compiling module work.dsp_datapath(OUTPUT_WIDTH=16,INP...
+Compiling module work.dsp_accelerator(OUTPUT_WIDTH=16,...
+Compiling module work.tb_dsp_accelerator(OUTPUT_WIDTH=...
+Built simulation snapshot accelerator_cfg0
+PASS: dsp_accelerator taps=8 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=16 output_depth=16 seed=1 random_samples=10000 writes=11282 reads=11180 reset_discarded=102 max_streak=1050 max_pending=34 history_clears=118 disabled_reads=1403 disable_edge_inputs=77 saturation_events=2343
+PASS: Python data/saturation comparison seed=1 outputs=11180
+PASS: dsp_accelerator taps=8 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=16 output_depth=16 seed=2 random_samples=10000 writes=11282 reads=11180 reset_discarded=102 max_streak=1050 max_pending=34 history_clears=118 disabled_reads=1281 disable_edge_inputs=57 saturation_events=3963
+PASS: Python data/saturation comparison seed=2 outputs=11180
+PASS: dsp_accelerator taps=8 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=16 output_depth=16 seed=3 random_samples=10000 writes=11282 reads=11180 reset_discarded=102 max_streak=1050 max_pending=34 history_clears=118 disabled_reads=1326 disable_edge_inputs=73 saturation_events=4037
+PASS: Python data/saturation comparison seed=3 outputs=11180
+PASS: dsp_accelerator taps=8 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=16 output_depth=16 seed=4 random_samples=10000 writes=11282 reads=11180 reset_discarded=102 max_streak=1050 max_pending=34 history_clears=118 disabled_reads=1200 disable_edge_inputs=54 saturation_events=4019
+PASS: Python data/saturation comparison seed=4 outputs=11180
+PASS: dsp_accelerator taps=8 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=16 output_depth=16 seed=5 random_samples=10000 writes=11282 reads=11180 reset_discarded=102 max_streak=1050 max_pending=34 history_clears=118 disabled_reads=1255 disable_edge_inputs=58 saturation_events=2289
+PASS: Python data/saturation comparison seed=5 outputs=11180
+PASS: dsp_accelerator taps=8 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=16 output_depth=16 seed=6 random_samples=10000 writes=11282 reads=11180 reset_discarded=102 max_streak=1050 max_pending=34 history_clears=118 disabled_reads=1272 disable_edge_inputs=62 saturation_events=3571
+PASS: Python data/saturation comparison seed=6 outputs=11180
+PASS: dsp_accelerator taps=8 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=16 output_depth=16 seed=7 random_samples=10000 writes=11282 reads=11180 reset_discarded=102 max_streak=1050 max_pending=34 history_clears=118 disabled_reads=1336 disable_edge_inputs=60 saturation_events=3270
+PASS: Python data/saturation comparison seed=7 outputs=11180
+PASS: dsp_accelerator taps=8 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=16 output_depth=16 seed=8 random_samples=10000 writes=11282 reads=11180 reset_discarded=102 max_streak=1050 max_pending=34 history_clears=118 disabled_reads=1311 disable_edge_inputs=63 saturation_events=2932
+PASS: Python data/saturation comparison seed=8 outputs=11180
+PASS: dsp_accelerator taps=8 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=16 output_depth=16 seed=9 random_samples=10000 writes=11282 reads=11180 reset_discarded=102 max_streak=1050 max_pending=34 history_clears=118 disabled_reads=1303 disable_edge_inputs=71 saturation_events=2612
+PASS: Python data/saturation comparison seed=9 outputs=11180
+PASS: dsp_accelerator taps=8 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=16 output_depth=16 seed=10 random_samples=10000 writes=11282 reads=11180 reset_discarded=102 max_streak=1050 max_pending=34 history_clears=118 disabled_reads=1370 disable_edge_inputs=66 saturation_events=3909
+PASS: Python data/saturation comparison seed=10 outputs=11180
+PASS: dsp_accelerator taps=8 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=16 output_depth=16 seed=11 random_samples=10000 writes=11282 reads=11180 reset_discarded=102 max_streak=1050 max_pending=34 history_clears=118 disabled_reads=1143 disable_edge_inputs=54 saturation_events=2774
+PASS: Python data/saturation comparison seed=11 outputs=11180
+PASS: dsp_accelerator taps=8 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=16 output_depth=16 seed=12 random_samples=10000 writes=11282 reads=11180 reset_discarded=102 max_streak=1050 max_pending=34 history_clears=118 disabled_reads=1250 disable_edge_inputs=65 saturation_events=3932
+PASS: Python data/saturation comparison seed=12 outputs=11180
+PASS: dsp_accelerator taps=8 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=16 output_depth=16 seed=13 random_samples=10000 writes=11282 reads=11180 reset_discarded=102 max_streak=1050 max_pending=34 history_clears=118 disabled_reads=1402 disable_edge_inputs=66 saturation_events=3628
+PASS: Python data/saturation comparison seed=13 outputs=11180
+PASS: dsp_accelerator taps=8 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=16 output_depth=16 seed=14 random_samples=10000 writes=11282 reads=11180 reset_discarded=102 max_streak=1050 max_pending=34 history_clears=118 disabled_reads=1174 disable_edge_inputs=61 saturation_events=638
+PASS: Python data/saturation comparison seed=14 outputs=11180
+PASS: dsp_accelerator taps=8 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=16 output_depth=16 seed=15 random_samples=10000 writes=11282 reads=11180 reset_discarded=102 max_streak=1050 max_pending=34 history_clears=118 disabled_reads=1246 disable_edge_inputs=65 saturation_events=2665
+PASS: Python data/saturation comparison seed=15 outputs=11180
+PASS: dsp_accelerator taps=8 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=16 output_depth=16 seed=16 random_samples=10000 writes=11282 reads=11180 reset_discarded=102 max_streak=1050 max_pending=34 history_clears=118 disabled_reads=1296 disable_edge_inputs=71 saturation_events=2743
+PASS: Python data/saturation comparison seed=16 outputs=11180
+PASS: dsp_accelerator taps=8 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=16 output_depth=16 seed=17 random_samples=10000 writes=11282 reads=11180 reset_discarded=102 max_streak=1050 max_pending=34 history_clears=118 disabled_reads=1315 disable_edge_inputs=72 saturation_events=2768
+PASS: Python data/saturation comparison seed=17 outputs=11180
+PASS: dsp_accelerator taps=8 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=16 output_depth=16 seed=18 random_samples=10000 writes=11282 reads=11180 reset_discarded=102 max_streak=1050 max_pending=34 history_clears=118 disabled_reads=1255 disable_edge_inputs=57 saturation_events=3335
+PASS: Python data/saturation comparison seed=18 outputs=11180
+PASS: dsp_accelerator taps=8 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=16 output_depth=16 seed=19 random_samples=10000 writes=11282 reads=11180 reset_discarded=102 max_streak=1050 max_pending=34 history_clears=118 disabled_reads=1334 disable_edge_inputs=68 saturation_events=2760
+PASS: Python data/saturation comparison seed=19 outputs=11180
+PASS: dsp_accelerator taps=8 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=16 output_depth=16 seed=20 random_samples=10000 writes=11282 reads=11180 reset_discarded=102 max_streak=1050 max_pending=34 history_clears=118 disabled_reads=1171 disable_edge_inputs=62 saturation_events=3593
+PASS: Python data/saturation comparison seed=20 outputs=11180
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe work.tb_dsp_accelerator -f accelerator_cfg1.elaborate.txt 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.axi_lite_regs_default
+Compiling module work.axis_fifo(DEPTH=2)
+Compiling module work.fir_core(OUTPUT_WIDTH=16,INPUT_F...
+Compiling module work.axis_fifo(DATA_WIDTH=17,DEPTH=2)
+Compiling module work.dsp_datapath(OUTPUT_WIDTH=16,INP...
+Compiling module work.dsp_accelerator(OUTPUT_WIDTH=16,...
+Compiling module work.tb_dsp_accelerator(OUTPUT_WIDTH=...
+Built simulation snapshot accelerator_cfg1
+PASS: dsp_accelerator taps=8 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=2 output_depth=2 seed=1 random_samples=1000 writes=2170 reads=2152 reset_discarded=18 max_streak=1050 max_pending=6 history_clears=118 disabled_reads=58 disable_edge_inputs=9 saturation_events=299
+PASS: Python data/saturation comparison seed=1 outputs=2152
+PASS: dsp_accelerator taps=8 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=2 output_depth=2 seed=7 random_samples=1000 writes=2170 reads=2152 reset_discarded=18 max_streak=1050 max_pending=6 history_clears=118 disabled_reads=59 disable_edge_inputs=8 saturation_events=403
+PASS: Python data/saturation comparison seed=7 outputs=2152
+PASS: dsp_accelerator taps=8 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=2 output_depth=2 seed=42 random_samples=1000 writes=2170 reads=2152 reset_discarded=18 max_streak=1050 max_pending=6 history_clears=118 disabled_reads=113 disable_edge_inputs=11 saturation_events=278
+PASS: Python data/saturation comparison seed=42 outputs=2152
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe work.tb_dsp_accelerator -f accelerator_cfg2.elaborate.txt 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.axi_lite_regs_default
+Compiling module work.axis_fifo(DEPTH=2)
+Compiling module work.fir_core(OUTPUT_WIDTH=16,INPUT_F...
+Compiling module work.axis_fifo(DATA_WIDTH=17)
+Compiling module work.dsp_datapath(OUTPUT_WIDTH=16,INP...
+Compiling module work.dsp_accelerator(OUTPUT_WIDTH=16,...
+Compiling module work.tb_dsp_accelerator(OUTPUT_WIDTH=...
+Built simulation snapshot accelerator_cfg2
+PASS: dsp_accelerator taps=8 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=2 output_depth=16 seed=1 random_samples=1000 writes=2226 reads=2166 reset_discarded=60 max_streak=1050 max_pending=20 history_clears=118 disabled_reads=131 disable_edge_inputs=9 saturation_events=291
+PASS: Python data/saturation comparison seed=1 outputs=2166
+PASS: dsp_accelerator taps=8 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=2 output_depth=16 seed=7 random_samples=1000 writes=2226 reads=2166 reset_discarded=60 max_streak=1050 max_pending=20 history_clears=118 disabled_reads=143 disable_edge_inputs=9 saturation_events=418
+PASS: Python data/saturation comparison seed=7 outputs=2166
+PASS: dsp_accelerator taps=8 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=2 output_depth=16 seed=42 random_samples=1000 writes=2226 reads=2166 reset_discarded=60 max_streak=1050 max_pending=20 history_clears=118 disabled_reads=227 disable_edge_inputs=9 saturation_events=269
+PASS: Python data/saturation comparison seed=42 outputs=2166
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe work.tb_dsp_accelerator -f accelerator_cfg3.elaborate.txt 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.axi_lite_regs_default
+Compiling module work.axis_fifo_default
+Compiling module work.fir_core(OUTPUT_WIDTH=16,INPUT_F...
+Compiling module work.axis_fifo(DATA_WIDTH=17,DEPTH=2)
+Compiling module work.dsp_datapath(OUTPUT_WIDTH=16,INP...
+Compiling module work.dsp_accelerator(OUTPUT_WIDTH=16,...
+Compiling module work.tb_dsp_accelerator(OUTPUT_WIDTH=...
+Built simulation snapshot accelerator_cfg3
+PASS: dsp_accelerator taps=8 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=16 output_depth=2 seed=1 random_samples=1000 writes=2226 reads=2166 reset_discarded=60 max_streak=1050 max_pending=20 history_clears=118 disabled_reads=131 disable_edge_inputs=9 saturation_events=293
+PASS: Python data/saturation comparison seed=1 outputs=2166
+PASS: dsp_accelerator taps=8 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=16 output_depth=2 seed=7 random_samples=1000 writes=2226 reads=2166 reset_discarded=60 max_streak=1050 max_pending=20 history_clears=118 disabled_reads=143 disable_edge_inputs=9 saturation_events=415
+PASS: Python data/saturation comparison seed=7 outputs=2166
+PASS: dsp_accelerator taps=8 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=16 output_depth=2 seed=42 random_samples=1000 writes=2226 reads=2166 reset_discarded=60 max_streak=1050 max_pending=20 history_clears=118 disabled_reads=227 disable_edge_inputs=9 saturation_events=271
+PASS: Python data/saturation comparison seed=42 outputs=2166
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe work.tb_dsp_accelerator -f accelerator_cfg4.elaborate.txt 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.axi_lite_regs(TAPS=1)
+Compiling module work.axis_fifo(DEPTH=2)
+Compiling module work.fir_core(OUTPUT_WIDTH=16,TAPS=1,...
+Compiling module work.axis_fifo(DATA_WIDTH=17,DEPTH=4)
+Compiling module work.dsp_datapath(OUTPUT_WIDTH=16,TAP...
+Compiling module work.dsp_accelerator(OUTPUT_WIDTH=16,...
+Compiling module work.tb_dsp_accelerator(OUTPUT_WIDTH=...
+Built simulation snapshot accelerator_cfg4
+PASS: dsp_accelerator taps=1 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=2 output_depth=4 seed=1 random_samples=1000 writes=2171 reads=2147 reset_discarded=24 max_streak=1050 max_pending=8 history_clears=27 disabled_reads=75 disable_edge_inputs=9 saturation_events=6
+PASS: Python data/saturation comparison seed=1 outputs=2147
+PASS: dsp_accelerator taps=1 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=2 output_depth=4 seed=7 random_samples=1000 writes=2171 reads=2147 reset_discarded=24 max_streak=1050 max_pending=8 history_clears=27 disabled_reads=79 disable_edge_inputs=9 saturation_events=6
+PASS: Python data/saturation comparison seed=7 outputs=2147
+PASS: dsp_accelerator taps=1 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=2 output_depth=4 seed=42 random_samples=1000 writes=2171 reads=2147 reset_discarded=24 max_streak=1050 max_pending=8 history_clears=27 disabled_reads=149 disable_edge_inputs=10 saturation_events=6
+PASS: Python data/saturation comparison seed=42 outputs=2147
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe work.tb_dsp_accelerator -f accelerator_cfg5.elaborate.txt 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.axi_lite_regs(TAPS=4,COEFF_WIDTH...
+Compiling module work.axis_fifo(DATA_WIDTH=8,DEPTH=4)
+Compiling module work.fir_core(DATA_WIDTH=8,COEFF_WIDT...
+Compiling module work.axis_fifo(DATA_WIDTH=9,DEPTH=2)
+Compiling module work.dsp_datapath(DATA_WIDTH=8,COEFF_...
+Compiling module work.dsp_accelerator(DATA_WIDTH=8,COE...
+Compiling module work.tb_dsp_accelerator(DATA_WIDTH=8,...
+Built simulation snapshot accelerator_cfg5
+PASS: dsp_accelerator taps=4 input_width=8 coeff_width=8 output_width=8 input_frac=7 coeff_frac=7 output_frac=7 input_depth=4 output_depth=2 seed=1 random_samples=1000 writes=2174 reads=2150 reset_discarded=24 max_streak=1050 max_pending=8 history_clears=62 disabled_reads=75 disable_edge_inputs=9 saturation_events=83
+PASS: Python data/saturation comparison seed=1 outputs=2150
+PASS: dsp_accelerator taps=4 input_width=8 coeff_width=8 output_width=8 input_frac=7 coeff_frac=7 output_frac=7 input_depth=4 output_depth=2 seed=7 random_samples=1000 writes=2174 reads=2150 reset_discarded=24 max_streak=1050 max_pending=8 history_clears=62 disabled_reads=79 disable_edge_inputs=9 saturation_events=82
+PASS: Python data/saturation comparison seed=7 outputs=2150
+PASS: dsp_accelerator taps=4 input_width=8 coeff_width=8 output_width=8 input_frac=7 coeff_frac=7 output_frac=7 input_depth=4 output_depth=2 seed=42 random_samples=1000 writes=2174 reads=2150 reset_discarded=24 max_streak=1050 max_pending=8 history_clears=62 disabled_reads=150 disable_edge_inputs=10 saturation_events=102
+PASS: Python data/saturation comparison seed=42 outputs=2150
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe work.tb_dsp_accelerator -f accelerator_cfg6.elaborate.txt 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.axi_lite_regs(TAPS=4,COEFF_WIDTH...
+Compiling module work.axis_fifo(DATA_WIDTH=12,DEPTH=4)
+Compiling module work.fir_core(DATA_WIDTH=12,COEFF_WID...
+Compiling module work.axis_fifo(DATA_WIDTH=15,DEPTH=8)
+Compiling module work.dsp_datapath(DATA_WIDTH=12,COEFF...
+Compiling module work.dsp_accelerator(DATA_WIDTH=12,CO...
+Compiling module work.tb_dsp_accelerator(DATA_WIDTH=12...
+Built simulation snapshot accelerator_cfg6
+PASS: dsp_accelerator taps=4 input_width=12 coeff_width=10 output_width=14 input_frac=9 coeff_frac=8 output_frac=10 input_depth=4 output_depth=8 seed=1 random_samples=1000 writes=2198 reads=2156 reset_discarded=42 max_streak=1050 max_pending=14 history_clears=66 disabled_reads=110 disable_edge_inputs=9 saturation_events=266
+PASS: Python data/saturation comparison seed=1 outputs=2156
+PASS: dsp_accelerator taps=4 input_width=12 coeff_width=10 output_width=14 input_frac=9 coeff_frac=8 output_frac=10 input_depth=4 output_depth=8 seed=7 random_samples=1000 writes=2198 reads=2156 reset_discarded=42 max_streak=1050 max_pending=14 history_clears=66 disabled_reads=128 disable_edge_inputs=9 saturation_events=340
+PASS: Python data/saturation comparison seed=7 outputs=2156
+PASS: dsp_accelerator taps=4 input_width=12 coeff_width=10 output_width=14 input_frac=9 coeff_frac=8 output_frac=10 input_depth=4 output_depth=8 seed=42 random_samples=1000 writes=2198 reads=2156 reset_discarded=42 max_streak=1050 max_pending=14 history_clears=66 disabled_reads=206 disable_edge_inputs=10 saturation_events=106
+PASS: Python data/saturation comparison seed=42 outputs=2156
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe work.tb_dsp_accelerator -f accelerator_cfg7.elaborate.txt 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.axi_lite_regs(TAPS=1,COEFF_WIDTH...
+Compiling module work.axis_fifo(DATA_WIDTH=4,DEPTH=2)
+Compiling module work.fir_core(DATA_WIDTH=4,COEFF_WIDT...
+Compiling module work.axis_fifo(DATA_WIDTH=13,DEPTH=2)
+Compiling module work.dsp_datapath(DATA_WIDTH=4,COEFF_...
+Compiling module work.dsp_accelerator(DATA_WIDTH=4,COE...
+Compiling module work.tb_dsp_accelerator(DATA_WIDTH=4,...
+Built simulation snapshot accelerator_cfg7
+PASS: dsp_accelerator taps=1 input_width=4 coeff_width=4 output_width=12 input_frac=0 coeff_frac=0 output_frac=0 input_depth=2 output_depth=2 seed=1 random_samples=1000 writes=2163 reads=2145 reset_discarded=18 max_streak=1050 max_pending=6 history_clears=23 disabled_reads=58 disable_edge_inputs=9 saturation_events=0
+PASS: Python data/saturation comparison seed=1 outputs=2145
+PASS: dsp_accelerator taps=1 input_width=4 coeff_width=4 output_width=12 input_frac=0 coeff_frac=0 output_frac=0 input_depth=2 output_depth=2 seed=7 random_samples=1000 writes=2163 reads=2145 reset_discarded=18 max_streak=1050 max_pending=6 history_clears=23 disabled_reads=59 disable_edge_inputs=8 saturation_events=0
+PASS: Python data/saturation comparison seed=7 outputs=2145
+PASS: dsp_accelerator taps=1 input_width=4 coeff_width=4 output_width=12 input_frac=0 coeff_frac=0 output_frac=0 input_depth=2 output_depth=2 seed=42 random_samples=1000 writes=2163 reads=2145 reset_discarded=18 max_streak=1050 max_pending=6 history_clears=23 disabled_reads=113 disable_edge_inputs=11 saturation_events=0
+PASS: Python data/saturation comparison seed=42 outputs=2145
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe work.tb_dsp_accelerator -f accelerator_cfg8.elaborate.txt 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.axi_lite_regs(TAPS=32)
+Compiling module work.axis_fifo(DEPTH=4)
+Compiling module work.fir_core(OUTPUT_WIDTH=16,TAPS=32...
+Compiling module work.axis_fifo(DATA_WIDTH=17,DEPTH=4)
+Compiling module work.dsp_datapath(OUTPUT_WIDTH=16,TAP...
+Compiling module work.dsp_accelerator(OUTPUT_WIDTH=16,...
+Compiling module work.tb_dsp_accelerator(OUTPUT_WIDTH=...
+Built simulation snapshot accelerator_cfg8
+PASS: dsp_accelerator taps=32 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=4 output_depth=4 seed=1 random_samples=1000 writes=2210 reads=2180 reset_discarded=30 max_streak=1050 max_pending=10 history_clears=430 disabled_reads=90 disable_edge_inputs=9 saturation_events=630
+PASS: Python data/saturation comparison seed=1 outputs=2180
+PASS: dsp_accelerator taps=32 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=4 output_depth=4 seed=7 random_samples=1000 writes=2210 reads=2180 reset_discarded=30 max_streak=1050 max_pending=10 history_clears=430 disabled_reads=99 disable_edge_inputs=9 saturation_events=675
+PASS: Python data/saturation comparison seed=7 outputs=2180
+PASS: dsp_accelerator taps=32 input_width=16 coeff_width=16 output_width=16 input_frac=15 coeff_frac=15 output_frac=15 input_depth=4 output_depth=4 seed=42 random_samples=1000 writes=2210 reads=2180 reset_discarded=30 max_streak=1050 max_pending=10 history_clears=430 disabled_reads=175 disable_edge_inputs=10 saturation_events=671
+PASS: Python data/saturation comparison seed=42 outputs=2180
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe work.tb_dsp_accelerator -f accelerator_cfg9.elaborate.txt 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.axi_lite_regs(TAPS=4,COEFF_WIDTH...
+Compiling module work.axis_fifo(DATA_WIDTH=8,DEPTH=4)
+Compiling module work.fir_core(DATA_WIDTH=8,COEFF_WIDT...
+Compiling module work.axis_fifo(DATA_WIDTH=33,DEPTH=4)
+Compiling module work.dsp_datapath(DATA_WIDTH=8,COEFF_...
+Compiling module work.dsp_accelerator(DATA_WIDTH=8,COE...
+Compiling module work.tb_dsp_accelerator(DATA_WIDTH=8,...
+Built simulation snapshot accelerator_cfg9
+PASS: dsp_accelerator taps=4 input_width=8 coeff_width=32 output_width=32 input_frac=0 coeff_frac=0 output_frac=0 input_depth=4 output_depth=4 seed=1 random_samples=1000 writes=2182 reads=2152 reset_discarded=30 max_streak=1050 max_pending=10 history_clears=69 disabled_reads=90 disable_edge_inputs=9 saturation_events=2125
+PASS: Python data/saturation comparison seed=1 outputs=2152
+PASS: dsp_accelerator taps=4 input_width=8 coeff_width=32 output_width=32 input_frac=0 coeff_frac=0 output_frac=0 input_depth=4 output_depth=4 seed=7 random_samples=1000 writes=2182 reads=2152 reset_discarded=30 max_streak=1050 max_pending=10 history_clears=69 disabled_reads=99 disable_edge_inputs=9 saturation_events=2121
+PASS: Python data/saturation comparison seed=7 outputs=2152
+PASS: dsp_accelerator taps=4 input_width=8 coeff_width=32 output_width=32 input_frac=0 coeff_frac=0 output_frac=0 input_depth=4 output_depth=4 seed=42 random_samples=1000 writes=2182 reads=2152 reset_discarded=30 max_streak=1050 max_pending=10 history_clears=69 disabled_reads=175 disable_edge_inputs=10 saturation_events=2125
+PASS: Python data/saturation comparison seed=42 outputs=2152
+Accelerator regression passed: 47 runs. Results: E:\DSP Accelerator AXI Interface\build\release_validation\candidate_b3869e1d00\build\accelerator_sim/results.json

@@ -1,0 +1,34 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
+| Date         : Mon Nov 16 03:40:03 2026
+| Host         : 550W running 64-bit major release  (build 9200)
+| Command      : report_methodology -name accelerator_methodology -file {E:/DSP Accelerator AXI Interface/build/release_validation/candidate_b3869e1d00/build/implementation_comparison/optimized/build/accelerator_impl/methodology.rpt}
+| Design       : dsp_accelerator
+| Device       : xc7a35tcpg236-1
+| Speed File   : -1
+| Design State : Partially Routed
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Report Methodology
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: checkpoint_dsp_accelerator_routed
+      Design limits: <entire design considered>
+             Max checks: <unlimited>
+             Checks found: 0
++------+----------+-------------+--------+
+| Rule | Severity | Description | Checks |
++------+----------+-------------+--------+
++------+----------+-------------+--------+
+
+2. REPORT DETAILS
+-----------------
+

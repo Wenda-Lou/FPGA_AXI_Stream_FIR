@@ -1,0 +1,107 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/DSP Accelerator AXI Interface/build/release_validation/candidate_b3869e1d00/fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/axis_fifo.v" into library work
+INFO: [VRFC 10-311] analyzing module axis_fifo
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/DSP Accelerator AXI Interface/build/release_validation/candidate_b3869e1d00/fpga_streaming_dsp/fpga_streaming_dsp.srcs/sim_1/tb_axis_fifo.sv" into library work
+INFO: [VRFC 10-311] analyzing module tb_axis_fifo
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe work.tb_axis_fifo -f fifo_w16_d16.elaborate.txt 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.axis_fifo_default
+Compiling module work.tb_axis_fifo
+Built simulation snapshot fifo_w16_d16
+PASS: axis_fifo width=16 depth=16 seed=1 random_samples=10000 random_cycles=21871 writes=11063 reads=11047 reset_discarded=16 max_streak=1024
+PASS: axis_fifo width=16 depth=16 seed=2 random_samples=10000 random_cycles=22185 writes=11063 reads=11047 reset_discarded=16 max_streak=1024
+PASS: axis_fifo width=16 depth=16 seed=3 random_samples=10000 random_cycles=21792 writes=11063 reads=11047 reset_discarded=16 max_streak=1024
+PASS: axis_fifo width=16 depth=16 seed=4 random_samples=10000 random_cycles=22012 writes=11063 reads=11047 reset_discarded=16 max_streak=1024
+PASS: axis_fifo width=16 depth=16 seed=5 random_samples=10000 random_cycles=22137 writes=11063 reads=11047 reset_discarded=16 max_streak=1024
+PASS: axis_fifo width=16 depth=16 seed=6 random_samples=10000 random_cycles=21943 writes=11063 reads=11047 reset_discarded=16 max_streak=1024
+PASS: axis_fifo width=16 depth=16 seed=7 random_samples=10000 random_cycles=22326 writes=11063 reads=11047 reset_discarded=16 max_streak=1024
+PASS: axis_fifo width=16 depth=16 seed=8 random_samples=10000 random_cycles=22151 writes=11063 reads=11047 reset_discarded=16 max_streak=1024
+PASS: axis_fifo width=16 depth=16 seed=9 random_samples=10000 random_cycles=22292 writes=11063 reads=11047 reset_discarded=16 max_streak=1024
+PASS: axis_fifo width=16 depth=16 seed=10 random_samples=10000 random_cycles=22145 writes=11063 reads=11047 reset_discarded=16 max_streak=1024
+PASS: axis_fifo width=16 depth=16 seed=11 random_samples=10000 random_cycles=21933 writes=11063 reads=11047 reset_discarded=16 max_streak=1024
+PASS: axis_fifo width=16 depth=16 seed=12 random_samples=10000 random_cycles=22017 writes=11063 reads=11047 reset_discarded=16 max_streak=1024
+PASS: axis_fifo width=16 depth=16 seed=13 random_samples=10000 random_cycles=22015 writes=11063 reads=11047 reset_discarded=16 max_streak=1024
+PASS: axis_fifo width=16 depth=16 seed=14 random_samples=10000 random_cycles=21916 writes=11063 reads=11047 reset_discarded=16 max_streak=1024
+PASS: axis_fifo width=16 depth=16 seed=15 random_samples=10000 random_cycles=21870 writes=11063 reads=11047 reset_discarded=16 max_streak=1024
+PASS: axis_fifo width=16 depth=16 seed=16 random_samples=10000 random_cycles=21933 writes=11063 reads=11047 reset_discarded=16 max_streak=1024
+PASS: axis_fifo width=16 depth=16 seed=17 random_samples=10000 random_cycles=22168 writes=11063 reads=11047 reset_discarded=16 max_streak=1024
+PASS: axis_fifo width=16 depth=16 seed=18 random_samples=10000 random_cycles=21959 writes=11063 reads=11047 reset_discarded=16 max_streak=1024
+PASS: axis_fifo width=16 depth=16 seed=19 random_samples=10000 random_cycles=21992 writes=11063 reads=11047 reset_discarded=16 max_streak=1024
+PASS: axis_fifo width=16 depth=16 seed=20 random_samples=10000 random_cycles=22515 writes=11063 reads=11047 reset_discarded=16 max_streak=1024
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe work.tb_axis_fifo -f fifo_w16_d2.elaborate.txt 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.axis_fifo(DEPTH=2)
+Compiling module work.tb_axis_fifo(DEPTH=2)
+Built simulation snapshot fifo_w16_d2
+PASS: axis_fifo width=16 depth=2 seed=1 random_samples=1000 random_cycles=2294 writes=2035 reads=2033 reset_discarded=2 max_streak=1024
+PASS: axis_fifo width=16 depth=2 seed=7 random_samples=1000 random_cycles=2393 writes=2035 reads=2033 reset_discarded=2 max_streak=1024
+PASS: axis_fifo width=16 depth=2 seed=42 random_samples=1000 random_cycles=2407 writes=2035 reads=2033 reset_discarded=2 max_streak=1024
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe work.tb_axis_fifo -f fifo_w16_d4.elaborate.txt 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.axis_fifo(DEPTH=4)
+Compiling module work.tb_axis_fifo(DEPTH=4)
+Built simulation snapshot fifo_w16_d4
+PASS: axis_fifo width=16 depth=4 seed=1 random_samples=1000 random_cycles=2178 writes=2039 reads=2035 reset_discarded=4 max_streak=1024
+PASS: axis_fifo width=16 depth=4 seed=7 random_samples=1000 random_cycles=2250 writes=2039 reads=2035 reset_discarded=4 max_streak=1024
+PASS: axis_fifo width=16 depth=4 seed=42 random_samples=1000 random_cycles=2287 writes=2039 reads=2035 reset_discarded=4 max_streak=1024
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe work.tb_axis_fifo -f fifo_w8_d4.elaborate.txt 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.axis_fifo(DATA_WIDTH=8,DEPTH=4)
+Compiling module work.tb_axis_fifo(DATA_WIDTH=8,DEPTH=...
+Built simulation snapshot fifo_w8_d4
+PASS: axis_fifo width=8 depth=4 seed=1 random_samples=1000 random_cycles=2178 writes=2039 reads=2035 reset_discarded=4 max_streak=1024
+PASS: axis_fifo width=8 depth=4 seed=7 random_samples=1000 random_cycles=2250 writes=2039 reads=2035 reset_discarded=4 max_streak=1024
+PASS: axis_fifo width=8 depth=4 seed=42 random_samples=1000 random_cycles=2287 writes=2039 reads=2035 reset_discarded=4 max_streak=1024
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe work.tb_axis_fifo -f fifo_w32_d16.elaborate.txt 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.axis_fifo(DATA_WIDTH=32)
+Compiling module work.tb_axis_fifo(DATA_WIDTH=32)
+Built simulation snapshot fifo_w32_d16
+PASS: axis_fifo width=32 depth=16 seed=1 random_samples=1000 random_cycles=2142 writes=2063 reads=2047 reset_discarded=16 max_streak=1024
+PASS: axis_fifo width=32 depth=16 seed=7 random_samples=1000 random_cycles=2229 writes=2063 reads=2047 reset_discarded=16 max_streak=1024
+PASS: axis_fifo width=32 depth=16 seed=42 random_samples=1000 random_cycles=2214 writes=2063 reads=2047 reset_discarded=16 max_streak=1024
+FIFO regression passed: 32 runs. Logs and results.json: E:\DSP Accelerator AXI Interface\build\release_validation\candidate_b3869e1d00\build\fifo_sim

@@ -1,0 +1,107 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "E:/DSP Accelerator AXI Interface/build/release_validation/candidate_b3869e1d00/fpga_streaming_dsp/fpga_streaming_dsp.srcs/sources_1/new/axi_lite_regs.v" into library work
+INFO: [VRFC 10-311] analyzing module axi_lite_regs
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "E:/DSP Accelerator AXI Interface/build/release_validation/candidate_b3869e1d00/fpga_streaming_dsp/fpga_streaming_dsp.srcs/sim_1/tb_axi_lite_regs.sv" into library work
+INFO: [VRFC 10-311] analyzing module tb_axi_lite_regs
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe work.tb_axi_lite_regs -f regs_t8_w16.elaborate.txt 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.axi_lite_regs_default
+Compiling module work.tb_axi_lite_regs
+Built simulation snapshot regs_t8_w16
+PASS: axi_lite_regs taps=8 coeff_width=16 seed=1 random_transactions=2000 commits=2050 write_responses=2049 read_responses=2072 aw_first=633 w_first=613 simultaneous=804 errors=1268 b_stalls=15106 r_stalls=15014 overlapping_reads_writes=2 history_clears=197 soft_clears=23 coefficient_writes=174 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+PASS: axi_lite_regs taps=8 coeff_width=16 seed=2 random_transactions=2000 commits=2050 write_responses=2049 read_responses=2072 aw_first=662 w_first=610 simultaneous=778 errors=1286 b_stalls=15385 r_stalls=15221 overlapping_reads_writes=2 history_clears=184 soft_clears=20 coefficient_writes=164 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+PASS: axi_lite_regs taps=8 coeff_width=16 seed=3 random_transactions=2000 commits=2050 write_responses=2049 read_responses=2072 aw_first=639 w_first=668 simultaneous=743 errors=1279 b_stalls=15036 r_stalls=15055 overlapping_reads_writes=2 history_clears=175 soft_clears=22 coefficient_writes=153 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+PASS: axi_lite_regs taps=8 coeff_width=16 seed=4 random_transactions=2000 commits=2050 write_responses=2049 read_responses=2072 aw_first=643 w_first=629 simultaneous=778 errors=1338 b_stalls=14865 r_stalls=15311 overlapping_reads_writes=2 history_clears=152 soft_clears=11 coefficient_writes=141 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+PASS: axi_lite_regs taps=8 coeff_width=16 seed=5 random_transactions=2000 commits=2050 write_responses=2049 read_responses=2072 aw_first=628 w_first=561 simultaneous=861 errors=1350 b_stalls=15278 r_stalls=14819 overlapping_reads_writes=2 history_clears=126 soft_clears=11 coefficient_writes=115 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+PASS: axi_lite_regs taps=8 coeff_width=16 seed=6 random_transactions=2000 commits=2050 write_responses=2049 read_responses=2072 aw_first=656 w_first=604 simultaneous=790 errors=1258 b_stalls=14777 r_stalls=15436 overlapping_reads_writes=2 history_clears=204 soft_clears=23 coefficient_writes=181 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+PASS: axi_lite_regs taps=8 coeff_width=16 seed=7 random_transactions=2000 commits=2050 write_responses=2049 read_responses=2072 aw_first=631 w_first=665 simultaneous=754 errors=1279 b_stalls=15162 r_stalls=14954 overlapping_reads_writes=2 history_clears=177 soft_clears=18 coefficient_writes=159 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+PASS: axi_lite_regs taps=8 coeff_width=16 seed=8 random_transactions=2000 commits=2050 write_responses=2049 read_responses=2072 aw_first=631 w_first=634 simultaneous=785 errors=1312 b_stalls=15376 r_stalls=15098 overlapping_reads_writes=2 history_clears=198 soft_clears=25 coefficient_writes=173 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+PASS: axi_lite_regs taps=8 coeff_width=16 seed=9 random_transactions=2000 commits=2050 write_responses=2049 read_responses=2072 aw_first=630 w_first=606 simultaneous=814 errors=1288 b_stalls=15177 r_stalls=14794 overlapping_reads_writes=2 history_clears=166 soft_clears=18 coefficient_writes=148 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+PASS: axi_lite_regs taps=8 coeff_width=16 seed=10 random_transactions=2000 commits=2050 write_responses=2049 read_responses=2072 aw_first=608 w_first=648 simultaneous=794 errors=1296 b_stalls=15046 r_stalls=15151 overlapping_reads_writes=2 history_clears=175 soft_clears=22 coefficient_writes=153 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+PASS: axi_lite_regs taps=8 coeff_width=16 seed=11 random_transactions=2000 commits=2050 write_responses=2049 read_responses=2072 aw_first=576 w_first=657 simultaneous=817 errors=1243 b_stalls=15063 r_stalls=15241 overlapping_reads_writes=2 history_clears=205 soft_clears=16 coefficient_writes=189 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+PASS: axi_lite_regs taps=8 coeff_width=16 seed=12 random_transactions=2000 commits=2050 write_responses=2049 read_responses=2072 aw_first=609 w_first=645 simultaneous=796 errors=1284 b_stalls=15242 r_stalls=15263 overlapping_reads_writes=2 history_clears=167 soft_clears=18 coefficient_writes=149 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+PASS: axi_lite_regs taps=8 coeff_width=16 seed=13 random_transactions=2000 commits=2050 write_responses=2049 read_responses=2072 aw_first=630 w_first=652 simultaneous=768 errors=1290 b_stalls=15069 r_stalls=14831 overlapping_reads_writes=2 history_clears=166 soft_clears=15 coefficient_writes=151 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+PASS: axi_lite_regs taps=8 coeff_width=16 seed=14 random_transactions=2000 commits=2050 write_responses=2049 read_responses=2072 aw_first=669 w_first=625 simultaneous=756 errors=1274 b_stalls=15554 r_stalls=14870 overlapping_reads_writes=2 history_clears=192 soft_clears=18 coefficient_writes=174 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+PASS: axi_lite_regs taps=8 coeff_width=16 seed=15 random_transactions=2000 commits=2050 write_responses=2049 read_responses=2072 aw_first=641 w_first=646 simultaneous=763 errors=1333 b_stalls=15029 r_stalls=15332 overlapping_reads_writes=2 history_clears=174 soft_clears=19 coefficient_writes=155 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+PASS: axi_lite_regs taps=8 coeff_width=16 seed=16 random_transactions=2000 commits=2050 write_responses=2049 read_responses=2072 aw_first=656 w_first=640 simultaneous=754 errors=1258 b_stalls=15037 r_stalls=15318 overlapping_reads_writes=2 history_clears=218 soft_clears=26 coefficient_writes=192 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+PASS: axi_lite_regs taps=8 coeff_width=16 seed=17 random_transactions=2000 commits=2050 write_responses=2049 read_responses=2072 aw_first=625 w_first=651 simultaneous=774 errors=1254 b_stalls=15082 r_stalls=15552 overlapping_reads_writes=2 history_clears=170 soft_clears=13 coefficient_writes=157 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+PASS: axi_lite_regs taps=8 coeff_width=16 seed=18 random_transactions=2000 commits=2050 write_responses=2049 read_responses=2072 aw_first=614 w_first=638 simultaneous=798 errors=1375 b_stalls=14951 r_stalls=15103 overlapping_reads_writes=2 history_clears=117 soft_clears=8 coefficient_writes=109 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+PASS: axi_lite_regs taps=8 coeff_width=16 seed=19 random_transactions=2000 commits=2050 write_responses=2049 read_responses=2072 aw_first=647 w_first=632 simultaneous=771 errors=1298 b_stalls=15152 r_stalls=15363 overlapping_reads_writes=2 history_clears=172 soft_clears=19 coefficient_writes=153 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+PASS: axi_lite_regs taps=8 coeff_width=16 seed=20 random_transactions=2000 commits=2050 write_responses=2049 read_responses=2072 aw_first=624 w_first=635 simultaneous=791 errors=1283 b_stalls=14923 r_stalls=14861 overlapping_reads_writes=2 history_clears=185 soft_clears=13 coefficient_writes=172 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe work.tb_axi_lite_regs -f regs_t1_w8.elaborate.txt 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.axi_lite_regs(TAPS=1,COEFF_WIDTH...
+Compiling module work.tb_axi_lite_regs(TAPS=1,COEFF_WI...
+Built simulation snapshot regs_t1_w8
+PASS: axi_lite_regs taps=1 coeff_width=8 seed=1 random_transactions=500 commits=543 write_responses=542 read_responses=558 aw_first=168 w_first=150 simultaneous=225 errors=297 b_stalls=3908 r_stalls=3741 overlapping_reads_writes=2 history_clears=47 soft_clears=8 coefficient_writes=39 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+PASS: axi_lite_regs taps=1 coeff_width=8 seed=7 random_transactions=500 commits=543 write_responses=542 read_responses=558 aw_first=166 w_first=160 simultaneous=217 errors=289 b_stalls=3615 r_stalls=3841 overlapping_reads_writes=2 history_clears=45 soft_clears=8 coefficient_writes=37 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+PASS: axi_lite_regs taps=1 coeff_width=8 seed=42 random_transactions=500 commits=543 write_responses=542 read_responses=558 aw_first=159 w_first=151 simultaneous=233 errors=323 b_stalls=3760 r_stalls=3801 overlapping_reads_writes=2 history_clears=19 soft_clears=2 coefficient_writes=17 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe work.tb_axi_lite_regs -f regs_t4_w10.elaborate.txt 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.axi_lite_regs(TAPS=4,COEFF_WIDTH...
+Compiling module work.tb_axi_lite_regs(TAPS=4,COEFF_WI...
+Built simulation snapshot regs_t4_w10
+PASS: axi_lite_regs taps=4 coeff_width=10 seed=1 random_transactions=500 commits=546 write_responses=545 read_responses=564 aw_first=169 w_first=151 simultaneous=226 errors=320 b_stalls=3917 r_stalls=3750 overlapping_reads_writes=2 history_clears=67 soft_clears=8 coefficient_writes=59 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+PASS: axi_lite_regs taps=4 coeff_width=10 seed=7 random_transactions=500 commits=546 write_responses=545 read_responses=564 aw_first=167 w_first=161 simultaneous=218 errors=318 b_stalls=3624 r_stalls=3850 overlapping_reads_writes=2 history_clears=65 soft_clears=8 coefficient_writes=57 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+PASS: axi_lite_regs taps=4 coeff_width=10 seed=42 random_transactions=500 commits=546 write_responses=545 read_responses=564 aw_first=160 w_first=152 simultaneous=234 errors=359 b_stalls=3769 r_stalls=3810 overlapping_reads_writes=2 history_clears=28 soft_clears=2 coefficient_writes=26 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe work.tb_axi_lite_regs -f regs_t8_w32.elaborate.txt 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.axi_lite_regs(COEFF_WIDTH=32)
+Compiling module work.tb_axi_lite_regs(COEFF_WIDTH=32)
+Built simulation snapshot regs_t8_w32
+PASS: axi_lite_regs taps=8 coeff_width=32 seed=1 random_transactions=500 commits=549 write_responses=548 read_responses=572 aw_first=171 w_first=152 simultaneous=226 errors=345 b_stalls=3929 r_stalls=3762 overlapping_reads_writes=2 history_clears=84 soft_clears=8 coefficient_writes=76 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+PASS: axi_lite_regs taps=8 coeff_width=32 seed=7 random_transactions=500 commits=549 write_responses=548 read_responses=572 aw_first=169 w_first=162 simultaneous=218 errors=344 b_stalls=3636 r_stalls=3862 overlapping_reads_writes=2 history_clears=85 soft_clears=8 coefficient_writes=77 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+PASS: axi_lite_regs taps=8 coeff_width=32 seed=42 random_transactions=500 commits=549 write_responses=548 read_responses=572 aw_first=162 w_first=153 simultaneous=234 errors=390 b_stalls=3781 r_stalls=3822 overlapping_reads_writes=2 history_clears=38 soft_clears=2 coefficient_writes=36 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+Vivado Simulator v2026.1
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+Running: E:/2026.1/Vivado/bin/unwrapped/win64.o/xelab.exe work.tb_axi_lite_regs -f regs_t32_w16.elaborate.txt 
+Multi-threading is on. Using 14 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module work.axi_lite_regs(TAPS=32)
+Compiling module work.tb_axi_lite_regs(TAPS=32)
+Built simulation snapshot regs_t32_w16
+PASS: axi_lite_regs taps=32 coeff_width=16 seed=1 random_transactions=500 commits=574 write_responses=573 read_responses=620 aw_first=179 w_first=160 simultaneous=235 errors=315 b_stalls=4001 r_stalls=3834 overlapping_reads_writes=2 history_clears=96 soft_clears=8 coefficient_writes=88 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+PASS: axi_lite_regs taps=32 coeff_width=16 seed=7 random_transactions=500 commits=574 write_responses=573 read_responses=620 aw_first=177 w_first=170 simultaneous=227 errors=317 b_stalls=3708 r_stalls=3934 overlapping_reads_writes=2 history_clears=94 soft_clears=8 coefficient_writes=86 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+PASS: axi_lite_regs taps=32 coeff_width=16 seed=42 random_transactions=500 commits=574 write_responses=573 read_responses=620 aw_first=170 w_first=161 simultaneous=243 errors=357 b_stalls=3853 r_stalls=3894 overlapping_reads_writes=2 history_clears=57 soft_clears=2 coefficient_writes=55 blocked_aw=7 blocked_w=7 blocked_ar=7 reset_edges=15
+AXI register regression passed: 32 runs. Results: E:\DSP Accelerator AXI Interface\build\release_validation\candidate_b3869e1d00\build\axi_regs_sim/results.json

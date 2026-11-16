@@ -1,0 +1,34 @@
+#-----------------------------------------------------------
+# xsim v2026.1 (64-bit)
+# SW Build 6511674 on Tue Jun 16 11:02:23 MDT 2026
+# IP Build 6504888 on Tue Jun 09 09:05:25 MDT 2026
+# SharedData Build 6501428 on Mon Jun 08 17:34:18 MDT 2026
+# Start of session at: Mon Nov 16 03:31:16 2026
+# Process ID         : 16000
+# Current directory  : E:/DSP Accelerator AXI Interface/build/release_validation/candidate_b3869e1d00/build/implementation_comparison/baseline/build/accelerator_sim
+# Command line       : xsim.exe -log accelerator_cfg7_seed42.log -mode tcl -source {xsim.dir/accelerator_cfg7/xsim_script.tcl}
+# Log file           : E:/DSP Accelerator AXI Interface/build/release_validation/candidate_b3869e1d00/build/implementation_comparison/baseline/build/accelerator_sim/accelerator_cfg7_seed42.log
+# Journal file       : E:/DSP Accelerator AXI Interface/build/release_validation/candidate_b3869e1d00/build/implementation_comparison/baseline/build/accelerator_sim\xsim.jou
+# Running On         : 550W
+# Platform           : Windows 11
+# Operating System   : 26300
+# Processor Detail   : AMD Ryzen 7 9700X 8-Core Processor             
+# CPU Frequency      : 3800 MHz
+# CPU Physical cores : 8
+# CPU Logical cores  : 16
+# Host memory        : 33454 MB
+# Swap memory        : 16642 MB
+# Total Virtual      : 50097 MB
+# Available Virtual  : 28809 MB
+#-----------------------------------------------------------
+source xsim.dir/accelerator_cfg7/xsim_script.tcl
+# xsim {accelerator_cfg7} -testplusarg SEED=42 -testplusarg SAMPLES=1000 -testplusarg EVENTS=accelerator_cfg7_seed42.events.txt -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+PASS directed: AXI-programmed arithmetic and continuous streaming
+PASS: dsp_accelerator taps=1 input_width=4 coeff_width=4 output_width=12 input_frac=0 coeff_frac=0 output_frac=0 input_depth=2 output_depth=2 seed=42 random_samples=1000 writes=2163 reads=2145 reset_discarded=18 max_streak=1050 max_pending=6 history_clears=23 disabled_reads=113 disable_edge_inputs=11 saturation_events=0
+AXI: commits=182 write_responses=181 read_responses=358 aw_first=49 w_first=31 simultaneous=102 errors=37 b_stalls=417 r_stalls=1671 aw_captures=183 w_captures=183 ar_captures=359 reset_aw=1 reset_w=1 reset_b=1 reset_r=1 soft_clears=1 coefficient_writes=22
+COVERAGE: positive_clips=0 negative_clips=0 input_full=1433 output_full=1668 input_stalls=1864 output_stalls=1763 resets_with_data=3
+$finish called at time : 52360 ns : File "E:/DSP Accelerator AXI Interface/build/release_validation/candidate_b3869e1d00/build/implementation_comparison/baseline/fpga_streaming_dsp/fpga_streaming_dsp.srcs/sim_1/tb_dsp_accelerator.sv" Line 755
+exit
+INFO: [Common 17-206] Exiting xsim at Mon Nov 16 03:31:18 2026...

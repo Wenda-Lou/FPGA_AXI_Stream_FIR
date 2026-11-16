@@ -110,9 +110,9 @@ stalls. The monitor consumes one expected word per output handshake. At scenario
 end, the driver disables new inputs, holds output ready, and checks that every
 expected result has drained before resetting for the next scenario.
 
-## Remaining Delivery and Optional Implementation Work
+## Delivered Scope and Optional Integration Work
 
-1. Finalize presentation materials and repository delivery; the physical optimization comparison is complete.
+1. First-version delivery is complete: architecture/waveform assets, physical comparison and [clean-export acceptance](delivery.md) are retained with exact source hashes.
 2. Optionally reduce hold-closure resource cost without changing numerical behavior, latency or interface budgets.
 3. Revalidate the retained OOC tool warning and constraints if reused in a different parent context.
 

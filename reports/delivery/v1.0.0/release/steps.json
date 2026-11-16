@@ -1,0 +1,53 @@
+{
+    "status":  "passed",
+    "steps":  [
+                  {
+                      "name":  "reference",
+                      "exit_code":  0,
+                      "started_at_utc":  "2026-11-16T08:22:03.6238061+00:00",
+                      "duration_seconds":  2.059
+                  },
+                  {
+                      "name":  "fifo",
+                      "exit_code":  0,
+                      "started_at_utc":  "2026-11-16T08:22:05.6922151+00:00",
+                      "duration_seconds":  71.55
+                  },
+                  {
+                      "name":  "fir",
+                      "exit_code":  0,
+                      "started_at_utc":  "2026-11-16T08:23:17.2420579+00:00",
+                      "duration_seconds":  91.565
+                  },
+                  {
+                      "name":  "datapath",
+                      "exit_code":  0,
+                      "started_at_utc":  "2026-11-16T08:24:48.8071850+00:00",
+                      "duration_seconds":  99.954
+                  },
+                  {
+                      "name":  "axi_regs",
+                      "exit_code":  0,
+                      "started_at_utc":  "2026-11-16T08:26:28.7615793+00:00",
+                      "duration_seconds":  76.715
+                  },
+                  {
+                      "name":  "accelerator",
+                      "exit_code":  0,
+                      "started_at_utc":  "2026-11-16T08:27:45.4764259+00:00",
+                      "duration_seconds":  114.053
+                  },
+                  {
+                      "name":  "comparison",
+                      "exit_code":  0,
+                      "started_at_utc":  "2026-11-16T08:29:39.5292218+00:00",
+                      "duration_seconds":  626.099
+                  },
+                  {
+                      "name":  "waveforms",
+                      "exit_code":  0,
+                      "started_at_utc":  "2026-11-16T08:40:05.6285960+00:00",
+                      "duration_seconds":  4.029
+                  }
+              ]
+}
