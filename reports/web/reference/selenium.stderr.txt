@@ -1,0 +1,18 @@
+test_actual_csv_download (__main__.BrowserTests.test_actual_csv_download) ... ok
+test_bad_csv_error_is_real_backend_response (__main__.BrowserTests.test_bad_csv_error_is_real_backend_response) ... ok
+test_explicitly_injected_timeout_is_not_success (__main__.BrowserTests.test_explicitly_injected_timeout_is_not_success) ... WARNING:root:Job=job_6ac054bee709424d977b129d0ef533c2 code=EXECUTION_TIMEOUT request=req_32a67544758843d79e9ef7b14847c35f
+ok
+test_invalid_coefficient_blocks_submission (__main__.BrowserTests.test_invalid_coefficient_blocks_submission) ... ok
+test_pagination_and_mobile_layout (__main__.BrowserTests.test_pagination_and_mobile_layout) ... ok
+test_real_reference_flow (__main__.BrowserTests.test_real_reference_flow) ... ok
+test_refresh_restores_same_job_without_rerun (__main__.BrowserTests.test_refresh_restores_same_job_without_rerun) ... ok
+test_rtl_mode_is_disabled (__main__.BrowserTests.test_rtl_mode_is_disabled) ... ok
+test_running_refresh_preserves_job_and_finishes (__main__.BrowserTests.test_running_refresh_preserves_job_and_finishes) ... ok
+test_server_restart_preserves_result_and_fails_unfinished (__main__.BrowserTests.test_server_restart_preserves_result_and_fails_unfinished) ... WARNING:root:Job=job_508d661f1f1b48239b6ac1acecd8c659 code=SERVER_RESTART request=req_d515198a543d4c3f949c4a6b9bc7fd88
+ok
+test_unknown_job_link (__main__.BrowserTests.test_unknown_job_link) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 22.792s
+
+OK

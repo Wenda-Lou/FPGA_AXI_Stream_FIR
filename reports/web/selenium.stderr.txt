@@ -1,0 +1,22 @@
+test_actual_csv_download (__main__.BrowserTests.test_actual_csv_download) ... ok
+test_bad_csv_error_is_real_backend_response (__main__.BrowserTests.test_bad_csv_error_is_real_backend_response) ... ok
+test_explicitly_injected_timeout_is_not_success (__main__.BrowserTests.test_explicitly_injected_timeout_is_not_success) ... WARNING:root:Job=job_f9e15bf172a74c66af9ef1c50e7e4bcb code=EXECUTION_TIMEOUT request=req_d61a88ffffe54a5f9d1c26417f18114c
+ok
+test_invalid_coefficient_blocks_submission (__main__.BrowserTests.test_invalid_coefficient_blocks_submission) ... ok
+test_pagination_and_mobile_layout (__main__.BrowserTests.test_pagination_and_mobile_layout) ... ok
+test_real_reference_flow (__main__.BrowserTests.test_real_reference_flow) ... ok
+test_refresh_restores_same_job_without_rerun (__main__.BrowserTests.test_refresh_restores_same_job_without_rerun) ... ok
+test_rtl_mode_is_disabled (__main__.BrowserTests.test_rtl_mode_is_disabled) ... ok
+test_running_refresh_preserves_job_and_finishes (__main__.BrowserTests.test_running_refresh_preserves_job_and_finishes) ... ok
+test_server_restart_preserves_result_and_fails_unfinished (__main__.BrowserTests.test_server_restart_preserves_result_and_fails_unfinished) ... WARNING:root:Job=job_41d2522a6448474fb9396b93281ae3fe code=SERVER_RESTART request=req_fb674b2f6ab04784b5a36f66e63824f8
+ok
+test_unknown_job_link (__main__.BrowserTests.test_unknown_job_link) ... ok
+test_rtl_changed_coefficients_produce_new_results (__main__.RtlBrowserTests.test_rtl_changed_coefficients_produce_new_results) ... ok
+test_rtl_native_timeout_no_partial_result (__main__.RtlBrowserTests.test_rtl_native_timeout_no_partial_result) ... WARNING:root:Job=job_ab2b3e30fdd147088a96196587a8d763 code=EXECUTION_TIMEOUT request=req_5929a2ae6c724221bc19e51d26b7bf9a
+ok
+test_rtl_saturation_refresh_and_download (__main__.RtlBrowserTests.test_rtl_saturation_refresh_and_download) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 46.683s
+
+OK

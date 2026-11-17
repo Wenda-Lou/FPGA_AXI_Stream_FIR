@@ -1,0 +1,21 @@
+test_capabilities_rtl_not_silently_fallback (test_api.ApiTests.test_capabilities_rtl_not_silently_fallback) ... ok
+test_full_http_processing_download_and_persistence (test_api.ApiTests.test_full_http_processing_download_and_persistence) ... ok
+test_isolated_history_and_saturation (test_api.ApiTests.test_isolated_history_and_saturation) ... ok
+test_maximum_dataset_and_result (test_api.ApiTests.test_maximum_dataset_and_result) ... ok
+test_strict_coefficients_and_unknown_fields (test_api.ApiTests.test_strict_coefficients_and_unknown_fields) ... ok
+test_unknown_ids_and_bad_json (test_api.ApiTests.test_unknown_ids_and_bad_json) ... ok
+test_upload_validation_and_limits (test_api.ApiTests.test_upload_validation_and_limits) ... ok
+test_csv_canonicalization_and_large_integer (test_api.ServiceLifecycleTests.test_csv_canonicalization_and_large_integer) ... ok
+test_fault_injected_timeout_and_crashed_worker (test_api.ServiceLifecycleTests.test_fault_injected_timeout_and_crashed_worker) ... WARNING:root:Job=job_b15cb8a561b24f6eb217c19512498d67 code=EXECUTION_TIMEOUT request=req_cabf49db516c4f7d99e36677c97b23cb
+WARNING:root:Job=job_8a2a3480633c47629109ba4dcc2f557d code=EXECUTION_FAILED request=req_46142282e4644366852acbb5beae469f
+ok
+test_queue_limit_readiness_restart_and_single_owner (test_api.ServiceLifecycleTests.test_queue_limit_readiness_restart_and_single_owner) ... ok
+test_accepted_inputs_must_be_exact_request (test_rtl_parser.RtlEvidenceTests.test_accepted_inputs_must_be_exact_request) ... ok
+test_missing_or_duplicate_output_fails (test_rtl_parser.RtlEvidenceTests.test_missing_or_duplicate_output_fails) ... ok
+test_numerical_and_flag_mismatch_fail (test_rtl_parser.RtlEvidenceTests.test_numerical_and_flag_mismatch_fail) ... ok
+test_valid_fixture_preserves_actual_values (test_rtl_parser.RtlEvidenceTests.test_valid_fixture_preserves_actual_values) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 4.814s
+
+OK

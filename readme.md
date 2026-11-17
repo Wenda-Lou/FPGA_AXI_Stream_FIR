@@ -92,6 +92,28 @@ stability and control transactions. See [waveform provenance and reproduction](d
 
 ## Reproduce
 
+### Local Web console (v1.1.0 software extension)
+
+The new [Python backend and Web console](docs/webapp.md) support CSV uploads,
+eight coefficient fields, persisted asynchronous reference jobs, plots, exact
+result tables and CSV downloads. Run `python -m webapp.server` from this folder,
+then open http://127.0.0.1:8000. Add `--vivado-bin 'E:/2026.1/Vivado/bin'` to enable
+**real request-driven RTL simulation**. Runtime Python dependencies are all
+standard-library modules; RTL mode also uses the configured Vivado tools.
+The extension passes 14 backend/evidence tests and 14 real-browser Selenium tests,
+plus eight successful RTL HTTP cases with 11,353 data/flag matches and a real
+timeout check, in addition to the existing 27 Python model tests. See the [API contract](docs/web_interface.md)
+for input formats, job states and explicit verification boundaries.
+
+After installing `web_tests/requirements.txt`, run the complete software checks
+with `python scripts/run_web_tests.py --rtl --vivado-bin 'E:/2026.1/Vivado/bin'`.
+Omit the RTL arguments for the reference-only CI profile. Both profiles cover
+running-page refresh and service-restart recovery; reports are under `reports/web/`.
+
+![Actual request-driven RTL result in the Web console](docs/assets/web-console.png)
+
+### Hardware acceptance
+
 Tested on Windows with Vivado 2026.1, device support for `xc7a35tcpg236-1`,
 Windows PowerShell and Python 3.10+ (tested: 3.13.0). Python needs no third-party
 packages. Adapt executable locations to your installation; the examples use

@@ -1,0 +1,32 @@
+test_clear_keeps_coefficients_and_discards_history_only (test_fir_events.FirEventTests.test_clear_keeps_coefficients_and_discards_history_only) ... ok
+test_legacy_fixed_format (test_fir_events.FirEventTests.test_legacy_fixed_format) ... ok
+test_natural_rail_and_clipped_rail_have_different_flags (test_fir_events.FirEventTests.test_natural_rail_and_clipped_rail_have_different_flags) ... ok
+test_parameterized_signed_zero_shift_and_wide_output (test_fir_events.FirEventTests.test_parameterized_signed_zero_shift_and_wide_output) ... ok
+test_rejects_bad_flag_missing_flag_and_busy_clear (test_fir_events.FirEventTests.test_rejects_bad_flag_missing_flag_and_busy_clear) ... ok
+test_reset_discards_pending_result (test_fir_events.FirEventTests.test_reset_discards_pending_result) ... ok
+test_accumulator_retains_full_precision (test_fir_model.FirModelTests.test_accumulator_retains_full_precision) ... ok
+test_coefficient_and_sample_validation (test_fir_model.FirModelTests.test_coefficient_and_sample_validation) ... ok
+test_coefficient_write_clears_history (test_fir_model.FirModelTests.test_coefficient_write_clears_history) ... ok
+test_configuration_validation (test_fir_model.FirModelTests.test_configuration_validation) ... ok
+test_default_accumulator_width (test_fir_model.FirModelTests.test_default_accumulator_width) ... ok
+test_hardware_reset_clears_coefficients (test_fir_model.FirModelTests.test_hardware_reset_clears_coefficients) ... ok
+test_history_clear_preserves_coefficients (test_fir_model.FirModelTests.test_history_clear_preserves_coefficients) ... ok
+test_impulse_tap_order (test_fir_model.FirModelTests.test_impulse_tap_order) ... ok
+test_minimum_times_minimum_clips_positive (test_fir_model.FirModelTests.test_minimum_times_minimum_clips_positive) ... ok
+test_negative_saturation (test_fir_model.FirModelTests.test_negative_saturation) ... ok
+test_negative_shift_floors (test_fir_model.FirModelTests.test_negative_shift_floors) ... ok
+test_one_and_four_taps (test_fir_model.FirModelTests.test_one_and_four_taps) ... ok
+test_positive_saturation (test_fir_model.FirModelTests.test_positive_saturation) ... ok
+test_rejects_out_of_range_values (test_fir_model.FirModelTests.test_rejects_out_of_range_values) ... ok
+test_signed_bus_boundaries (test_fir_model.FirModelTests.test_signed_bus_boundaries) ... ok
+test_zero_coefficients (test_fir_model.FirModelTests.test_zero_coefficients) ... ok
+test_zero_shift_format (test_fir_model.FirModelTests.test_zero_shift_format) ... ok
+test_impulse_files_and_manifest (test_vectors.VectorTests.test_impulse_files_and_manifest) ... ok
+test_rejects_empty_random_run (test_vectors.VectorTests.test_rejects_empty_random_run) ... ok
+test_seed_changes_random_stimulus (test_vectors.VectorTests.test_seed_changes_random_stimulus) ... ok
+test_seed_reproduces_all_files (test_vectors.VectorTests.test_seed_reproduces_all_files) ... ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 0.101s
+
+OK

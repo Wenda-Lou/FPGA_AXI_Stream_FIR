@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>FIR Control Lab</title><link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+<header><div class="brand"><span class="mark">ƒ</span><div><strong>FIR Control Lab</strong><span>Streaming DSP accelerator / software console</span></div></div><a href="/api/v1/capabilities" target="_blank" rel="noopener">API capabilities ↗</a></header>
+<main>
+  <section class="intro"><div><p class="eyebrow">EXPERIMENT WORKSPACE</p><h1>From samples to signal.</h1><p>Configure eight taps, upload your samples, and inspect the exact fixed-point result.</p></div><span class="format">16-bit signed <b>Q1.15</b></span></section>
+  <div class="workspace">
+    <aside>
+      <section class="card"><div class="section-title"><span class="step">01</span><h2>Configure the filter</h2></div>
+        <fieldset id="configuration"><label for="mode">Execution mode</label><select id="mode" data-testid="mode-select"><option value="reference">Python reference model</option><option value="rtl" disabled>RTL simulation · unavailable</option></select>
+        <p class="hint" id="mode-note">Loading capabilities…</p>
+        <div class="label-row"><label>Coefficients</label><button id="half-gain" class="text-button" type="button">Half-gain preset</button></div>
+        <div id="coefficients" class="coefficients"></div>
+        <p class="hint">Raw signed integers: −32768 to 32767. Tap 0 multiplies the newest sample. 16384 represents 0.5.</p></fieldset>
+      </section>
+      <section class="card"><div class="section-title"><span class="step">02</span><h2>Choose input samples</h2></div>
+        <label for="file" class="upload-label">CSV with a single <code>sample</code> column</label>
+        <input id="file" data-testid="sample-upload" type="file" accept=".csv,text/csv">
+        <div class="upload-actions"><button id="upload" data-testid="upload-dataset" type="button" class="secondary" disabled>Upload dataset</button><a href="data:text/csv;charset=utf-8,sample%0A16384%0A-16384%0A1%0A" download="fir-example.csv">Example CSV ↓</a></div>
+        <p id="sample-count" data-testid="sample-count" class="dataset-info">No dataset uploaded</p>
+        <p class="hint">1–10,000 samples · 1 MiB maximum. Every job starts with cleared filter history.</p>
+      </section>
+      <div id="error" data-testid="error-message" data-code="" role="alert" hidden></div>
+      <button id="submit" data-testid="submit-job" type="button" class="primary" disabled>Run filter <span>→</span></button>
+    </aside>
+    <section class="results">
+      <section class="card job-card"><div class="section-title"><span class="step">03</span><h2>Execution</h2><span id="status" data-testid="job-status" data-state="" class="status">Ready</span></div>
+        <div class="job-details"><div><span class="metric-label">JOB ID</span><code id="job-id" data-testid="job-id">No job submitted</code></div><div><span class="metric-label">ENGINE</span><strong id="engine" data-testid="execution-engine">—</strong></div></div>
+        <p id="job-note" class="hint" aria-live="polite">Upload a dataset to begin. Results come from the server worker.</p>
+        <button id="retry" type="button" class="secondary" hidden>Retry status lookup</button>
+      </section>
+      <section class="card output-card"><div class="section-title"><h2>Signal overview</h2><div class="legend"><span class="input-dot"></span> Input <span class="output-dot"></span> Output</div></div>
+        <div id="empty" class="empty"><div class="signal-icon">∿</div><h3>Your signal will appear here</h3><p>Run a filter job to compare input and output samples.</p></div>
+        <canvas id="chart" data-testid="output-chart" role="img" aria-label="Input and output sample chart; exact values are available in the result table." hidden></canvas>
+        <div class="metrics"><div><span class="metric-label">SAMPLES</span><strong id="output-count">—</strong></div><div><span class="metric-label">SATURATED OUTPUTS</span><strong id="saturation" data-testid="saturation-count">—</strong></div><div><span class="metric-label" id="elapsed-label">WORKER COMPUTE TIME</span><strong id="elapsed">—</strong></div></div>
+        <p id="verification" class="hint">Verification details appear when a job finishes. Reference output is computed by the model.</p>
+      </section>
+      <section class="card table-card"><div class="section-title"><h2>Sample values</h2><a id="download" data-testid="download-results" hidden>Download CSV ↓</a></div>
+        <div class="table-scroll"><table data-testid="result-table"><caption class="sr-only">Exact raw signed input/output values and per-output saturation flags</caption><thead><tr><th>Index</th><th>Input raw</th><th>Output raw</th><th>Saturated</th></tr></thead><tbody id="rows"><tr><td colspan="4" class="muted">No results yet</td></tr></tbody></table></div>
+        <div class="pagination"><span id="range">0 samples</span><div><button id="previous" type="button" disabled aria-label="Previous 50 samples">←</button><button id="next" type="button" disabled aria-label="Next 50 samples">→</button></div></div>
+      </section>
+    </section>
+  </div>
+</main>
+<footer>Reference / behavioral RTL processing · no FPGA board connection · raw integers scaled by 2¹⁵</footer>
+</body></html>

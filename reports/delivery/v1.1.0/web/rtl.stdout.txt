@@ -1,0 +1,9 @@
+PASS: real RTL HTTP case=negative_shift samples=1 flags/data matched
+PASS: real RTL HTTP case=impulse samples=31 flags/data matched
+PASS: real RTL HTTP case=zero_coefficients samples=512 flags/data matched
+PASS: real RTL HTTP case=both_saturation_signs samples=40 flags/data matched
+PASS: real RTL HTTP case=signed_extrema samples=255 flags/data matched
+PASS: real RTL HTTP case=random_seed_1_max samples=10000 flags/data matched
+PASS: real RTL HTTP case=random_seed_42 samples=257 flags/data matched
+PASS: real RTL HTTP case=changed_coefficients samples=257 flags/data matched
+PASS: real RTL process-tree deadline terminates the job and exposes no partial result
